@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora Simples - Água Ideal</title>
+</head>
+<body style="font-family: Arial, sans-serif; background:#f4f4f9; padding:2rem;">
+
+    <main style="max-width:700px; margin:auto; background:#fff; padding:2rem; border-radius:8px;">
+        <h1 style="text-align:center;">Calculadora de Água para Caju Anão Precoce</h1>
+
+        <!-- Conteúdo principal da calculadora -->
+        <div id="div_conteudo">
+            
+            <!-- Campo: área em hectares -->
+            <p>
+                Área do terreno (hectares):<br>
+                <input type="text" id="ipt_hectares" value="1">
+            </p>
+
+            <!-- Campo: tipo de solo -->
+            <p>
+                Tipo de solo:<br>
+                <select id="slc_solo">
+                    <option value="arenoso">Arenoso (65 L/m²)</option>
+                    <option value="argiloso">Argiloso (160 L/m²)</option>
+                </select>
+            </p>
+
+            <!-- Campo: intervalo de irrigação em dias -->
+            <p>
+                Intervalo de irrigação (dias):<br>
+                <input type="text" id="ipt_intervalo" value="2">
+            </p>
+
+            <!-- Botão que dispara o cálculo -->
+            <p>
+                <input type="button" value="Calcular" onclick="calcular()">
+            </p>
+        </div>
+
+        <!-- Área que exibirá os resultados -->
+        <h2>Resultado</h2>
+        <div id="div_saida" style="background:#f9f9f9; padding:1rem; border-radius:6px;"></div>
+    </main>
+
+<script>
+function calcular(){
+
+    // ==============================
+    // 1. CAPTURA DOS DADOS DE ENTRADA
+    // ==============================
+
+    // Valor da área em hectares (string → número)
+    var hectares = document.getElementById("ipt_hectares").value;
+    var hectaresNumero = hectares * 1; // força número
+
+    // Tipo de solo selecionado
+    var solo = document.getElementById("slc_solo").value;
+
+    // Intervalo de irrigação (string → número)
+    var intervalo = document.getElementById("ipt_intervalo").value;
+    var intervaloNumero = intervalo * 1;
+
+
+    // ==============================
+    // 2. CONVERSÕES E CONSTANTES
+    // ==============================
+
+    // 1 hectare = 10.000 m²
+    var metrosQuadrados = hectaresNumero * 10000;
+
+    // Definição de litros por metro quadrado de acordo com o solo
+    var litrosPorM2;
+    if(solo == "arenoso"){
+        litrosPorM2 = 65;
+    } else {
+        litrosPorM2 = 160;
+    }
+
+    // Reposição de água ajustada pelo intervalo
+    var litrosReposicao = (10 / 2) * intervaloNumero;
+
+
+    // ==============================
+    // 3. CÁLCULOS PRINCIPAIS
+    // ==============================
+
+    var aguaPorIrrigacao = litrosReposicao * metrosQuadrados;        // Água por irrigação
+    var irrigacoesMes = Math.floor(30 / intervaloNumero);            // Irrigações no mês
+    var irrigacoesAno = Math.floor(365 / intervaloNumero);           // Irrigações no ano
+    var consumoMensal = irrigacoesMes * aguaPorIrrigacao;            // Consumo mensal
+    var consumoAnual = irrigacoesAno * aguaPorIrrigacao;             // Consumo anual
+    var economiaChuva = 550 * metrosQuadrados;                       // Economia anual com chuva
+
+
+    // ==============================
+    // 4. MONTAGEM DO RESULTADO
+    // ==============================
+
+    var mensagem = "";
+
+    mensagem += "<p><b>Área total:</b> " + hectaresNumero + " ha (" + metrosQuadrados + " m²)</p>";
+    mensagem += "<p><b>Tipo de solo:</b> " + solo + " (" + litrosPorM2 + " L/m²)</p>";
+    mensagem += "<p><b>Intervalo de irrigação:</b> " + intervaloNumero + " dias</p>";
+    mensagem += "<hr>";
+    mensagem += "<p><b>Água por irrigação:</b> " + aguaPorIrrigacao + " L</p>";
+    mensagem += "<p><b>Consumo mensal:</b> " + consumoMensal + " L</p>";
+    mensagem += "<p><b>Consumo anual:</b> " + consumoAnual + " L</p>";
+    mensagem += "<p><b>Possível economia com chuvas:</b> " + economiaChuva + " L/ano</p>";
+
+    // 5. EXIBIÇÃO NA TELA
+
+
+  div_saida.innerHTML = mensagem;
+}
+</script>
+
+</body>
+</html>
