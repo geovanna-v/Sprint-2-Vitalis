@@ -1,0 +1,40 @@
+body{
+    margin: 0px;
+}
+
+
+
+.header_placeholder{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: blueviolet;
+}
+.header_placeholder .label_title_element{
+    padding-bottom: 25px;
+}
+
+.header_placeholder .label_title_element .text_box {
+    display: flex;
+        flex-direction: column;
+    text-align: center;
+}
+
+.div_calculators{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+}
+.div_calculators .div_calculator_water{
+    background-color: aquamarine;
+    height: 75vh;
+    width: 50vw;    
+
+}
+
+.div_calculators .div_calculator_production{
+    background-color: chocolate;
+    height: 75vh;
+    width: 50vw;    
+}
