@@ -1,0 +1,92 @@
+para definir a quantidade de agua ideal primeiramente temos que ter em mãos, quais unidades de medidas serão ultilizadas para todos os cenarios cujo vai agua.
+antes disso vou buscar alguns dados importantes:
+
+-Tempo para colheita da safra:
+após o plantio de suas mudas enxertadas, é estimado que no periodo de um ano e meio a dois anos seja o periodo de produção comercial ideall
+então partindo do principio cujo ja se esta em fase ideal:
+
+um intervalo de 8 a 12 meses entre colheitas.
+após segunda colheita o periodo reduz para 12 meses.
+
+-umidade de solo ideal:
+O caju é produzido de maneira mais eficiente em ares mais secas, pos isso facilita um melhor controle de umidade. sendo assim:
+devido isso, o sertão semiárido tem seu destaque maior para a produção
+em terras como esta a quantidade de chuvas anuais giram em torno de 300 a 800 milimetros ao ano, com seu foco em;
+fevereiro, maio e junho.
+
+como queremos a colheita mais eficiente baseando-se em produção menos custosa.
+vamos ultilizar como cenario  sertão semiárido em fase de produção comercial.
+
+sendo assim:
+em solo arenoso: 60L a 70L por m² de terra.
+em solo argiloso: 150L a 175L por m² de terra.
+
+ainda sim senddo de maior abundancia sua produção em solo arenoso. potanto o valor referencia será 65L por m² de terra
+65/M²
+
+em terreno semiárido temos como perda diaria algo em torno de 5L por dia (considerando tambem evapotranspiração).
+estrategicamente, para obtenção do melhor caju possivel, o ideal é que a irrigação seja feita a cada 2 dias
+ja que assim se mantem um solo uniforme sem listras de secas.
+
+sendo a ssim a irrigação deve ser feita 1 vez a cada dois dias com a reposição de algo em torno de 10²L/M².
+
+com isso temos que a ultilização ideal de agua para um terrno de 1 hectare é 1.500.000L mensal(sem considerar chuvas).
+como ainda temos que a chuva durante 12 meses de produção é de 300mm a 800mm de agua ao ano.
+
+sendo assim temos uma possivel economia de 550L d'agua ao ano.
+
+-custo mao de obra (por hora):
+
+
+==========================================================
+CÁLCULO DA QUANTIDADE IDEAL DE ÁGUA PARA PRODUÇÃO DE CAJU
+==========================================================
+
+1. Definição das Unidades de Medida
+-----------------------------------
+Antes de calcular a quantidade ideal de água, é necessário definir as unidades de medida que serão utilizadas em todos os cenários que envolvem irrigação.
+
+2. Dados Importantes
+--------------------
+
+a) Tempo para Colheita da Safra:
+   - Após o plantio das mudas enxertadas, estima-se que o período de produção comercial ideal ocorre entre 1,5 a 2 anos.
+   - Considerando a fase ideal de produção:
+     - Intervalo entre colheitas: 8 a 12 meses.
+     - Após a segunda colheita, o período reduz para 12 meses.
+
+b) Umidade de Solo Ideal:
+   - O caju é produzido de maneira mais eficiente em áreas mais secas, facilitando o controle de umidade.
+   - O sertão semiárido destaca-se na produção devido ao clima:
+     - Chuvas anuais: 300 a 800 mm/ano, concentradas em fevereiro, maio e junho.
+
+3. Cenário de Produção Considerado
+----------------------------------
+- Para maior eficiência e menor custo, será considerado o cenário do sertão semiárido em fase de produção comercial.
+
+4. Quantidade de Água por Tipo de Solo
+--------------------------------------
+- Solo arenoso: 60L a 70L por m² de terra.
+- Solo argiloso: 150L a 175L por m² de terra.
+- Como a produção é mais abundante em solo arenoso, o valor de referência será 65L/m².
+
+5. Perdas e Estratégia de Irrigação
+-----------------------------------
+- Em terreno semiárido, a perda diária é de aproximadamente 5L por dia (incluindo evapotranspiração).
+- Estratégia ideal: irrigação a cada 2 dias, mantendo o solo uniforme e evitando faixas secas.
+- Assim, a irrigação deve ser feita 1 vez a cada dois dias, com reposição de cerca de 10²L/m².
+
+6. Consumo Mensal de Água
+-------------------------
+- Para um terreno de 1 hectare: 1.500.000L/mês (sem considerar chuvas).
+
+7. Consideração das Chuvas
+--------------------------
+- Durante os 12 meses de produção, a chuva contribui com 300mm a 800mm de água ao ano.
+- Possível economia: 550L de água ao ano.
+
+8. Custo de Mão de Obra (por hora)
+----------------------------------
+// (informação a ser inserida)
+
+==========================================================
