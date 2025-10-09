@@ -3,7 +3,7 @@
 	Sistema para gerenciar empresas, cultivos de caju, leituras de sensores e produtividade.
 */
 
-CREATE DATABASE Vitalis;
+CREATE DATABASE vitalis;
 
 use vitalis;
                     
