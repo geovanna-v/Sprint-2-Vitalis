@@ -1,11 +1,11 @@
-use vitalis;
+/*
+	BANCO DE DADOS - VITALIS
+	Sistema para gerenciar empresas, cultivos de caju, leituras de sensores e produtividade.
+*/
 
-drop table empresaCliente;
-	drop table usuarioEmpresa;
-		drop table plantacaoEmpresa;
-			drop table lotesEmpresa;
-				drop table sensorEmpresa;
-					drop table leituraSensor;
+CREATE DATABASE Vitalis;
+
+use vitalis;
                     
 show tables;
 
@@ -16,24 +16,57 @@ describe lotesPlantacao;
 describe sensorLote;
 describe leituraSensor;
 
+/* 
+	TABELA: empresa
+	Armazena informações das empresas parceiras, como nome, CNPJ, contato, perfil e nível de cargo.
+*/
 
-CREATE TABLE empresaCliente (
+CREATE TABLE empresa (
 	idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
-    nomeEmpresa VARCHAR (150) NOT NULL,
+    razaoSocial VARCHAR (150) NOT NULL,
 	cnpj CHAR(14) NOT NULL UNIQUE
 );
-CREATE  TABLE usuarioEmpresa(
+
+INSERT INTO empresa (razaoSocial, cnpj) VALUES
+	('AgroVale Indústria de Alimentos', '12345678000195'),
+	('Verde Monitoramento Ambiental', '98765432000110'),
+	('CajuBrasil Companhia', '45678912000133'),
+	('Sol Nascente Produções Agrícolas', '11223344000177'),
+	('EcoSensores Monitoramento', '99887766000155'),
+	('NutriCaju Indústria de Beneficiamento', '22334455000166'),
+	('TechAgro Monitoramento Digital', '33445566000122'),
+	('Flor do Sertão Companhia', '44556677000188');
+
+/* Tabela usuario, dados do usario */
+
+CREATE TABLE usuario (
 	idUsuario INT PRIMARY KEY AUTO_INCREMENT,
-    cpf VARCHAR(14) NOT NULL UNIQUE,
-	senha varchar(100) NOT NULL,
-	nivelCargo TINYINT NOT NULL,
-		CONSTRAINT chkNivelCargo 
+    nome VARCHAR (100),
+    cpf VARCHAR(11) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
+	senha VARCHAR(50) NOT NULL,
+	celular CHAR(11) NOT NULL UNIQUE,
+    nivelCargo TINYINT NOT NULL,
+    CONSTRAINT chkNivelCargo 
 		CHECK (nivelCargo IN(1, 2, 3, 99))
 );
 -- 'Estratégico' 	1
 -- 'Tático'			2
 -- 'Operacional'	3
 -- 'DESENVOLVEDOR'  99
+
+INSERT INTO usuario (nome, cpf, email, senha, celular, nivelCargo) VALUES 
+	( 'Joana Silva', '52136987412', 'contato@agrovale.com.br', 'Senha#2025', '11987654321', 1),
+	('João Moraes', '56989871236', 'suporte@verdeambiental.com', 'Segura123!', '21999887766', 3),
+	('Wilton Machado', '46789120001', 'rh@cajubrasil.com', 'Cajuzinho@2025', '81991234567', 2),
+	('Solange Lima', '23344000177', 'admin@solnascente.com', 'ProdAgro!45', '62999881234', 3),
+	('Arthur Franco' '97766000155', 'eco@ecosensores.com.br', 'Monitor#2025', '31988776655', 2),
+	('Cássia Martins', '34455000166', 'contato@nutricaju.com.br', 'Ncaju_2025', '71999887744', 3),
+	('Augusto Torres', '37566000122', 'info@techagro.com', 'Tech@2025', '11988776655', 1),
+	('Flora Souza', '56677000188', 'comercial@florsertao.com.br', 'Flor2025!', '85991237890', 2);
+    
+/* Tabela plantação */
+
 CREATE TABLE plantacaoEmpresa(
 	idPlantacao INT PRIMARY KEY AUTO_INCREMENT,
 	areaHec DECIMAL (7,3) NOT NULL,
@@ -43,6 +76,9 @@ CREATE TABLE plantacaoEmpresa(
 		foreign key (fkEmpresa)
         references empresaCliente(idEmpresa)
 );
+
+/* Tabela Lotes da Plantação */
+
 CREATE TABLE lotesPlantacao(
 	idLote int primary key auto_increment,
     nome varchar(100),
@@ -52,6 +88,7 @@ CREATE TABLE lotesPlantacao(
 		foreign key (fkPlantacao)
         references plantacaoEmpresa(idPlantacao)
 );
+
 CREATE TABLE sensorLote (
 	idSensor int primary key auto_increment,
     fkLote int not null,
@@ -59,6 +96,9 @@ CREATE TABLE sensorLote (
 		foreign key (fkLote)
         references lotesPlantacao(idLote)
 );
+
+/* Tabela de leitura do sensor */ 
+
 CREATE TABLE leituraSensor (
 	idLeitura INT AUTO_INCREMENT,
     fkSensor int,
@@ -73,31 +113,6 @@ CREATE TABLE leituraSensor (
 	umidadeSolo DECIMAL(5,2) NOT NULL,
 	data_hora DATETIME DEFAULT CURRENT_TIMESTAMP
 );
-
-
-
--- entidade fraca // relacionamento fraco ou dependente = chave primaria composta
-		-- id + fk
-        -- não existe sem a outra
-        
--- entidade forte
-		-- existe só, apenas ID
-        
--- relaci
-
-
--- tupos de atributos (campos/colunas)
-	-- simples = indivisivel
-    -- compostos = divisivel e DEVE ser dividido em altributos simples
-    
-    -- insert's com elementos compostos são uma má pratica 								ENDERECO == rua, numero, cep, bairro, etc, etc
-	-- é correto dividir o elemento em outros simples e assim os adicionar atributos	CEP = ZZZZ NUMERO = XXX COMPLEMENTO = YYY 
-    
-    
-    -- monovalorado : um valor
-    -- multivalorado : muitos valores
-    
-    -- UBSERT INTO PESSOA (TELEFONES) VALUES -- (FIXO E PESSOAL) --> INSERT INTO PESSOA (TELEFONE FIXO, TELEFONE PESSOAL)
 
             
             
