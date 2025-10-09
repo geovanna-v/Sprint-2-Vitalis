@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css"/>
+    <title>fixes_calc</title>
+</head>
+<body>
+    <div class="header_placeholder">
+        <h1>Calculadora Financeira</h1>
+    
+        <!-- label será colapsavel por meio de JS -->
+        <label id="label_title_div_explanation" class="label_title_element" for="div_explanation">
+            Como nossa calculadora funciona?
+            <div id="div_explanation" class="text_box">
+                A calculadora financeira da Vitalis é separada em 2 partes. A primeira delas calcula o gasto de água, utilizando os seguintes valores: 
+                <br>
+                Preço do m³ de água: <b>R$0,40 no Nordeste.</b> 
+                <br>
+                Valor médio de água utilizado no cálculo: <b>5000 (valor médio do caju anão)<abbr title="Metro Cúbico por Hectare por Ano"> m³/ha/ano</abbr></b>.
+                <br>
+                <br>
+                Explicação do cálculo: 
+                <br>
+                A produção total é calculada pela multiplicação do gasto de água pela quantidade de hectares, por exemplo:
+                <br>
+                2 hectares X 5000 m³/ha/ano = <b>10000 m³/ano</b> - Esse é o total que a fazenda gasta em água por ano.
+                <br>
+                <br>
+                Agora, para calcular o preço a ser pago por essa água, utiliza-se o valor gerado no cálculo anterior multiplicado pelo valor do m³ de água, por exemplo:
+                <br>
+                10000 m³/ano X 0,40 reais = <b>R$4000,00 anuais.</b>
+                <br>
+                <br>
+                Para a segunda calculadora, é exibido o impacto direto na plantação de castanhas de caju anão. 
+                <br>
+                Foram utilizados os valores médios:
+                <br>
+                Preço médio da castanha: <b>R$4,00</b>
+                <br>
+                Produção média estimada por hectare: <b> <abbr title="Kg por hectare por ano">600 Kg/ha/ano (produção média de caju anão com o devido monitoramento em quilograma por hectare por ano)</abbr></b>
+                <br>
+                <br>
+                Explicação do cálculo:
+                <br>
+                A produção atual é obtida por meio da multiplicação da produção em Kg/ha/ano pela quantidade de hectares da fazenda, por exemplo:
+                <br>
+                600 Kg/ha/ano X 2 hectares = <b>1200 Kg/ano</b> - Esse é o total que a fazenda produz anualmente.
+                <br>
+                <br>
+                Agora, para calcular o total gasto anualmente na plantação é obtido através da multiplicação do valor de produção em Kg/ano multiplicado por R$4,00 que é o valor médio da castanha antes do processo de torra ou fritura, por exemplo:
+                <br>
+                1200 Kg/ano X R$4,00 = <b>R$4800,00</b> - Valor de venda das castanhas.
+                <br>
+                <br>
+                <b>Vamos calcular como está a sua plantação atualmente?</b>
+            </div>
+        </label> 
+    </div>
+        <!-- remoção de titulos e adção de header proprio -->
+
+    <div class="div_calculators">   
+        <div class="div_calculator_water">
+            
+            <!-- remoção de titulos e adção de header proprio -->
+            <h3>Calcule o gasto de água ideal para a sua fazenda de cajueiros anões:</h3>
+            <h4>Os dados da calculadora são baseados na região Nordeste (Portal EMBRAPA).</h4>
+            
+            <!-- estilização da calculadora -->
+            <div class="div_input">
+                
+                <label class="label_title_element">
+                    Digite a área da sua plantação em hectares:
+                    <br>
+                    <input id="input_hectare" type="number"> 
+                    <br>
+                </label>
+                
+                <label class="label_title_element">
+                    Digite seu consumo de água na plantação <abbr title="Metro Cúbico por Hectare por Ano"> m³/ha/ano</abbr>:
+                    <br>
+                    <input id="input_consumo_agua_atual" type="number"> 
+                    <br>
+                </label>
+                
+            </div>
+            
+            <div class="div_button">
+                <button onclick="economia_agua()">
+                    Vamos ver o quanto voce pode economizar com a irrigação de sua plantação?
+                </button>
+                <br>
+            </div>
+            
+            <div class="div_result">
+                <p id="p_message_water"></p>
+            </div>
+        </div>
+        
+        <div class="div_calculator_production">
+            
+            <!-- remoção de titulos e adção de header proprio -->
+            <h3>Calcule a produção de castanhas de cajus anões de acordo com a área da sua plantação: </h3>
+            <h4>O valor médio das castanhas ser R$4,00 foi tirado do BNB (Banco do Nordeste).</h4>
+            
+            
+            <div class="div_input">
+                
+                <label class="label_title_element">
+
+                    Digite a produção atual de castanhas em <abbr title="Kg por hectare por ano">Kg/ha/ano</abbr>:
+                    <br>
+                    <input id="input_producao_atual" type="number">  
+                    <br>
+
+                </label>
+                
+            </div>
+            
+            <button onclick="economia_castanha()">Vamos ver quanto voce economizaria na safra de castanhas com nossos sensores?</button>
+            
+            <div class="div_result">
+                <p id="p_message_production"></p>
+            </div>
+        </div>
+    </div>
+    
+</body>
+<script src="./main.js"></script>
+</html>
