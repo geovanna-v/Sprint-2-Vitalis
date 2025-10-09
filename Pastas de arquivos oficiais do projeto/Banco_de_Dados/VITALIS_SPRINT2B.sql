@@ -50,10 +50,11 @@ CREATE TABLE usuario (
     CONSTRAINT chkNivelCargo 
 		CHECK (nivelCargo IN(1, 2, 3, 99))
 );
--- 'Estratégico' 	1
--- 'Tático'			2
--- 'Operacional'	3
--- 'DESENVOLVEDOR'  99
+/* 'Estratégico'	- 1
+	'Tático'		- 2
+	'Operacional'	- 3
+	'DESENVOLVEDOR' - 99
+*/
 
 INSERT INTO usuario (nome, cpf, email, senha, celular, nivelCargo) VALUES 
 	( 'Joana Silva', '52136987412', 'contato@agrovale.com.br', 'Senha#2025', '11987654321', 1),
@@ -65,7 +66,7 @@ INSERT INTO usuario (nome, cpf, email, senha, celular, nivelCargo) VALUES
 	('Augusto Torres', '37566000122', 'info@techagro.com', 'Tech@2025', '11988776655', 1),
 	('Flora Souza', '56677000188', 'comercial@florsertao.com.br', 'Flor2025!', '85991237890', 2);
     
-/* Tabela plantação */
+/* Tabela plantação, engloba todo solo de cajueiros plantados */
 
 CREATE TABLE plantacaoEmpresa(
 	idPlantacao INT PRIMARY KEY AUTO_INCREMENT,
@@ -74,10 +75,19 @@ CREATE TABLE plantacaoEmpresa(
     fkEmpresa int,
     constraint fkEmpresa 
 		foreign key (fkEmpresa)
-        references empresaCliente(idEmpresa)
+        references empresa(idEmpresa)
 );
 
-/* Tabela Lotes da Plantação */
+INSERT INTO plantacaoEmpresa (areaHec, tipoSolo, fkEmpresa) VALUES
+(2500.000, 'Arenoso', 2),
+(3500.000, 'Argiloso', 3),
+(2562.000, 'Arenoso', 1),
+(2364.784, 'Argiloso', 1),
+(6025.600, 'Arenoso', 4),
+(9852.222, 'Arenoso', 5),
+(9500.100, 'Arenoso', 6);
+
+/* Tabela Lotes da Plantação, toda a plantação será separa em lotes, os quais terão apenas um sensor implantado */
 
 CREATE TABLE lotesPlantacao(
 	idLote int primary key auto_increment,
@@ -88,6 +98,15 @@ CREATE TABLE lotesPlantacao(
 		foreign key (fkPlantacao)
         references plantacaoEmpresa(idPlantacao)
 );
+
+INSERT INTO lotesPlantacao (nome, nivelLote, fkPlantacao) VALUES
+('A1',0, 1),
+('a0', 1, 2),
+('B1', 0, 3),
+('B2', 0, 3),
+('b4', 1, 4),
+('c1', 1, 5),
+('c2', 0, 6);
 
 CREATE TABLE sensorLote (
 	idSensor int primary key auto_increment,
