@@ -9,8 +9,8 @@ use vitalis;
                     
 show tables;
 
-describe empresaCliente;
-describe usuarioEmpresa;
+describe empresa;
+describe usuario;
 describe plantacaoEmpresa;
 describe lotesPlantacao;
 describe sensorLote;
@@ -24,7 +24,10 @@ describe leituraSensor;
 CREATE TABLE empresa (
 	idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
     razaoSocial VARCHAR (150) NOT NULL,
-	cnpj CHAR(14) NOT NULL UNIQUE
+	cnpj CHAR(14) NOT NULL UNIQUE,
+    cep CHAR(8),
+    numero VARCHAR(45),
+    bairro VARCHAR(100)
 );
 
 INSERT INTO empresa (razaoSocial, cnpj) VALUES

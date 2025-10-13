@@ -119,7 +119,7 @@ const servidor = (
     );
 
     // inicia o servidor web
-    servidor(
+    servidor(   
         valoresSensorAnalogico,
         valoresSensorDigital
     );
