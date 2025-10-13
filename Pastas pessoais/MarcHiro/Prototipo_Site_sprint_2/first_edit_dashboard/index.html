@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitalis</title>
+    <link rel="stylesheet" href="./assets/style/style.css">
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="container">
+            <div class="navbar">
+                <img class="icon" src="./assets/icon/icon_leaf.png" alt="Vitalis Logo">
+                <h1 class="titulo">Vitalis</h1>
+            </div>
+
+            <ul class="navbar">
+                <li class="agora"><a href="#">Inicial</a></li>
+                <li><a href="#">Nossa Empresa</a></li>
+                <li>|</li>
+                <li><a class="login_cadastro" href="#"><img src="./assets/icon/icon_person.png" alt="Vitalis Perfil">Meu Perfil</a></li>
+            </ul>
+        </div>
+    </div>
+
+ 
+    <div class="banner">
+        <div class="container">
+            <h2>Plantação Cajueiro - BRS 226</h2>
+            <p>Tipo de solo: Argiloso vermelho</p>
+            <p>Data inicial: 15/10/2025</p>
+            <p>Local: Limoeiro do Norte, CE</p>
+            <p>Responsável: Luciana Mendes Souza</p>
+            <br>
+            <p>Umidade ideal: 70–80%</p>
+            <p>Temperatura ideal: 27ºC</p>
+            <p>Última atualização: 12:59:59 15/10/2025</p>
+        </div>
+        <div class="chart-container">
+            <h3>Gráfico de Monitoramento de Umidade do Solo Semanal</h3>
+            <canvas id="chartSemanal" class="chart"></canvas>
+        </div>
+
+        <div class="chart-container green">
+            <h3>Gráfico de Monitoramento de Umidade do Solo Diário</h3>
+            <canvas id="chartDiario" class="chart"></canvas>
+        </div>
+
+
+
+
+    </div>
+
+   
+    <div class="footer">
+        <div class="container">
+            <div class="left_container">
+                <h4>Soluções inteligentes para o agronegócio</h4>
+                <div class="contacts_container">
+                    <img src="./assets/icon/instagran.png" alt="Instagram">
+                    <img src="./assets/icon/whatzapp.png" alt="WhatsApp">
+                    <img src="./assets/icon/facebook.png" alt="Facebook">
+                </div>
+            </div>
+
+            <div class="right_container">
+                <div class="left">
+                    <h6>Explore</h6>
+                    <p>Home</p>
+                    <p>Sobre Nós</p>
+                    <p>Equipe</p>
+                </div>
+
+                <div class="vertical_ruler">
+                    <hr>
+                </div>
+
+                <div class="right">
+                    <div class="above">
+                        <h6>Endereço</h6>
+                        <p>
+                            Rua Haddock Lobo 595<br>
+                            São Paulo, SP<br>
+                            01414-905
+                        </p>
+                    </div>
+
+                    <div class="bellow">
+                        <h6>Contato</h6>
+                        <p>vitaliscaju@gmail.com</p>
+                        <p>+55 11 4002-8922</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="middle">
+            <hr>
+        </div>
+
+        <div class="page_end">
+            <p>© 2025 Vitalis. Todos os direitos reservados.</p>
+            <p>Política de Privacidade</p>
+        </div>
+    </div>
+    
+</body>
+
+</html>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+
+  new Chart(document.getElementById("chartSemanal"), {
+    type: "line",
+    data: {
+      labels: ["DOMINGO", "SEGUNDA", "TERÇA", "QUARTA", "QUINTA", "SEXTA", "SÁBADO"],
+      datasets: [{
+        label: "Nível de umidade",
+        data: [70, 72, 69, 78, 75, 67, 83],
+        borderColor: "#4a6cf7",
+        backgroundColor: "rgba(74, 108, 247, 0.2)",
+        tension: 0.4,
+        fill: true,
+        pointRadius: 3,
+        borderWidth: 2
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          ticks: {
+            color: "#f26522",
+            callback: v => v + "%"
+          },
+          grid: { color: "#fce0d0" }
+        },
+        x: {
+          ticks: { color: "#f26522" },
+          grid: { display: false }
+        }
+      },
+      plugins: {
+        legend: {
+          labels: { color: "#4a6cf7", font: { size: 12 } }
+        }
+      }
+    }
+  });
+
+
+  new Chart(document.getElementById("chartDiario"), {
+    type: "line",
+    data: {
+      labels: ["00:00","01:00","02:00","03:00","04:00","05:00","06:00","07:00","08:00","09:00","10:00","11:00","12:00"],
+      datasets: [{
+        label: "Nível de umidade",
+        data: [67, 70, 71, 68, 75, 74, 72, 63, 80, 79, 81, 82, 89],
+        borderColor: "#4a6cf7",
+        backgroundColor: "rgba(74, 108, 247, 0.2)",
+        tension: 0.4,
+        fill: true,
+        pointRadius: 3,
+        borderWidth: 2
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          ticks: {
+            color: "#2b8c37",
+            callback: v => v + "%"
+          },
+          grid: { color: "#d9ebda" }
+        },
+        x: {
+          ticks: { color: "#2b8c37", font: { style: "italic" } },
+          grid: { display: true }
+        }
+      },
+      plugins: {
+        legend: {
+          labels: { color: "#4a6cf7", font: { size: 12 } }
+        }
+      }
+    }
+  });
+</script>
