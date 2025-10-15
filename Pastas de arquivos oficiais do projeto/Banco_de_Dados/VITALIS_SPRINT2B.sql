@@ -30,15 +30,15 @@ CREATE TABLE empresa (
     bairro VARCHAR(100)
 );
 
-INSERT INTO empresa (razaoSocial, cnpj) VALUES
-	('AgroVale Indústria de Alimentos', '12345678000195'),
-	('Verde Monitoramento Ambiental', '98765432000110'),
-	('CajuBrasil Companhia', '45678912000133'),
-	('Sol Nascente Produções Agrícolas', '11223344000177'),
-	('EcoSensores Monitoramento', '99887766000155'),
-	('NutriCaju Indústria de Beneficiamento', '22334455000166'),
-	('TechAgro Monitoramento Digital', '33445566000122'),
-	('Flor do Sertão Companhia', '44556677000188');
+INSERT INTO empresa (razaoSocial, cnpj, cep, numero, bairro) VALUES
+	('AgroVale Indústria de Alimentos', '12345678000195','02548971', '2644','Jardim Vital'),
+	('Verde Monitoramento Ambiental', '98765432000110','23636581','6325', 'Jardim Soares Silva'),
+	('CajuBrasil Companhia', '45678912000133', '23685412', '982', 'Vila Madalena'),
+	('Sol Nascente Produções Agrícolas', '11223344000177','23698745', '7369', 'Jardim Santo Américo'),
+	('EcoSensores Monitoramento', '99887766000155','25636987','941','Jardim Vitápolis'),
+	('NutriCaju Indústria de Beneficiamento', '22334455000166', '25479587','3047','Jardim Portela'),
+	('TechAgro Monitoramento Digital', '33445566000122', '23698745', '5847','Vila Sonia'),
+	('Flor do Sertão Companhia', '44556677000188', '69858941', '5050', 'Jardim Silveira');
 
 /* Tabela usuario, dados do usario */
 

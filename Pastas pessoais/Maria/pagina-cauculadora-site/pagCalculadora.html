@@ -43,9 +43,10 @@
         </div>
     </div>
 
+    <!-- Inicio da Calculadora -->
+
     <div class="pagCalculadora">
-        <div class="bannerCalculadora">
-        </div>
+        <div class="bannerCalculadora"></div>
 
         <div class="box" style="display: flex;" style="align-items: center;">
             <span class="titulo">
@@ -61,42 +62,51 @@
                 O quanto de água está gastando em relação ao ideal;
                 Quanto poderia economizar por ano com a irrigação adequada;
                 Qual seria o ganho potencial de produção de castanhas utilizando nossos sensores.
-                
+
                 Assim, o produtor tem uma visão clara de onde pode economizar e como melhorar seus resultados, unindo
                 sustentabilidade e lucratividade.
             </p>
-            
+
         </div>
     </div>
-    
-    <div class="box2">
-        <p class="conteudo">
-            Digite a área da sua plantação em hectares:
-        </p>
-        <input class="inputCalculadora" id="input_hectare" type="text">
-        
-        <p class="conteudo">
-            Digite seu consumo de água na plantação em m³/ha/ano:
-        </p>
-        <input class="inputCalculadora" id="input_consumo_agua_atual" type="text"> <br><br>
-        
-        <button class="botaoCalcular" onclick="economiaAgua()">Calcular</button> <br>
-        
-        <div id="div_mensagem"></div>
+
+    <div class="containerPai">
+        <div class="containerCalculo">
+            <p class="conteudo">
+                Digite a área da sua plantação em hectares:
+            </p>
+            <input class="inputCalculadora" id="input_hectare" type="text">
+
+            <p class="conteudo">
+                Digite seu consumo de água na plantação em m³/ha/ano:
+            </p>
+            <input class="inputCalculadora" id="input_consumo_agua_atual" type="text"> <br><br>
+
+            <button class="botaoCalcular" onclick="economiaAgua()">Calcular</button> <br>
+
+            <div class="mensagem" id="div_mensagem"></div>
+
+        </div>
+
+        <div class="imgInput1"></div>
     </div>
-    <img class="imgInput1" src="assets/img/calculadora/plantar-calculadora.jpg">
 
+    <div class="containerPai">
+        <div class="containerCalculo2">
+            <p class="conteudo">
+                Digite a produção atual de castanhas em Kg/ha/ano:
+                <input class="inputCalculadora" id="input_producao_atual" type="text">
+            </p>
 
-    <div class="box2">
-        <p class="conteudo">
-            Digite a produção atual de castanhas em Kg/ha/ano:
-            <input class="inputCalculadora" id="input_producao_atual" type="text">
-        </p>
+            <button class="botaoCalcular" onclick="economiaCastanha()">Calcular</button>
+            
+            <div class="mensagem" id="div_mensagem1"></div>
+        </div>
 
-        <button class="botaoCalcular" onclick="economiaCastanha()">Calcular</button>
-
-        <div id="div_mensagem1"></div>
+        <div class="imgInput2"></div>
     </div>
+
+    <!-- Fim da Calculadora -->
 
     <div class="footer">
         <div class="container">
@@ -121,7 +131,7 @@
                         Rua Haddock Lobo 595 <br>
                         São Paulo, SP, <br>
                         01414-905
-                    </p> 
+                    </p>
                     <br>
                     <h6>Contato</h6>
                     <p>vitaliscaju@gmail.com</p>
