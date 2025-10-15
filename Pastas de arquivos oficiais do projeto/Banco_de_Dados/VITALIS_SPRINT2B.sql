@@ -60,7 +60,7 @@ CREATE TABLE usuario (
 */
 
 INSERT INTO usuario (nome, cpf, email, senha, celular, nivelCargo) VALUES 
-	( 'Joana Silva', '52136987412', 'contato@agrovale.com.br', 'Senha#2025', '11987654321', 1),
+	('Joana Silva', '52136987412', 'contato@agrovale.com.br', 'Senha#2025', '11987654321', 1),
 	('João Moraes', '56989871236', 'suporte@verdeambiental.com', 'Segura123!', '21999887766', 3),
 	('Wilton Machado', '46789120001', 'rh@cajubrasil.com', 'Cajuzinho@2025', '81991234567', 2),
 	('Solange Lima', '23344000177', 'admin@solnascente.com', 'ProdAgro!45', '62999881234', 3),
