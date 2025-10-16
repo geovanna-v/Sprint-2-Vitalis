@@ -24,6 +24,7 @@ const serial = async (
             password: 'SENHA_DO_BANCO',
             database: 'DATABASE_DO_BANCO',
             port: 3306
+
         }
     ).promise();
 
@@ -67,9 +68,7 @@ const serial = async (
                 [sensorAnalogico, sensorDigital]
             );
             console.log("valores inseridos no banco: ", sensorAnalogico + ", " + sensorDigital);
-
         }
-
     });
 
     // evento para lidar com erros na comunicação serial

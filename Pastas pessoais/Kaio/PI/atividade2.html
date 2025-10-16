@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard Agrícola - Plantações de Caju</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      margin: 0;
+      background: linear-gradient(to right, #eef2f3, #dfe9f3);
+      color: #333;
+    }
+
+    header {
+      background: #007b5e;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 1.5em;
+      letter-spacing: 1px;
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .card-metricas {
+      display: flex;
+      justify-content: space-around;
+      margin: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      padding: 20px;
+      text-align: center;
+      width: 22%;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h2 {
+      margin: 0;
+      color: #007b5e;
+    }
+
+    .chart-container {
+      background: white;
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    canvas {
+      width: 80%;
+      height: 200px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  🌰 Dashboard Agrícola - Monitoramento de Plantações de Caju
+</header>
+
+<!-- Cards de Indicadores Rápidos -->
+<div class="card-metricas">
+  <div class="card">
+    <h2>32°C</h2>
+    <p>Temperatura Média</p>
+  </div>
+  <div class="card">
+    <h2>68%</h2>
+    <p>Umidade do Solo</p>
+  </div>
+  <div class="card">
+    <h2>12.5 Ton</h2>
+    <p>Produção Total</p>
+  </div>
+  <div class="card">
+    <h2>R$ 42.300</h2>
+    <p>Vendas Mensais</p>
+  </div>
+</div>
+
+<!-- Gráficos -->
+<div class="dashboard">
+  <div class="chart-container">
+    <h3>Umidade do Solo e Temperatura (últimos 7 dias)</h3>
+    <canvas id="chartUmidadeTemp"></canvas>
+  </div>
+
+  <div class="chart-container">
+    <h3>Produção por Lote (Toneladas)</h3>
+    <canvas id="chartProducao"></canvas>
+  </div>
+
+  <div class="chart-container">
+    <h3>Vendas Mensais</h3>
+    <canvas id="chartVendas"></canvas>
+  </div>
+
+  <div class="chart-container">
+    <h3>Concentração em gastos: </h3>
+    <canvas id="chartQualidade"></canvas>
+  </div>
+</div>
+
+<script>
+  // --- Umidade + Temperatura ---
+  var ctx1 = document.getElementById('chartUmidadeTemp').getContext('2d');
+  var chartUmidadeTemp = new Chart(ctx1, {
+    type: 'line',
+    data: {
+      labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+      datasets: [
+        {
+          label: 'Umidade (%)',
+          data: [70, 65, 68, 72, 66, 69, 71],
+          borderColor: '#007b5e',
+          backgroundColor: 'rgba(0, 123, 94, 0.2)',
+          tension: 0.3,
+          fill: true
+        },
+        {
+          label: 'Temperatura (°C)',
+          data: [31, 33, 32, 30, 34, 32, 31],
+          borderColor: '#ff8c00',
+          backgroundColor: 'rgba(255, 140, 0, 0.2)',
+          tension: 0.3,
+          fill: true
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: 'bottom' }
+      }
+    }
+  });
+
+  // --- Produção por Fazenda ---
+  var ctx2 = document.getElementById('chartProducao').getContext('2d');
+  var chartProducao = new Chart(ctx2, {
+    type: 'bar',
+    data: {
+      labels: ['A0', 'A1', 'A2', 'B0', 'B1', 'B2', 'C0', 'C1', 'C2'],
+      datasets: [{
+        label: 'Produção (Ton)',
+        data: [3.4, 2.8, 4.1, 2.2, 2.6, 3.1, 5.3, 1.7, 2.2],
+        backgroundColor: ['#007b5e', '#00a86b', '#66bb6a', '#a5d6a7']
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false }
+      }
+    }
+  });
+
+  // --- Vendas Mensais ---
+  var ctx3 = document.getElementById('chartVendas').getContext('2d');
+  var chartVendas = new Chart(ctx3, {
+    type: 'line',
+    data: {
+      labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out'],
+      datasets: [{
+        label: 'Vendas (R$)',
+        data: [15000, 18000, 20000, 23000, 25000, 31000, 36000, 39000, 42000, 43000],
+        borderColor: '#1e88e5',
+        backgroundColor: 'rgba(30,136,229,0.2)',
+        fill: true,
+        tension: 0.3
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: 'bottom' }
+      }
+    }
+  });
+
+  // --- Qualidade dos Frutos ---
+  var ctx4 = document.getElementById('chartQualidade').getContext('2d');
+  var chartQualidade = new Chart(ctx4, {
+    type: 'pie',
+    data: {
+      labels: ['Agua', 'Energia', 'Mão de obra', 'Manutenção'],
+      datasets: [{
+        data: [45, 35, 15, 5],
+        backgroundColor: ['#2e7d32', '#81c784', '#ffca28', '#e53935']
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: 'right' }
+      }
+    }
+  });
+</script>
+</body>
+</html>
