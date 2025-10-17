@@ -104,7 +104,7 @@ Cada lote poderá ter apenas 1 sensor. Desta forma, cada plantação terá no m�
 e no máximo N lotes/ N sensores. */
 
 CREATE TABLE lotes(
-	idLote int primary key auto_increment,
+	idLote INT primary key auto_increment,
     nome varchar(100),
 	fkPlantacaoEmpresa int not null, 
     constraint fkPlantacao 
@@ -122,18 +122,28 @@ INSERT INTO lotes (nome, fkPlantacaoEmpresa) VALUES
 ('c2', 6);
 
 	select * from lotes;
+    
+/* TABELA: Sensor. 
+ Mostra os dados dos sensores, cada sensor tem uma leitura para si. Nas plantações podem ter diferentes modelos
+ de sensores, daí a necessidade de uma tabela apenas para os sensores, identificando-os unicamente e seus modelos. */
 
+CREATE TABLE sensor (
+idSensor INT UNIQUE PRIMARY KEY,
+modelo VARCHAR(100),
+fkLote INT,
+    CONSTRAINT fkLote
+		FOREIGN KEY (fkLote)
+        REFERENCES lotes(idLote)
+);    
+
+ SELECT * FROM sensor;
+ 
 /* TABELA: Leitura do sensor.
 Importante para conexão com a API que insere dados do arduino no BD. 
 Cada lote terá um sensor, e cada sensor terá uma tabela de leitura. */ 
 
 CREATE TABLE leituraSensor (
 	idLeitura INT AUTO_INCREMENT PRIMARY KEY,
-    fkLote INT,
-    CONSTRAINT fkLote
-		FOREIGN KEY (fkLote)
-        REFERENCES lotes(idLote),
-        
 	umidadeSolo DECIMAL(5,2) NOT NULL,
 	data_hora DATETIME DEFAULT CURRENT_TIMESTAMP
 );
