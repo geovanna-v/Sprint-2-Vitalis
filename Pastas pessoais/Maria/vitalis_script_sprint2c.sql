@@ -43,7 +43,7 @@ com permissões para cada tipo de perfil profissional.
 */
 
 CREATE TABLE usuario (
-	idUsuario INT PRIMARY KEY AUTO_INCREMENT,
+	idUsuario INT,
     nome VARCHAR (100),
     cpf VARCHAR(11) NOT NULL UNIQUE,
     email VARCHAR(100) NOT NULL UNIQUE,
@@ -55,7 +55,8 @@ CREATE TABLE usuario (
 	fkEmpresa INT,
     CONSTRAINT fkEmpresa
 		FOREIGN KEY (fkEmpresa)
-			REFERENCES 	empresa(idEmpresa)
+			REFERENCES 	empresa(idEmpresa),
+	PRIMARY KEY (iDUsuario, fkEmpresa)
 );
 /* 'Estratégico'	- 1
 	'Tático'		- 2
@@ -130,6 +131,7 @@ INSERT INTO lotes (nome, fkPlantacaoEmpresa) VALUES
 CREATE TABLE sensor (
 idSensor INT UNIQUE PRIMARY KEY,
 modelo VARCHAR(100),
+nome varchar(50),
 fkLote INT,
     CONSTRAINT fkLote
 		FOREIGN KEY (fkLote)
@@ -143,9 +145,14 @@ Importante para conexão com a API que insere dados do arduino no BD.
 Cada lote terá um sensor, e cada sensor terá uma tabela de leitura. */ 
 
 CREATE TABLE leituraSensor (
-	idLeitura INT AUTO_INCREMENT PRIMARY KEY,
+	idLeitura INT AUTO_INCREMENT,
 	umidadeSolo DECIMAL(5,2) NOT NULL,
-	data_hora DATETIME DEFAULT CURRENT_TIMESTAMP
+	data_hora DATETIME DEFAULT CURRENT_TIMESTAMP,
+    fkSensor INT,
+    CONSTRAINT fkSensor
+		FOREIGN KEY (fkSensor)
+			REFERENCES sensor(idSensor),
+    PRIMARY KEY (idLeitura, fkSensor)
 );
 
 describe empresa;
