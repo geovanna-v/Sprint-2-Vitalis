@@ -35,7 +35,7 @@ body {
 .navbar { 
     display: flex;
     list-style: none;
-    width: 600px;
+    width: 700px;
     justify-content: space-between;
     align-items: center;
     font-weight: bolder;
@@ -73,9 +73,9 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    background-color: #E54906;
+    background-image: linear-gradient(to right, #E54906,  #FB6717, #FF983F, transparent); 
     padding: 0 120px;
-    width: 70%;
+    width: 100%;
     height: 850px;
 }
 
@@ -83,7 +83,9 @@ body {
     color: white;
     display: flex;
     justify-content: center;
-    width: 80%;
+    align-items: center;
+    width: 30%;
+    height: 80px;
     font-size: 30px;
 }
 
@@ -127,13 +129,23 @@ body {
 
 .mensagem {
     font-size: 20px;
+    margin-top: 10px;
+}
+
+.mensagem a {
+    color: white;
+    outline: none;
+    font-weight: bolder;
+    text-decoration: none;
 }
 
 img {
-    width: 90%;
-    height: 100%;
+    display: flex;
+    width: 50%;
+    height: 850px;
     object-fit: cover;
     object-position: 50% 20%;
+    float: right;
 }
 
 /* Aqui termina o login.html */
@@ -151,9 +163,9 @@ img {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    background-color: #E54906;
+    background-image: linear-gradient(to right, #E54906,  #FB6717, #FF983F, transparent); 
     padding: 0 120px;
-    width: 70%;
+    width: 100%;
     height: 850px;
 }
 
@@ -161,7 +173,9 @@ img {
     color: white;
     display: flex;
     justify-content: center;
-    width: 80%;
+    align-items: center;
+    width: 30%;
+    height: 80px;
     font-size: 30px;
 }
 
@@ -229,4 +243,5 @@ img {
     border-radius: 15px;
     border-style: none;
     font-weight: bolder;
+    margin-bottom: 10px;
 }
