@@ -2,7 +2,7 @@
 	BANCO DE DADOS - VITALIS
 	Sistema para gerenciar empresas, cultivos de caju, leituras de sensores e produtividade.
 */
-
+/*versão Maria*/
 CREATE DATABASE vitalis;
 
 use vitalis;
@@ -105,22 +105,22 @@ Cada lote poderá ter apenas 1 sensor. Desta forma, cada plantação terá no m�
 e no máximo N lotes/ N sensores. */
 
 CREATE TABLE lotes(
-	idLote INT auto_increment,
-	fkPlantacaoEmpresa int not null,
-    CONSTRAINT fkPlantacaoEmpresa
-		FOREIGN KEY (fkPlantacaoEmpresa)
-			REFERENCES 	empresa(idEmpresa),
-    primary key (idLote, fkPlantacaoEmpresa)
+	idLote INT primary key auto_increment,
+    nome CHAR(2),
+	fkPlantacaoEmpresa int not null, 
+    constraint fkPlantacao 
+		foreign key (fkPlantacaoEmpresa)
+        references plantacao(idPlantacao)
 );
 
-INSERT INTO lotes (fkPlantacaoEmpresa) VALUES
-(1),
-(2),
-(3),
-(3),
-(4),
-(5),
-(6);
+INSERT INTO lotes (nome, fkPlantacaoEmpresa) VALUES
+('A1', 1),
+('A0', 2),
+('B1', 3),
+('B2', 3),
+('B4', 4),
+('C1', 5),
+('C2', 6);
 
 	select * from lotes;
     
@@ -129,19 +129,14 @@ INSERT INTO lotes (fkPlantacaoEmpresa) VALUES
  de sensores, daí a necessidade de uma tabela apenas para os sensores, identificando-os unicamente e seus modelos. */
 
 CREATE TABLE sensor (
-idSensor CHAR(2),
+idSensor CHAR(2) PRIMARY KEY,
 modelo VARCHAR(100),
 nome varchar(50),
 fkLote INT,
-CONSTRAINT fkLote
-	FOREIGN KEY (fkLote)
-		REFERENCES lotes(idLote),
-fkPlantacao INT,
-CONSTRAINT fkPlantacao
-	FOREIGN KEY (fkPlantacao)
-		REFERENCES lotes(fkPlantacaoEmpresa),
-PRIMARY KEY (idSensor, fkLote, fkPlantacao)
-);
+    CONSTRAINT fkLote
+		FOREIGN KEY (fkLote)
+        REFERENCES lotes(idLote)
+); 
 
  SELECT * FROM sensor;
  
@@ -150,28 +145,20 @@ Importante para conexão com a API que insere dados do arduino no BD.
 Cada lote terá um sensor, e cada sensor terá uma tabela de leitura. */ 
 
 CREATE TABLE leituraSensor (
-	dataHora DATETIME DEFAULT CURRENT_TIMESTAMP,
+	idLeitura INT AUTO_INCREMENT,
 	umidadeSolo DECIMAL(5,2) NOT NULL,
+	data_hora DATETIME DEFAULT CURRENT_TIMESTAMP,
     fkSensor CHAR(2),
     CONSTRAINT fkSensor
 		FOREIGN KEY (fkSensor)
 			REFERENCES sensor(idSensor),
-	fkLote INT,
-	CONSTRAINT fkLoteLeitura
-		FOREIGN KEY (fkLote)
-			REFERENCES lotes(idLote),
-	fkPlantacao INT,
-	CONSTRAINT fkPlantacaoLeitura
-		FOREIGN KEY (fkPlantacao)
-			REFERENCES lotes(fkPlantacaoEmpresa),
-    PRIMARY KEY (dataHora, fkSensor, fkLote, fkPlantacao)
+    PRIMARY KEY (idLeitura, fkSensor)
 );
 
 describe empresa;
 describe usuario;
 describe plantacao;
 describe lotes;
-describe sensor;
 describe leituraSensor;
 
 
