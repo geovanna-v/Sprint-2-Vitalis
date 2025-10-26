@@ -227,6 +227,7 @@ body {
   margin-top: 15px;
   margin-inline-start: 80px;
   padding: 30px 30px 30px 100px;
+  z-index: 1000;
 }
 
 .containerCalculo2 {
@@ -241,7 +242,8 @@ body {
   width: 50%;
   margin-top: 15px;
   margin-inline-start: 80px;
-  padding: 60px 30px 60px 100px;
+  padding: 30px 30px 60px 100px;
+  z-index: 1000;
 }
 
 
@@ -298,7 +300,10 @@ body {
   border-radius: 15px;
   background-size: 100%;
   background-position: center;
-  margin-top: 3%;
+  margin-left: 50%;
+  z-index: 1000;
+  position: absolute;
+  
 }
 
 .imgInput2 {
@@ -309,14 +314,15 @@ body {
   border-radius: 15px;
   background-size: 99.8%;
   background-position: center;
-  margin-top: 3%;
+  margin-left: 50%;
+  z-index: 1000;
+  position: absolute;
 }
 
 .mensagem {
-  margin-top: 10px;
+  margin-top: 20px;
   margin: 0;
   padding: 0;
-  background-color: white;
   display: flex;
   flex-direction: column;
 }
