@@ -73,7 +73,9 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    background-image: linear-gradient(to right, #E54906,  #FB6717, #FF983F, transparent); 
+    background-image: linear-gradient(to right, #E54906,  #FB6717, #FF983F, transparent 80%); 
+    z-index: 2;
+    position: absolute;
     padding: 0 120px;
     width: 100%;
     height: 850px;
@@ -139,14 +141,18 @@ body {
     text-decoration: none;
 }
 
-img {
+.login img {
     display: flex;
     width: 50%;
     height: 850px;
     object-fit: cover;
     object-position: 50% 20%;
+    z-index: 1;
+    position: absolute;
+    margin-left: 50%;
     float: right;
 }
+
 
 /* Aqui termina o login.html */
 
@@ -163,10 +169,12 @@ img {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    background-image: linear-gradient(to right, #E54906,  #FB6717, #FF983F, transparent); 
+    background-image: linear-gradient(to right, #E54906,  #FB6717, #FF983F, transparent 80%); 
     padding: 0 120px;
     width: 100%;
     height: 850px;
+    z-index: 2;
+    position: absolute;
 }
 
 .card-cadastro {
@@ -244,4 +252,22 @@ img {
     border-style: none;
     font-weight: bolder;
     margin-bottom: 10px;
+}
+
+.botao-cadastro a {
+    color: white;
+    outline: none;
+    text-decoration: none;
+}
+
+.cadastro img {
+    display: flex;
+    width: 50%;
+    height: 850px;
+    object-fit: cover;
+    object-position: 50% 20%;
+    z-index: 1;
+    position: absolute;
+    margin-left: 50%;
+    float: right;
 }

@@ -53,7 +53,7 @@
                 <div class="formulario-login">
                     <div class="campo-login">
                         <span>E-MAIL</span>
-                    <input type="text" id="ipt_email" placeholder="Digite seu email">
+                        <input type="text" id="ipt_email" placeholder="Digite seu email">
                     </div>
 
                     <div class="campo-login">
@@ -61,7 +61,7 @@
                         <input type="text" id="ipt_senha" placeholder="Digite sua senha" type="password">
                     </div>
                     
-                    <button class="botao-login">LOGAR</button>
+                    <button onclick="logar()" class="botao-login">LOGAR</button>
 
                     <div class="mensagem">
                         Você ainda não possui uma conta? Cadastre-se <a href="cadastro.html"><b>Aqui</b></a>
@@ -69,9 +69,27 @@
                 </div>
         </div>
 
-        <!-- <img src="assets/img/caju.jpg"> --> 
+        <img src="assets/img/caju.jpg">
         
     </div>
 
 </body>
 </html>
+
+<script>
+
+    function logar() {
+        var email = ipt_email.value;
+        var senha = ipt_senha.value;
+
+        if (senha == 'cajuanaoprecoce123' && email == 'vitalis@gmail.com') {
+            // ir para home
+
+        } else {
+            alert('Email ou Senha Inválidos!');
+        }
+
+    }
+
+    
+</script>
