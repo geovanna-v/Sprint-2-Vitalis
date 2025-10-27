@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <title>Vitalis - Painel de Configuração</title>
 </head>
+
 <body>
 
     <div class="header">
@@ -33,7 +35,8 @@
             <input type="text" id="ipt_nome_empresa" placeholder="Digite o nome da empresa"><br><br>
 
             <label for="ipt_bio">Bio da Empresa:</label><br>
-            <textarea id="ipt_bio" rows="4" cols="40" placeholder="Digite uma breve descrição da empresa"></textarea><br><br>
+            <textarea id="ipt_bio" rows="4" cols="40"
+                placeholder="Digite uma breve descrição da empresa"></textarea><br><br>
         </div>
 
         <div class="secao">
@@ -44,12 +47,10 @@
 
             <label for="sel_tipo_funcionario">Tipo de Funcionário:</label><br>
             <select id="sel_tipo_funcionario">
-                <option value="">Selecione um tipo</option>
-                <option value="geral">Geral</option>
-                <option value="supervisor">Supervisor</option>
-                <option value="rh">Recursos Humanos</option>
-                <option value="estagiario">Estagiário</option>
-                <option value="bi">B.I (Business Intelligence)</option>
+                <option value="">Selecione um cargo</option>
+                <option value="estrategico">Estratégico</option>
+                <option value="tatico">Tático</option>
+                <option value="operacional">Operacional</option>
             </select><br><br>
         </div>
 
@@ -65,11 +66,9 @@
             <label for="sel_novo_tipo">Cargo:</label><br>
             <select id="sel_novo_tipo">
                 <option value="">Selecione um cargo</option>
-                <option value="geral">Geral</option>
-                <option value="supervisor">Supervisor</option>
-                <option value="rh">RH</option>
-                <option value="estagiario">Estagiário</option>
-                <option value="bi">B.I</option>
+                <option value="estrategico">Estratégico</option>
+                <option value="tatico">Tático</option>
+                <option value="operacional">Operacional</option>
             </select><br><br>
 
             <button id="btn_adicionar">Adicionar Funcionário</button>
@@ -82,4 +81,5 @@
     </div>
 
 </body>
+
 </html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <title>Vitalis - Painel de Configuração</title>
+</head>
+
+<body>
+    <!--
+    <div class="header">
+        <div class="container">
+            <div class="navbar">
+                <img class="icon" src="./assets/icon/icon_leaf.png">
+                <h1 class="titulo">Vitalis</h1>
+            </div>
+            <ul class="navbar">
+                <li class="agora">
+                    <a class="button" href="#">HOME</a>
+                </li>
+
+                <li>
+                    <a class="button" href="calc_.html">NOSSA EMPRESA</a>
+                </li>
+
+                <li>|</li>
+
+                <li>
+                    <a class="login_cadastro" href="login.html">Login</a>
+                </li>
+
+                <li>
+                    <a class="login_cadastro" href="cadastro.html">Cadastro</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+-->
+
+    <div class="container">
+        <h2>Painel de Configuração</h2>
+
+        <div class="secao">
+            <h3>Informações da Empresa</h3>
+
+            <label for="ipt_nome_empresa">Nome da Empresa:</label><br>
+            <input type="text" id="ipt_nome_empresa" placeholder="Digite o nome da empresa"><br><br>
+
+            <label for="ipt_bio">Bio da Empresa:</label><br>
+            <textarea id="ipt_bio" rows="4" cols="40"
+                placeholder="Digite uma breve descrição da empresa"></textarea><br><br>
+        </div>
+
+        <div class="secao">
+            <h3>Funcionários Cadastrados</h3>
+
+            <label for="ipt_funcionarios">Total de Funcionários:</label><br>
+            <input type="number" id="ipt_funcionarios" placeholder="Ex: 24"><br><br>
+
+            <label for="sel_tipo_funcionario">Tipo de Funcionário:</label><br>
+            <select id="sel_tipo_funcionario">
+                <option value="">Selecione um cargo</option>
+                <option value="estrategico">Estratégico</option>
+                <option value="tatico">Tático</option>
+                <option value="operacional">Operacional</option>
+            </select><br><br>
+        </div>
+
+        <div class="secao">
+            <h3>Adicionar Novo Funcionário</h3>
+
+            <label for="ipt_nome_funcionario">Nome:</label><br>
+            <input type="text" id="ipt_nome_funcionario" placeholder="Nome do funcionário"><br><br>
+
+            <label for="ipt_email_funcionario">Email:</label><br>
+            <input type="email" id="ipt_email_funcionario" placeholder="email@exemplo.com"><br><br>
+
+            <label for="sel_novo_tipo">Cargo:</label><br>
+            <select id="sel_novo_tipo">
+                <option value="">Selecione um cargo</option>
+                <option value="estrategico">Estratégico</option>
+                <option value="tatico">Tático</option>
+                <option value="operacional">Operacional</option>
+            </select><br><br>
+
+            <button class="btn_adicionar" onclick="adicionar()">Adicionar Funcionário</button>
+        </div>
+
+        <div class="secao">
+            <button class="buttonSalvar" onclick="salvar()">Salvar Configurações</button>
+        </div>
+    </div>
+    <!-- Fim da página de perfil -->
+    <div class="footer">
+        <div class="container">
+            <div class="left_container">
+                <h4>Soluções inteligentes para o agronegócio</h4>
+                <div class="contacts_container">
+                    <img src="./assets/icon/instagran.png">
+                    <img src="./assets/icon/whatzapp.png">
+                    <img src="./assets/icon/facebook.png">
+                </div>
+            </div>
+            <div class="right_container">
+                <div class="right">
+                    <h6>Explore</h6>
+                    <p>Home</p>
+                    <p>Sobre Nós</p>
+                    <p>Equipe</p>
+                </div>
+                <div class="middle">
+                    <h6>Endereço</h6>
+                    <p>
+                        Rua Haddock Lobo 595 <br>
+                        São Paulo, SP, <br>
+                        01414-905
+                    </p>
+                    <br>
+                    <h6>Contato</h6>
+                    <p>vitaliscaju@gmail.com</p>
+                    <p>+55 11 4002-8922</p>
+
+                </div>
+                <div class="left">
+
+                </div>
+
+            </div>
+        </div>
+
+
+</body>
+
+</html>
+
+<script>
+    
+</script>

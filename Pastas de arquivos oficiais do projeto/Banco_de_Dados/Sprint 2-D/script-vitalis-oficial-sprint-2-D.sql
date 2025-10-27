@@ -110,7 +110,7 @@ CREATE TABLE leituraSensor (
 	dataLeitura DATETIME DEFAULT CURRENT_TIMESTAMP,
 	umidadeSolo DECIMAL(5,2) NOT NULL,
     fkSensor INT,
-    CONSTRAINT fkSensor
+    CONSTRAINT fkSensorLeitura
 		FOREIGN KEY (fkSensor)
 			REFERENCES plantacao(idSensor),
 	fkLote CHAR(2),
