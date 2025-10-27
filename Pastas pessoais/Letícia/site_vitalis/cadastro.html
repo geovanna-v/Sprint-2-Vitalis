@@ -51,37 +51,37 @@
                 <div class="formulario-cadastro">
 
                     <div class="campo-cadastro">
-                        <span>NOME DO USUÁRIO</span>
-                        <input type="text" id="ipt_usuario" placeholder="Digite seu nome">
+                        <span>NOME DA EMPRESA</span>
+                        <input type="text" id="ipt_empresa" placeholder="Digite o nome da empresa">
                     </div>
 
                     <div class="cnpj-telefone">
 
                         <div class="campo-cadastro">
-                            <span>CPF</span>
-                            <input type="text" id="ipt_cpf" placeholder="Digite seu CPF">
+                            <span>CNPJ</span>
+                            <input type="text" id="ipt_cnpj" placeholder="Digite o CNPJ">
                         </div>
 
                         <div class="campo-cadastro">
-                            <span>CELULAR</span>
-                            <input type="text" id="ipt_celular" placeholder="Digite seu celular">
+                            <span>TELEFONE</span>
+                            <input type="text" id="ipt_telefone" placeholder="Digite o telefone">
                         </div>
 
                     </div>
 
                     <div class="campo-cadastro">
                         <span>E-MAIL</span>
-                        <input type="text" id="ipt_email" placeholder="Digite seu email">
+                        <input type="text" id="ipt_email" placeholder="Digite o email">
                     </div>
 
                     <div class="campo-cadastro">
                         <span>CRIE UMA SENHA</span>
-                        <input type="text" id="ipt_senha" placeholder="Digite sua senha" type="password">
+                        <input id="ipt_senha" placeholder="Digite a senha" type="password">
                     </div>
 
                     <div class="campo-cadastro">
                         <span>CONFIRME SUA SENHA</span>
-                        <input type="text" id="ipt_confirmacao" placeholder="Digite sua senha" type="password">
+                        <input id="ipt_confirmacao" placeholder="Confirme a senha" type="password">
                     </div>
 
                     <div class="campo-cadastro">
@@ -95,8 +95,13 @@
                     </div>
 
                     <div class="campo-cadastro">
-                        <span>TOKEN</span>
-                        <input type="text" id="ipt_token" placeholder="Insira o Token de Autenticação">
+                        <span>PERFIL</span>
+                        <select id="select_perfil">
+                            <option value="1">Perfil 1</option>
+                            <option value="2">Perfil 2</option>
+                            <option value="3">Perfil 3</option>
+                            <option selected disabled value="#">Selecione</option>
+                        </select>
                     </div> 
 
                     <br>
@@ -122,22 +127,28 @@
 
     function cadastrar() {
         
-        var nome = ipt_usuario.value;
-        var cpf = ipt_cpf.value;
-        var celular = ipt_celular.value;
+        var empresa = ipt_empresa.value;
+        var cnpj = ipt_cnpj.value;
+        var telefone = ipt_telefone.value;
         var email = ipt_email.value;
         var senha = ipt_senha.value;
         var confirmacao = ipt_confirmacao.value;
         var cargo = select_cargo.value;
-        var token = ipt_token.value;
+        var perfil = select_perfil.value;
 
-        if (email == 'vitalis@gmail.com' && senha == 'cajuanaoprecoce123' && confirmacao == 'cajuanaoprecoce123' && token == 'A1B2C3') {
+        if (empresa == "" || cnpj == "" || telefone == "" || email == "" || senha == "" || confirmacao == "" || cargo == "#" || perfil == "#") {
+            alert("Verifique-se de Preencher Todos os Campos!");
+
+        } else {
+
+            if (email == 'vitalis@gmail.com' && senha == 'caju123' && confirmacao == 'caju123') {
             window.location.href = "login.html";
             
-        } else {
-            alert('Email, Senha ou Token Inválidos!');
-        }
+            } else {
+            alert('Email ou Senha Inválidos!');
+            }
 
+        }
 
     }
 
