@@ -303,7 +303,7 @@ body {
   margin-left: 50%;
   z-index: 1000;
   position: absolute;
-  
+
 }
 
 .imgInput2 {
@@ -325,4 +325,68 @@ body {
   padding: 0;
   display: flex;
   flex-direction: column;
+}
+
+/* Aqui começa o CSS do perfil */
+
+.container {
+  color: #e54906;
+  margin-left: 5%;
+}
+
+.secao input {
+  border-radius: 5px;
+  height: 20px;
+  width: 500px;
+  border-radius: 5px;
+  border-color: #fb6717;
+  color: #fb6717;
+
+
+}
+
+.secao select {
+  background-color: white;
+  height: 25px;
+  width: 500px;
+  border-radius: 5px;
+  border-color: #fb6717;
+  color: #fb6717;
+}
+
+.secao textarea {
+  background-color: white;
+  height: 100px;
+  width: 500px;
+  border-radius: 5px;
+  border-color: #fb6717;
+  color: #fb6717;
+}
+
+.btn_adicionar {
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  border: 2px solid #e54906;
+  color: #b13f03;
+  border-radius: 16px;
+  margin-top: 16px;
+  width: 500px;
+  height: 30px;
+
+}
+
+.buttonSalvar {
+  margin-bottom: 5%;
+  margin-left: 55%;
+  border: none;
+  color: white;
+  background-color: #e54906;
+  border-radius: 16px;
+  margin-top: 16px;
+  width: 500px;
+  height: 30px;
+    text-align: center;
+  font-size: 14px;
+  font-weight: bold;
 }
