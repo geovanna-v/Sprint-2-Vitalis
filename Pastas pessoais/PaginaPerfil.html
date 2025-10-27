@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Vitalis - Painel de Configuração</title>
+</head>
+<body>
+
+    <div class="header">
+        <div class="container">
+            <div class="logo">
+                <img class="icon" src="assets/icon/icon_leaf.png">
+                <h1 class="titulo">Vitalis</h1>
+            </div>
+
+            <ul class="navbar">
+                <li><a href="">HOME</a></li>
+                <li><a href="calc_.html">DASHBOARD</a></li>
+                <li><a href="calc_.html">SIMULADOR</a></li>
+                <li class="campo"><a href="login.html">LOGIN</a></li>
+                <li class="campo"><a href="cadastro.html">CADASTRO</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Painel de Configuração</h2>
+
+        <div class="secao">
+            <h3>Informações da Empresa</h3>
+
+            <label for="ipt_nome_empresa">Nome da Empresa:</label><br>
+            <input type="text" id="ipt_nome_empresa" placeholder="Digite o nome da empresa"><br><br>
+
+            <label for="ipt_bio">Bio da Empresa:</label><br>
+            <textarea id="ipt_bio" rows="4" cols="40" placeholder="Digite uma breve descrição da empresa"></textarea><br><br>
+        </div>
+
+        <div class="secao">
+            <h3>Funcionários Cadastrados</h3>
+
+            <label for="ipt_funcionarios">Total de Funcionários:</label><br>
+            <input type="number" id="ipt_funcionarios" placeholder="Ex: 24"><br><br>
+
+            <label for="sel_tipo_funcionario">Tipo de Funcionário:</label><br>
+            <select id="sel_tipo_funcionario">
+                <option value="">Selecione um tipo</option>
+                <option value="geral">Geral</option>
+                <option value="supervisor">Supervisor</option>
+                <option value="rh">Recursos Humanos</option>
+                <option value="estagiario">Estagiário</option>
+                <option value="bi">B.I (Business Intelligence)</option>
+            </select><br><br>
+        </div>
+
+        <div class="secao">
+            <h3>Adicionar Novo Funcionário</h3>
+
+            <label for="ipt_nome_funcionario">Nome:</label><br>
+            <input type="text" id="ipt_nome_funcionario" placeholder="Nome do funcionário"><br><br>
+
+            <label for="ipt_email_funcionario">Email:</label><br>
+            <input type="email" id="ipt_email_funcionario" placeholder="email@exemplo.com"><br><br>
+
+            <label for="sel_novo_tipo">Cargo:</label><br>
+            <select id="sel_novo_tipo">
+                <option value="">Selecione um cargo</option>
+                <option value="geral">Geral</option>
+                <option value="supervisor">Supervisor</option>
+                <option value="rh">RH</option>
+                <option value="estagiario">Estagiário</option>
+                <option value="bi">B.I</option>
+            </select><br><br>
+
+            <button id="btn_adicionar">Adicionar Funcionário</button>
+        </div>
+
+        <div class="secao">
+            <h3>Salvar Alterações</h3>
+            <button id="btn_salvar">Salvar Configurações</button>
+        </div>
+    </div>
+
+</body>
+</html>
