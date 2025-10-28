@@ -1,0 +1,98 @@
+
+
+
+/* Começo do footer */
+
+.footer {
+  background-color: #b13f03;
+  color: white;
+  height: 300px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  padding-top: 10 0px;
+}
+
+.footer .container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px 80px;
+  box-sizing: border-box;
+}
+
+.footer .left_container {
+  width: 35%;
+}
+
+.footer .left_container h4 {
+  font-weight: 400;
+  font-size: 13px;
+  margin: 0;
+}
+
+.footer .contacts_container {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.footer .contacts_container img {
+  height: 28px;
+  width: 28px;
+  filter: invert(100%);
+}
+
+.footer .right_container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 35%;
+}
+
+.footer .right_container .left {
+  width: 25%;
+}
+
+.footer .right_container .vertical_ruler hr {
+  height: 80px;
+  border: none;
+  border-left: 1px solid white;
+  opacity: 0.5;
+}
+
+.footer .right_container .right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.footer .right_container .above h6 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.footer .right_container .above p {
+  font-size: 12px;
+}
+.footer .middle {
+  width: 100%;
+  
+  margin-top: 10px;
+}
+
+.footer .page_end {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.footer .page_end p {
+  margin: 0;
+}
+
+/* Fim do footer */
