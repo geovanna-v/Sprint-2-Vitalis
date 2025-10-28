@@ -76,6 +76,7 @@
                 <option value="tatico">Tático</option>
                 <option value="operacional">Operacional</option>
             </select><br><br>
+            
         </div>
 
         <div class="secao">
@@ -87,9 +88,12 @@
             <label for="ipt_email_funcionario">Email:</label><br>
             <input type="email" id="ipt_email_funcionario" placeholder="email@exemplo.com"><br><br>
 
+            <label for="ipt_senha_funcionario">Senha:</label><br>
+            <input type="password" id="ipt_senha_funcionario" placeholder="********"><br><br>
+
             <label for="sel_novo_tipo">Cargo:</label><br>
             <select id="sel_novo_tipo">
-                <option value="">Selecione um cargo</option>
+                <option value="#">Selecione um cargo</option>
                 <option value="estrategico">Estratégico</option>
                 <option value="tatico">Tático</option>
                 <option value="operacional">Operacional</option>
@@ -160,5 +164,27 @@
 </html>
 
 <script>
+    var nomeFuncionario = ''
+    var emailFuncionario = ''
+    var cargoFuncionario = ''
+    var senhaFuncionario = ''
+
+    function adicionar() {
+        var nome = ipt_nome_funcionario.value
+        var email = ipt_email_funcionario.value
+        var cargo = sel_novo_tipo.value
+        var senha = ipt_senha_funcionario.value
+
+        if (nome == '' && email == '' && cargo == '#' && senha == '') {
+            alert('Todos campos precisam estar preenchidos.')
+        } else {
+            nomeFuncionario == nome
+            emailFuncionario == email
+            cargoFuncionario == cargo
+            senhaFuncionario == senha
+
+            alert('Funcionário cadastrado com sucesso!')
+        }
     
+    }
 </script>

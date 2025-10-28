@@ -456,6 +456,13 @@ body {
 /* style oficial */
 
 /* header */
+ * {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
 
 .header {
     background-color: #FB6717;
@@ -615,3 +622,208 @@ body {
 
 
 /* ================================================================= */
+
+/* Aqui começa o css da calculadora */
+
+.bannerCalculadora {
+  background-image: url(../pagina-calculadora-site/assets/img/calculadora/castanhas-para-venda-calculadora-editado.jpg);
+  width: 100%;
+  height: 450px;
+  background-size: cover;
+}
+
+.pagCalculadora {
+  align-items: center;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #df8657;
+  color: white;
+  border-radius: 30px;
+  padding: 20px;
+  font-family: "Inter", sans-serif;
+  height: 200px;
+  width: 85%;
+  margin-top: 15px;
+  margin-inline-start: 80px;
+}
+
+.containerCalculo {
+  display: flex;
+  flex-direction: column;
+  background-color: #df8657;
+  color: white;
+  border-radius: 30px;
+  padding: 20px;
+  font-family: "Inter", sans-serif;
+  height: 80%;
+  width: 50%;
+  margin-top: 15px;
+  margin-inline-start: 80px;
+  padding: 30px 30px 30px 100px;
+  z-index: 1000;
+}
+
+.containerCalculo2 {
+  display: flex;
+  flex-direction: column;
+  background-color: #df8657;
+  color: white;
+  border-radius: 30px;
+  padding: 20px;
+  font-family: "Inter", sans-serif;
+  height: 60%;
+  width: 50%;
+  margin-top: 15px;
+  margin-inline-start: 80px;
+  padding: 30px 30px 60px 100px;
+  z-index: 1000;
+}
+
+
+.containerTexto .paragrafo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+}
+
+.titulo {
+  font-family: "Inter", sans-serif;
+  font-weight: bold;
+}
+
+.inputCalculadora {
+  border: none;
+  width: 60%;
+  height: 24px;
+  border-radius: 5px;
+  margin-top: 5px;
+  text-align: center;
+}
+
+.conteudo {
+  font-weight: bold;
+  align-content: flex-start;
+  font-size: 20px;
+
+}
+
+.botaoCalcular {
+  text-align: center;
+  background-color: #e54906;
+  border: none;
+  font-size: 16px;
+  border-radius: 16px;
+  color: white;
+  font-weight: bold;
+  margin-top: 16px;
+  width: 100px;
+  padding: 10px;
+}
+
+.containerPai {
+  display: flex;
+}
+
+.imgInput1 {
+  background-image: url(../pagina-calculadora-site/assets/img/calculadora/plantar-calculadora.jpg);
+  display: flex;
+  width: 400px;
+  height: 250px;
+  border-radius: 15px;
+  background-size: 100%;
+  background-position: center;
+  margin-left: 50%;
+  z-index: 1000;
+  position: absolute;
+
+}
+
+.imgInput2 {
+  background-image: url(../pagina-calculadora-site/assets/img/calculadora/colhe-castanhas-calculadora.jpg);
+  display: flex;
+  width: 400px;
+  height: 200px;
+  border-radius: 15px;
+  background-size: 99.8%;
+  background-position: center;
+  margin-left: 50%;
+  z-index: 1000;
+  position: absolute;
+}
+
+.mensagem {
+  margin-top: 20px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Aqui começa o CSS do perfil */
+
+.container {
+  color: #e54906;
+  margin-left: 5%;
+}
+
+.secao input {
+  border-radius: 5px;
+  height: 20px;
+  width: 500px;
+  border-radius: 5px;
+  border-color: #fb6717;
+  color: #fb6717;
+
+
+}
+
+.secao select {
+  background-color: white;
+  height: 25px;
+  width: 500px;
+  border-radius: 5px;
+  border-color: #fb6717;
+  color: #fb6717;
+}
+
+.secao textarea {
+  background-color: white;
+  height: 100px;
+  width: 500px;
+  border-radius: 5px;
+  border-color: #fb6717;
+  color: #fb6717;
+}
+
+.btn_adicionar {
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  border: 2px solid #e54906;
+  color: #b13f03;
+  border-radius: 16px;
+  margin-top: 16px;
+  width: 500px;
+  height: 30px;
+
+}
+
+.buttonSalvar {
+  margin-bottom: 5%;
+  margin-left: 55%;
+  border: none;
+  color: white;
+  background-color: #e54906;
+  border-radius: 16px;
+  margin-top: 16px;
+  width: 500px;
+  height: 30px;
+    text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+}

@@ -108,21 +108,19 @@ Importante para conexão com a API que insere dados do arduino no BD.
 Cada lote terá um sensor, e cada sensor terá uma tabela de leitura. */ 
 
 CREATE TABLE leituraSensor (
-	dataLeitura DATETIME DEFAULT CURRENT_TIMESTAMP,
+	dataLeitura DATETIME DEFAULT CURRENT_TIMESTAMP PRIMARY KEY,
 	umidadeSolo DECIMAL(5,2) NOT NULL,
-    fkSensor INT,
-    CONSTRAINT fkSensorLeitura
-		FOREIGN KEY (fkSensor)
-			REFERENCES plantacao (idSensor),
-	fkLote CHAR(2),
-	CONSTRAINT fkLoteLeitura
-		FOREIGN KEY (fkLote)
-			REFERENCES plantacao (idLote),
-	fkPlantacao INT,
-	CONSTRAINT fkPlantacaoLeitura
-		FOREIGN KEY (fkPlantacao)
-			REFERENCES plantacao (idPlantacao)
+    fkPlantacao INT,
+    fkLote CHAR(2),
+    fkSensor INT,    
+	CONSTRAINT fk_leitura_plantacao
+		FOREIGN KEY (fkPlantacao, fkLote, fkSensor) REFERENCES plantacao (idPlantacao, idLote, idSensor)
 );
+
+INSERT INTO leituraSensor VALUES
+(default, 123.25, 1, 'A0', 1);
+
+select * from leituraSensor;
 
 describe empresa;
 describe usuario;
