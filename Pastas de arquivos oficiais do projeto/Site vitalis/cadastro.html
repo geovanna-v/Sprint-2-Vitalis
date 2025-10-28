@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+
+    <link rel="stylesheet" href="assets/style/style.css">
+    <link rel="icon" href="assets/icon/icon_leaf.png">
+    <link rel="preconnect" href=""> 
+
+</head>
+<body>
+     <div class="header">
+        <div class="container">
+            <div class="logo">
+            <img class="icon" src="assets/icon/icon_leaf.png">
+            <h1 class="titulo">Vitalis</h1>
+            </div>
+
+            <ul class="navbar">
+            <li>
+                <a href="">HOME</a>
+            </li>
+                
+            <li>
+                <a href="calc_.html">DASHBOARD</a>
+            </li>
+
+            <li>
+                <a href="calc_.html">SIMULADOR</a>
+            </li>
+
+            <li class="campo">
+                <a href="login.html">LOGIN</a>
+            </li>
+
+            <li class="campo">
+                <a href="cadastro.html">CADASTRO</a>
+            </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="cadastro">
+        <div class="container">
+            <div class="card-cadastro">
+                <h2>CADASTRE-SE</h2>
+            </div>
+
+                <div class="formulario-cadastro">
+
+                    <div class="campo-cadastro">
+                        <span>NOME DA EMPRESA</span>
+                        <input type="text" id="ipt_empresa" placeholder="Digite o nome da empresa">
+                    </div>
+
+                    <div class="cnpj-telefone">
+
+                        <div class="campo-cadastro">
+                            <span>CNPJ</span>
+                            <input type="text" id="ipt_cnpj" placeholder="Digite o CNPJ">
+                        </div>
+
+                        <div class="campo-cadastro">
+                            <span>TELEFONE</span>
+                            <input type="text" id="ipt_telefone" placeholder="Digite o telefone">
+                        </div>
+
+                    </div>
+
+                    <div class="campo-cadastro">
+                        <span>E-MAIL</span>
+                        <input type="text" id="ipt_email" placeholder="Digite o email">
+                    </div>
+
+                    <div class="campo-cadastro">
+                        <span>CRIE UMA SENHA</span>
+                        <input id="ipt_senha" placeholder="Digite a senha" type="password">
+                    </div>
+
+                    <div class="campo-cadastro">
+                        <span>CONFIRME SUA SENHA</span>
+                        <input id="ipt_confirmacao" placeholder="Confirme a senha" type="password">
+                    </div>
+
+                    <div class="campo-cadastro">
+                        <span>CARGO DO CADASTRANTE</span>
+                        <select id="select_cargo">
+                            <option value="1">Cargo 1</option>
+                            <option value="2">Cargo 2</option>
+                            <option value="3">Cargo 3</option>
+                            <option selected disabled value="#">Selecione</option>
+                        </select>
+                    </div>
+
+                    <div class="campo-cadastro">
+                        <span>PERFIL</span>
+                        <select id="select_perfil">
+                            <option value="1">Perfil 1</option>
+                            <option value="2">Perfil 2</option>
+                            <option value="3">Perfil 3</option>
+                            <option selected disabled value="#">Selecione</option>
+                        </select>
+                    </div> 
+
+                    <br>
+                                                                                                        
+                    <button onclick="cadastrar()" class="botao-cadastro">CADASTRAR</button>
+
+                    <div class="mensagem">
+                        Você já possui uma conta? Logue <a href="login.html"><b>Aqui</b></a>
+                    </div>
+
+                </div>
+                
+        </div>
+
+        <img src="assets/img/caju.jpg">
+
+    </div>
+
+</body>
+</html>
+
+<script>
+
+    function cadastrar() {
+        
+        var empresa = ipt_empresa.value;
+        var cnpj = ipt_cnpj.value;
+        var telefone = ipt_telefone.value;
+        var email = ipt_email.value;
+        var senha = ipt_senha.value;
+        var confirmacao = ipt_confirmacao.value;
+        var cargo = select_cargo.value;
+        var perfil = select_perfil.value;
+
+        if (empresa == "" || cnpj == "" || telefone == "" || email == "" || senha == "" || confirmacao == "" || cargo == "#" || perfil == "#") {
+            alert("Verifique-se de Preencher Todos os Campos!");
+
+        } else {
+
+            if (email == 'vitalis@gmail.com' && senha == 'caju123' && confirmacao == 'caju123') {
+            window.location.href = "login.html";
+            
+            } else {
+            alert('Email ou Senha Inválidos!');
+            }
+
+        }
+
+    }
+
+</script>
