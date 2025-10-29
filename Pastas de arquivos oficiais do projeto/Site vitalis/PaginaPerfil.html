@@ -25,9 +25,9 @@
             </div>
 
             <ul class="navbar">
-                <li><a href="">HOME</a></li>
+                <li><a href="index.html">HOME</a></li>
                 <li><a href="">DASHBOARD</a></li>
-                <li><a href="">SIMULADOR</a></li>
+                <li><a href="pagCalculadora.html">SIMULADOR</a></li>
                 <li class="campo"><a href="login.html">LOGIN</a></li>
                 <li class="campo"><a href="cadastro.html">CADASTRO</a></li>
             </ul>
@@ -42,7 +42,8 @@
             <h3 class="subtitulo_perfil">Informações da Empresa</h3>
 
             <label class="label_perfil" for="ipt_nome_empresa">Nome da Empresa:</label><br>
-            <input class="input_perfil" type="text" id="ipt_nome_empresa" placeholder="Digite o nome da empresa"><br><br>
+            <input class="input_perfil" type="text" id="ipt_nome_empresa"
+                placeholder="Digite o nome da empresa"><br><br>
 
             <label class="label_perfil" for="ipt_bio">Bio da Empresa:</label><br>
             <textarea class="textarea_perfil" id="ipt_bio" rows="4" cols="40"
@@ -146,10 +147,11 @@
     </div>
 
     <script>
-        var nomeFuncionario = ''
-        var emailFuncionario = ''
-        var cargoFuncionario = ''
-        var senhaFuncionario = ''
+        var listaNomes = []
+        var listaEmail = []
+        var listaSenhas = []
+
+        var salvarAlteracoes = false
 
         function adicionar() {
             var nome = ipt_nome_funcionario.value
@@ -157,17 +159,47 @@
             var cargo = sel_novo_tipo.value
             var senha = ipt_senha_funcionario.value
 
-            if (nome == '' && email == '' && cargo == '#' && senha == '') {
-                alert('Todos campos precisam estar preenchidos.')
-            } else {
-                nomeFuncionario = nome
-                emailFuncionario = email
-                cargoFuncionario = cargo
-                senhaFuncionario = senha
+            //validações para senha
+            senhaMinusculo = senha.toLowerCase()
+            senhaMaiusculo = senha.toUpperCase()
+            possuiMinusculo = senha != senhaMinusculo
+            possuiMaiusculo = senha != senhaMaiusculo
+            senhaTamanho = senha.length
+            dominioEmail = email.includes('@')
 
-                alert('Funcionário cadastrado com sucesso!')
+            if (nome != '' && email != '' && cargo != '#' && senha != '') {
+
+                if (possuiMaiusculo && possuiMinusculo && senhaTamanho > 6) {
+                    if (dominioEmail) {
+                        alert('Funcionário cadastrado com sucesso!')
+                        listaNomes.push(nome)
+                        listaEmail.push(email)
+                        listaSenhas.push(senha)
+
+                        salvarAlteracoes = true
+                    } else {
+                        alert('O email precisa de um domínio. Exemplo <i>"@gmail.com"</i>')
+                    }
+                } else {
+                    alert('A senha precisa de: um caracter maiúsculo, um mínusculo, ter mais que 6 caracteres')
+                }
+            } else {
+                alert('Todos campos precisam estar preenchidos.')
             }
         }
+
+        function salvar() {
+
+            if (salvarAlteracoes == true) {
+                alert('Alterações salvas.')
+                salvarAlteracoes = false
+
+            } else {
+                alert('Não há modificações a serem feitas.')
+            }
+
+        }
+
     </script>
 </body>
 

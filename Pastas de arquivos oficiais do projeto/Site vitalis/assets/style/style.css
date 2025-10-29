@@ -626,10 +626,11 @@ body {
 /* Aqui começa o css da calculadora */
 
 .bannerCalculadora {
-  background-image: url(../pagina-calculadora-site/assets/img/calculadora/castanhas-para-venda-calculadora-editado.jpg);
+  background-image: url(../img/castanhas-para-venda-calculadora.jpg);
   width: 100%;
-  height: 450px;
+  height: 480px;
   background-size: cover;
+
 }
 
 .pagCalculadora {
@@ -645,7 +646,7 @@ body {
   border-radius: 30px;
   padding: 20px;
   font-family: "Inter", sans-serif;
-  height: 200px;
+  height: 250px;
   width: 85%;
   margin-top: 15px;
   margin-inline-start: 80px;
@@ -730,28 +731,28 @@ body {
 }
 
 .imgInput1 {
-  background-image: url(../pagina-calculadora-site/assets/img/calculadora/plantar-calculadora.jpg);
+  background-image: url(../img/plantar-calculadora.jpg);
   display: flex;
   width: 400px;
   height: 250px;
   border-radius: 15px;
   background-size: 100%;
   background-position: center;
-  margin-left: 50%;
+  margin-left: 42%;
   z-index: 1000;
   position: absolute;
 
 }
 
 .imgInput2 {
-  background-image: url(../pagina-calculadora-site/assets/img/calculadora/colhe-castanhas-calculadora.jpg);
+  background-image: url(../img/colhe-castanhas-calculadora.jpg);
   display: flex;
   width: 400px;
   height: 200px;
   border-radius: 15px;
   background-size: 99.8%;
   background-position: center;
-  margin-left: 50%;
+  margin-left: 42%;
   z-index: 1000;
   position: absolute;
 }
