@@ -17,98 +17,83 @@
 </head>
 
 <body>
- <div class="header">
-        <div class="container"> 
+    <div class="header">
+        <div class="container">
             <div class="logo">
                 <img class="icon" src="assets/icon/icon_leaf.png">
                 <h1 class="titulo">Vitalis</h1>
             </div>
-        
+
             <ul class="navbar">
-            <li>
-                <a href="">HOME</a>
-            </li>
-                
-            <li>
-                <a href="">DASHBOARD</a>
-            </li>
-
-            <li>
-                <a href="">SIMULADOR</a>
-            </li>
-
-            <li class="campo">
-                <a href="login.html">LOGIN</a>
-            </li>
-
-            <li class="campo">
-                <a href="cadastro.html">CADASTRO</a>
-            </li>
+                <li><a href="">HOME</a></li>
+                <li><a href="">DASHBOARD</a></li>
+                <li><a href="">SIMULADOR</a></li>
+                <li class="campo"><a href="login.html">LOGIN</a></li>
+                <li class="campo"><a href="cadastro.html">CADASTRO</a></li>
             </ul>
         </div>
-    </div> 
+    </div>
 
+    <!-- Painel de Configuração -->
+    <div class="container_perfil">
+        <h2 class="titulo_perfil">Painel de Configuração</h2>
 
-    <div class="container">
-        <h2>Painel de Configuração</h2>
+        <div class="secao_perfil">
+            <h3 class="subtitulo_perfil">Informações da Empresa</h3>
 
-        <div class="secao">
-            <h3>Informações da Empresa</h3>
+            <label class="label_perfil" for="ipt_nome_empresa">Nome da Empresa:</label><br>
+            <input class="input_perfil" type="text" id="ipt_nome_empresa" placeholder="Digite o nome da empresa"><br><br>
 
-            <label for="ipt_nome_empresa">Nome da Empresa:</label><br>
-            <input type="text" id="ipt_nome_empresa" placeholder="Digite o nome da empresa"><br><br>
-
-            <label for="ipt_bio">Bio da Empresa:</label><br>
-            <textarea id="ipt_bio" rows="4" cols="40"
+            <label class="label_perfil" for="ipt_bio">Bio da Empresa:</label><br>
+            <textarea class="textarea_perfil" id="ipt_bio" rows="4" cols="40"
                 placeholder="Digite uma breve descrição da empresa"></textarea><br><br>
         </div>
 
-        <div class="secao">
-            <h3>Funcionários Cadastrados</h3>
+        <div class="secao_perfil">
+            <h3 class="subtitulo_perfil">Funcionários Cadastrados</h3>
 
-            <label for="ipt_funcionarios">Total de Funcionários:</label><br>
-            <input type="number" id="ipt_funcionarios" placeholder="Ex: 24"><br><br>
+            <label class="label_perfil" for="ipt_funcionarios">Total de Funcionários:</label><br>
+            <input class="input_perfil" type="number" id="ipt_funcionarios" placeholder="Ex: 24"><br><br>
 
-            <label for="sel_tipo_funcionario">Tipo de Funcionário:</label><br>
-            <select id="sel_tipo_funcionario">
+            <label class="label_perfil" for="sel_tipo_funcionario">Tipo de Funcionário:</label><br>
+            <select class="select_perfil" id="sel_tipo_funcionario">
                 <option value="">Selecione um cargo</option>
                 <option value="estrategico">Estratégico</option>
                 <option value="tatico">Tático</option>
                 <option value="operacional">Operacional</option>
             </select><br><br>
-            
         </div>
 
-        <div class="secao">
-            <h3>Adicionar Novo Funcionário</h3>
+        <div class="secao_perfil">
+            <h3 class="subtitulo_perfil">Adicionar Novo Funcionário</h3>
 
-            <label for="ipt_nome_funcionario">Nome:</label><br>
-            <input type="text" id="ipt_nome_funcionario" placeholder="Nome do funcionário"><br><br>
+            <label class="label_perfil" for="ipt_nome_funcionario">Nome:</label><br>
+            <input class="input_perfil" type="text" id="ipt_nome_funcionario" placeholder="Nome do funcionário"><br><br>
 
-            <label for="ipt_email_funcionario">Email:</label><br>
-            <input type="email" id="ipt_email_funcionario" placeholder="email@exemplo.com"><br><br>
+            <label class="label_perfil" for="ipt_email_funcionario">Email:</label><br>
+            <input class="input_perfil" type="email" id="ipt_email_funcionario" placeholder="email@exemplo.com"><br><br>
 
-            <label for="ipt_senha_funcionario">Senha:</label><br>
-            <input type="password" id="ipt_senha_funcionario" placeholder="********"><br><br>
+            <label class="label_perfil" for="ipt_senha_funcionario">Senha:</label><br>
+            <input class="input_perfil" type="password" id="ipt_senha_funcionario" placeholder="********"><br><br>
 
-            <label for="sel_novo_tipo">Cargo:</label><br>
-            <select id="sel_novo_tipo">
+            <label class="label_perfil" for="sel_novo_tipo">Cargo:</label><br>
+            <select class="select_perfil" id="sel_novo_tipo">
                 <option value="#">Selecione um cargo</option>
                 <option value="estrategico">Estratégico</option>
                 <option value="tatico">Tático</option>
                 <option value="operacional">Operacional</option>
             </select><br><br>
 
-            <button class="btn_adicionar" onclick="adicionar()">Adicionar Funcionário</button>
+            <button class="btn_adicionar_perfil" onclick="adicionar()">Adicionar Funcionário</button>
         </div>
 
-        <div class="secao">
-            <button class="buttonSalvar" onclick="salvar()">Salvar Configurações</button>
+        <div class="secao_perfil">
+            <button class="buttonSalvar_perfil" onclick="salvar()">Salvar Configurações</button>
         </div>
     </div>
     <!-- Fim da página de perfil -->
 
-      <div class="footer">
+    <div class="footer">
         <div class="container">
             <div class="left_container">
                 <h4>Soluções inteligentes para o agronegócio</h4>
@@ -159,32 +144,31 @@
             <p>Política de Privacidade</p>
         </div>
     </div>
+
+    <script>
+        var nomeFuncionario = ''
+        var emailFuncionario = ''
+        var cargoFuncionario = ''
+        var senhaFuncionario = ''
+
+        function adicionar() {
+            var nome = ipt_nome_funcionario.value
+            var email = ipt_email_funcionario.value
+            var cargo = sel_novo_tipo.value
+            var senha = ipt_senha_funcionario.value
+
+            if (nome == '' && email == '' && cargo == '#' && senha == '') {
+                alert('Todos campos precisam estar preenchidos.')
+            } else {
+                nomeFuncionario = nome
+                emailFuncionario = email
+                cargoFuncionario = cargo
+                senhaFuncionario = senha
+
+                alert('Funcionário cadastrado com sucesso!')
+            }
+        }
+    </script>
 </body>
 
 </html>
-
-<script>
-    var nomeFuncionario = ''
-    var emailFuncionario = ''
-    var cargoFuncionario = ''
-    var senhaFuncionario = ''
-
-    function adicionar() {
-        var nome = ipt_nome_funcionario.value
-        var email = ipt_email_funcionario.value
-        var cargo = sel_novo_tipo.value
-        var senha = ipt_senha_funcionario.value
-
-        if (nome == '' && email == '' && cargo == '#' && senha == '') {
-            alert('Todos campos precisam estar preenchidos.')
-        } else {
-            nomeFuncionario == nome
-            emailFuncionario == email
-            cargoFuncionario == cargo
-            senhaFuncionario == senha
-
-            alert('Funcionário cadastrado com sucesso!')
-        }
-    
-    }
-</script>

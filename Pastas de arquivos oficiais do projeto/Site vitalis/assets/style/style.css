@@ -827,3 +827,132 @@ body {
   font-size: 14px;
   font-weight: bold;
 }
+
+
+
+
+
+/* ============================ CSS PAGINA_PERFIL =========================== */
+/* ======== ESTILOS GERAIS DO PAINEL PERFIL ======== */
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #fffaf5;
+  color: #333;
+}
+
+/* ======== CONTAINER PRINCIPAL ======== */
+.container_perfil {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+}
+
+/* ======== TÍTULOS ======== */
+.titulo_perfil {
+  color: #e9791a;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.subtitulo_perfil {
+  color: #1a7f3c;
+  margin-bottom: 10px;
+  border-left: 5px solid #e9791a;
+  padding-left: 10px;
+}
+
+/* ======== SEÇÕES ======== */
+.secao_perfil {
+  margin-bottom: 40px;
+  padding: 20px;
+  background-color: #fff8f2;
+  border: 1px solid #ffe0c7;
+  border-radius: 10px;
+  transition: 0.3s ease;
+}
+
+.secao_perfil:hover {
+  background-color: #fff4eb;
+  box-shadow: 0 0 8px rgba(255, 153, 51, 0.15);
+}
+
+/* ======== LABELS E CAMPOS ======== */
+.label_perfil {
+  font-weight: 500;
+  color: #333;
+}
+
+.input_perfil,
+.textarea_perfil,
+.select_perfil {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  background-color: #fff;
+}
+
+.input_perfil:focus,
+.textarea_perfil:focus,
+.select_perfil:focus {
+  border-color: #e9791a;
+  box-shadow: 0 0 5px rgba(233, 121, 26, 0.3);
+}
+
+/* ======== BOTÕES ======== */
+button {
+  cursor: pointer;
+  border: none;
+  padding: 12px 20px;
+  font-size: 15px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.btn_adicionar_perfil {
+  background-color: #1a7f3c;
+  color: white;
+}
+
+.btn_adicionar_perfil:hover {
+  background-color: #168034;
+  transform: scale(1.03);
+}
+
+.buttonSalvar_perfil {
+  background-color: #e9791a;
+  color: white;
+  width: 100%;
+}
+
+.buttonSalvar_perfil:hover {
+  background-color: #cf6c16;
+  transform: scale(1.02);
+}
+
+/* ======== RESPONSIVIDADE ======== */
+@media (max-width: 768px) {
+  .container_perfil {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .input_perfil,
+  .textarea_perfil,
+  .select_perfil {
+    font-size: 14px;
+  }
+
+  button {
+    width: 100%;
+    font-size: 14px;
+  }
+}
