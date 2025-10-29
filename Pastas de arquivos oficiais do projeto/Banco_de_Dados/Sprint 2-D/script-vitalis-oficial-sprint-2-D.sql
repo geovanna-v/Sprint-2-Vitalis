@@ -96,37 +96,33 @@ INSERT INTO plantacao (idLote, idSensor, fkEmpresa, coordSensor, sensorModelo) V
 ('A1', 1, 3, 'A1', 'Umidade Capacitivo'),
 ('A2', 2, 1, 'A2', 'Umidade Capacitivo'),
 ('A3', 2, 1, 'A3', 'Umidade Capacitivo'),
-('A4', 1, 4, 'A4', 'Umidade Capacitivo'),
-('A5', 2, 5, 'A5', 'Umidade Capacitivo'),
-('A6', 1, 6, 'A6', 'Umidade Capacitivo');
+('A4', 5, 4, 'A4', 'Umidade Capacitivo'),
+('A5', 6, 5, 'A5', 'Umidade Capacitivo'),
+('A6', 7, 6, 'A6', 'Umidade Capacitivo');
 
 	select * from plantacao;
 
+SHOW INDEX FROM plantacao;
 /* TABELA: Leitura do sensor.
 Importante para conexão com a API que insere dados do arduino no BD. 
 Cada lote terá um sensor, e cada sensor terá uma tabela de leitura. */ 
 
 CREATE TABLE leituraSensor (
-	dataLeitura DATETIME DEFAULT CURRENT_TIMESTAMP,
+	dataLeitura DATETIME DEFAULT CURRENT_TIMESTAMP PRIMARY KEY,
 	umidadeSolo DECIMAL(5,2) NOT NULL,
-    fkSensor INT,
-    CONSTRAINT fkSensorLeitura
-		FOREIGN KEY (fkSensor)
-			REFERENCES plantacao(idSensor),
-	fkLote CHAR(2),
-	CONSTRAINT fkLoteLeitura
-		FOREIGN KEY (fkLote)
-			REFERENCES plantacao(idLote),
-	fkPlantacao INT,
-	CONSTRAINT fkPlantacaoLeitura
-		FOREIGN KEY (fkPlantacao)
-			REFERENCES plantacao(idPlantacao),
-    PRIMARY KEY (dataLeitura, fkSensor, fkLote, fkPlantacao)
+    fkPlantacao INT,
+    fkLote CHAR(2),
+    fkSensor INT,    
+	CONSTRAINT fk_leitura_plantacao
+		FOREIGN KEY (fkPlantacao, fkLote, fkSensor) REFERENCES plantacao (idPlantacao, idLote, idSensor)
 );
+
+INSERT INTO leituraSensor VALUES
+(default, 123.25, 1, 'A0', 1);
+
+select * from leituraSensor;
 
 describe empresa;
 describe usuario;
 describe plantacao;
-describe lotes;
-describe sensor;
 describe leituraSensor;

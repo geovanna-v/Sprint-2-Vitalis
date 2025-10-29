@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+
+    <link rel="icon" href="assets/icon/icon_leaf.png">
+
+    <title>Vitalis - Painel de Configuração</title>
+</head>
+
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="logo">
+                <img class="icon" src="assets/icon/icon_leaf.png">
+                <h1 class="titulo">Vitalis</h1>
+            </div>
+
+            <ul class="navbar">
+                <li><a href="">HOME</a></li>
+                <li><a href="">DASHBOARD</a></li>
+                <li><a href="">SIMULADOR</a></li>
+                <li class="campo"><a href="login.html">LOGIN</a></li>
+                <li class="campo"><a href="cadastro.html">CADASTRO</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Painel de Configuração -->
+    <div class="container_perfil">
+        <h2 class="titulo_perfil">Painel de Configuração</h2>
+
+        <div class="secao_perfil">
+            <h3 class="subtitulo_perfil">Informações da Empresa</h3>
+
+            <label class="label_perfil" for="ipt_nome_empresa">Nome da Empresa:</label><br>
+            <input class="input_perfil" type="text" id="ipt_nome_empresa" placeholder="Digite o nome da empresa"><br><br>
+
+            <label class="label_perfil" for="ipt_bio">Bio da Empresa:</label><br>
+            <textarea class="textarea_perfil" id="ipt_bio" rows="4" cols="40"
+                placeholder="Digite uma breve descrição da empresa"></textarea><br><br>
+        </div>
+
+        <div class="secao_perfil">
+            <h3 class="subtitulo_perfil">Funcionários Cadastrados</h3>
+
+            <label class="label_perfil" for="ipt_funcionarios">Total de Funcionários:</label><br>
+            <input class="input_perfil" type="number" id="ipt_funcionarios" placeholder="Ex: 24"><br><br>
+
+            <label class="label_perfil" for="sel_tipo_funcionario">Tipo de Funcionário:</label><br>
+            <select class="select_perfil" id="sel_tipo_funcionario">
+                <option value="">Selecione um cargo</option>
+                <option value="estrategico">Estratégico</option>
+                <option value="tatico">Tático</option>
+                <option value="operacional">Operacional</option>
+            </select><br><br>
+        </div>
+
+        <div class="secao_perfil">
+            <h3 class="subtitulo_perfil">Adicionar Novo Funcionário</h3>
+
+            <label class="label_perfil" for="ipt_nome_funcionario">Nome:</label><br>
+            <input class="input_perfil" type="text" id="ipt_nome_funcionario" placeholder="Nome do funcionário"><br><br>
+
+            <label class="label_perfil" for="ipt_email_funcionario">Email:</label><br>
+            <input class="input_perfil" type="email" id="ipt_email_funcionario" placeholder="email@exemplo.com"><br><br>
+
+            <label class="label_perfil" for="ipt_senha_funcionario">Senha:</label><br>
+            <input class="input_perfil" type="password" id="ipt_senha_funcionario" placeholder="********"><br><br>
+
+            <label class="label_perfil" for="sel_novo_tipo">Cargo:</label><br>
+            <select class="select_perfil" id="sel_novo_tipo">
+                <option value="#">Selecione um cargo</option>
+                <option value="estrategico">Estratégico</option>
+                <option value="tatico">Tático</option>
+                <option value="operacional">Operacional</option>
+            </select><br><br>
+
+            <button class="btn_adicionar_perfil" onclick="adicionar()">Adicionar Funcionário</button>
+        </div>
+
+        <div class="secao_perfil">
+            <button class="buttonSalvar_perfil" onclick="salvar()">Salvar Configurações</button>
+        </div>
+    </div>
+    <!-- Fim da página de perfil -->
+
+    <div class="footer">
+        <div class="container">
+            <div class="left_container">
+                <h4>Soluções inteligentes para o agronegócio</h4>
+                <div class="contacts_container">
+                    <img src="./assets/icon/instagran.png" alt="Instagram">
+                    <img src="./assets/icon/whatzapp.png" alt="WhatsApp">
+                    <img src="./assets/icon/facebook.png" alt="Facebook">
+                </div>
+            </div>
+
+            <div class="right_container">
+                <div class="left">
+                    <h6>Explore</h6>
+                    <p>Home</p>
+                    <p>Sobre Nós</p>
+                    <p>Equipe</p>
+                </div>
+
+                <div class="vertical_ruler">
+                    <hr>
+                </div>
+
+                <div class="right">
+                    <div class="above">
+                        <h6>Endereço</h6>
+                        <p>
+                            Rua Haddock Lobo 595<br>
+                            São Paulo, SP<br>
+                            01414-905
+                        </p>
+                    </div>
+
+                    <div class="bellow">
+                        <h6>Contato</h6>
+                        <p>vitaliscaju@gmail.com</p>
+                        <p>+55 11 4002-8922</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="middle">
+            <hr>
+        </div>
+
+        <div class="page_end">
+            <p>© 2025 Vitalis. Todos os direitos reservados.</p>
+            <p>Política de Privacidade</p>
+        </div>
+    </div>
+
+    <script>
+        var nomeFuncionario = ''
+        var emailFuncionario = ''
+        var cargoFuncionario = ''
+        var senhaFuncionario = ''
+
+        function adicionar() {
+            var nome = ipt_nome_funcionario.value
+            var email = ipt_email_funcionario.value
+            var cargo = sel_novo_tipo.value
+            var senha = ipt_senha_funcionario.value
+
+            if (nome == '' && email == '' && cargo == '#' && senha == '') {
+                alert('Todos campos precisam estar preenchidos.')
+            } else {
+                nomeFuncionario = nome
+                emailFuncionario = email
+                cargoFuncionario = cargo
+                senhaFuncionario = senha
+
+                alert('Funcionário cadastrado com sucesso!')
+            }
+        }
+    </script>
+</body>
+
+</html>

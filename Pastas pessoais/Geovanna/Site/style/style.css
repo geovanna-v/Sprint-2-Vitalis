@@ -1,0 +1,297 @@
+body {
+  margin: 0;
+}
+
+/* Começo do header */
+
+.header {
+    background-color: #FB6717;
+    height: 90px;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 120px;
+}
+
+.logo {
+    display: flex;
+    justify-content: space-between;
+}
+
+.icon {
+    width: 80px;
+    height: 80px;
+}
+
+.titulo {
+    color: #FFFEFE;
+}
+
+.navbar { 
+    display: flex;
+    list-style: none;
+    width: 700px;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bolder;
+}
+
+.navbar a {   
+    color: white;
+    outline: none;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+/*.agora {
+    font-weight: bolder;
+}*/
+
+.navbar .campo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #E54906;
+    height: 30px;
+    width: 130px;
+    border-radius: 50px;
+}
+
+/* Final do header */
+
+/* Começo do banner */
+
+.banner {
+  display: flex;
+  flex-direction: column;
+}
+
+.img_fundo {
+background-image: url(../assets/imgs/interface/homem-montando-cavalo-interface.jpg);
+display: flex;
+width: 100%;
+height: 700px;
+background-size: cover;
+z-index: 0;
+background-color: solid;
+
+}
+
+.banner h2 {
+  display: flex;
+  justify-content: flex-start;
+  color: blue;
+  margin-left: 10%;
+  margin-top: 45%;
+  z-index: 1;
+  width: 80%;
+}
+
+.banner h3 {
+  display: flex;
+  justify-content: flex-start;
+  color: blue;
+  margin-left: 10%;
+  margin-top: 0;
+  z-index: 1;
+  width: 80%;
+}
+
+.botoes {
+  all:unset;
+  display: flex;
+  justify-content:flex-start;
+  align-items: flex-start;
+  z-index: 1;
+  margin-bottom: 50%;
+}
+
+.img {
+  display: flex;
+  justify-content: space-between;
+  padding: 10%; 
+  z-index: 2;
+  position: absolute;
+  margin-left: 10%;
+}
+
+.img1 {
+  width: 300px;
+  z-index: 2;
+  border-radius: 15px;
+}
+
+.img2 {
+  width: 300px;
+  z-index: 2;
+  border-radius: 15px;
+}
+
+.img3{
+  width: 300px;
+  z-index: 2;
+  border-radius: 15px;
+}
+
+
+/* Final do banner */
+
+/* Começo social */
+
+.social {
+  height: 1300px;
+}
+
+.social .container {
+  padding: 20%;
+}
+
+.social .container h4 {
+  color: #ce3e00;
+  font-size: 20px;
+  font-weight: bolder;
+  display: flex;
+  justify-content: center;
+}
+
+.social .container h3{ /* centralizar */
+  color: #ce3e00;
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+}
+
+.social .container span p { /* centralizar */
+  color: #ce3e00;
+  display: flex;
+  font-size: 20px;
+}
+
+/* Final social */
+
+/*Começo boxes*/
+
+.boxes {
+  background-color:#E54906;
+  border-radius: 15px;
+  margin-top: 10%;
+  height: 550px;
+  width: 500px;
+  margin-left: 45%;
+  z-index: 0;
+}
+
+.boxes .paragrafo {
+  color: white;
+  display: flex;
+  padding: 7px;
+  margin-left: 35px;
+  font-size: 20px;
+
+}
+
+.img-social {
+  background-image: url("../assets/imgs/interface/handshake-interface.png");
+
+}
+
+/*Final boxes*/
+
+/* Começo do footer */
+
+.footer {
+  background-color: #b13f03;
+  color: white;
+  height: 300px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  padding-top: 10 0px;
+}
+
+.footer .container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px 80px;
+  box-sizing: border-box;
+}
+
+.footer .left_container {
+  width: 35%;
+}
+
+.footer .left_container h4 {
+  font-weight: 400;
+  font-size: 13px;
+  margin: 0;
+}
+
+.footer .contacts_container {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.footer .contacts_container img {
+  height: 28px;
+  width: 28px;
+  filter: invert(100%);
+}
+
+.footer .right_container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 35%;
+}
+
+.footer .right_container .left {
+  width: 25%;
+}
+
+.footer .right_container .vertical_ruler hr {
+  height: 80px;
+  border: none;
+  border-left: 1px solid white;
+  opacity: 0.5;
+}
+
+.footer .right_container .right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.footer .right_container .above h6 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.footer .right_container .above p {
+  font-size: 12px;
+}
+.footer .middle {
+  width: 100%;
+  
+  margin-top: 10px;
+}
+
+.footer .page_end {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.footer .page_end p {
+  margin: 0;
+}
+
+/* Fim do footer */
