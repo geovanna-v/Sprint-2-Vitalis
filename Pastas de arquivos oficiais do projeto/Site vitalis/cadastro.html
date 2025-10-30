@@ -92,26 +92,6 @@
             />
           </div>
 
-          <div class="campo-cadastro">
-            <span>CARGO DO CADASTRANTE</span>
-            <select id="select_cargo">
-              <option value="1">Cargo 1</option>
-              <option value="2">Cargo 2</option>
-              <option value="3">Cargo 3</option>
-              <option selected disabled value="#">Selecione</option>
-            </select>
-          </div>
-
-          <div class="campo-cadastro">
-            <span>PERFIL</span>
-            <select id="select_perfil">
-              <option value="1">Perfil 1</option>
-              <option value="2">Perfil 2</option>
-              <option value="3">Perfil 3</option>
-              <option selected disabled value="#">Selecione</option>
-            </select>
-          </div>
-
           <br />
 
           <button onclick="cadastrar()" class="botao-cadastro">
@@ -137,8 +117,6 @@
     var email = ipt_email.value;
     var senha = ipt_senha.value;
     var confirmacao = ipt_confirmacao.value;
-    var cargo = select_cargo.value;
-    var perfil = select_perfil.value;
 
     if (
       empresa == "" ||
@@ -146,9 +124,7 @@
       telefone == "" ||
       email == "" ||
       senha == "" ||
-      confirmacao == "" ||
-      cargo == "#" ||
-      perfil == "#"
+      confirmacao == ""
     ) {
       alert("Verifique-se de Preencher Todos os Campos!");
     } else {

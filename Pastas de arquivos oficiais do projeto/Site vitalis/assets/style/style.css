@@ -1,34 +1,32 @@
 /* style oficial */
 /* header */
-* {
-  width: auto;
-  height: auto;
-  max-width: auto;
-  max-height: auto;
-  box-sizing: border-box;
-}
-
 body {
-  margin: 0;
-  width: auto;
-  height: auto;
+  margin: 0px;
+  padding: 0px;
+  border: none;
+  width: 100%;
+  height: 100%;
 }
 
 .header {
   background-color: #fb6717;
   height: 80px;
-  width: auto;
+  width: 100%;
+  z-index: 100;
+  position: sticky;
+  top: 0px
 }
 
 .header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 120px;
+  padding: 0px 120px;
 }
 
 .logo {
   display: flex;
+  align-items: center;
   justify-content: space-between;
 }
 
@@ -59,10 +57,11 @@ body {
 
 .navbar .campo {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   background-color: #e54906;
-  height: 30px;
+  height: 38px;
   width: 130px;
   border-radius: 50px;
 }
@@ -213,7 +212,7 @@ body {
   margin-top: 15px;
   margin-inline-start: 80px;
   padding: 30px 30px 30px 100px;
-  z-index: 1000;
+  z-index: 99;
 }
 
 .containerCalculo2 {
@@ -229,7 +228,7 @@ body {
   margin-top: 15px;
   margin-inline-start: 80px;
   padding: 30px 30px 60px 100px;
-  z-index: 1000;
+  z-index: 99;
 }
 
 .containerTexto .paragrafo {
@@ -285,7 +284,7 @@ body {
   background-size: 100%;
   background-position: center;
   margin-left: 42%;
-  z-index: 1000;
+  z-index: 99;
   position: absolute;
 }
 
@@ -298,16 +297,8 @@ body {
   background-size: 99.8%;
   background-position: center;
   margin-left: 42%;
-  z-index: 1000;
+  z-index: 99;
   position: absolute;
-}
-
-.mensagem {
-  margin-top: 20px;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
 }
 
 /* Aqui começa o CSS do perfil */
@@ -583,6 +574,7 @@ button {
   margin-top: 10%;
   margin-left: 40%;
   color: white;
+  z-index: 3;
 }
 
 .containerSobrenos-index img {
@@ -604,7 +596,6 @@ button {
 /* ===================================== STYLE CADASTRO/LOGIN ================================================ */
 
 .login {
-  display: flex;
   width: 100%;
   height: 850px;
 }
@@ -623,9 +614,9 @@ button {
   );
   z-index: 2;
   position: absolute;
-  padding: 0 120px;
+  padding: 0px;
   width: 100%;
-  height: 850px;
+  height: 100%;
 }
 
 .card-login {
@@ -633,27 +624,29 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 30%;
+  width: 550px;
   height: 80px;
   font-size: 30px;
+  padding-left: 10%;
 }
 
 .formulario-login {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: center;
-  height: 300px;
-  width: 500px;
+  padding-left: 10%;
+  justify-content: space-around;
+  height: 350px;
+  width: 550px;
   color: #fffafa;
 }
 
 .campo-login {
   height: 30%;
-  width: 80%;
+  width: 90%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-evenly;
 }
 
@@ -677,20 +670,38 @@ button {
 }
 
 .mensagem {
+  display: flex;
+  width: 450px;
   font-size: 20px;
   margin-top: 10px;
+  align-items: center;
+  justify-content: center;
 }
 
+.mensagem#div_mensagem {
+display: flex;
+flex-direction: column;
+justify-items: center;
+align-items: center;
+}
+.mensagem#div_mensagem1 {
+  display: flex;
+flex-direction: column;
+justify-items: center;
+align-items: center;
+
+}
 .mensagem a {
+  padding-left: 5px;
   color: white;
   outline: none;
-  font-weight: bolder;
   text-decoration: none;
+  font-weight: bolder;
 }
 
 .login img {
   width: 50%;
-  height: 850px;
+  height: 100%;
   object-fit: cover;
   object-position: 50% 20%;
   z-index: 1;
@@ -704,7 +715,6 @@ button {
 /* Aqui começa o cadastro.html */
 
 .cadastro {
-  display: flex;
   width: 100%;
   height: 850px;
 }
@@ -721,9 +731,9 @@ button {
     #ff983f,
     transparent 80%
   );
-  padding: 0 120px;
+  padding: 0px;
   width: 100%;
-  height: 850px;
+  height: 100%;
   z-index: 2;
   position: absolute;
 }
@@ -733,16 +743,18 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 30%;
+  width: 500px;
   height: 80px;
   font-size: 30px;
+  padding-left: 10%;
 }
 
 .formulario-cadastro {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: center;
+  padding-left: 10%;
+  justify-content: space-around;
   height: 700px;
   width: 500px;
   color: #fffafa;
@@ -753,7 +765,7 @@ button {
   width: 90%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-evenly;
 }
 
@@ -813,11 +825,93 @@ button {
 .cadastro img {
   display: flex;
   width: 50%;
-  height: 850px;
+  height: 100%;
   object-fit: cover;
   object-position: 50% 20%;
   z-index: 1;
   position: absolute;
   margin-left: 50%;
   float: right;
+}
+
+.banner {
+  width: 100%;
+  padding: 60px 100px;
+  background-color: #fff8f4;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+}
+
+.banner h2 {
+  color: #e54906;
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0 0 15px 0;
+}
+
+.banner p {
+  font-size: 16px;
+  margin: 2px 0;
+  color: #333;
+}
+
+.banner small {
+  font-size: 13px;
+  color: #555;
+}
+.header .navbar li img{
+    height: 28px;
+  width: 28px;
+  filter: invert(100%);
+}
+canvas {
+  background-color: #fff;
+}
+
+.chart-container {
+  border: 2px solid #f26522;
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 40px;
+  background-color: #fff;
+}
+
+.chart-container h3 {
+  text-align: center;
+  color: #f26522;
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+.chart-container.green {
+  border-color: #2b8c37;
+}
+
+.chart-container.green h3 {
+  color: #2b8c37;
+  font-size: 15px;
+}
+
+.chart {
+  width: 100%;
+  height: 300px;
+}
+
+.chartjs-tooltip {
+  background-color: rgba(50, 50, 50, 0.8);
+  color: white;
+  border-radius: 5px;
+  padding: 6px 10px;
+  font-size: 12px;
+}
+
+.chart-orange .chartjs-render-monitor {
+  border-color: #f26522 !important;
+}
+
+.chart-green .chartjs-render-monitor {
+  border-color: #2b8c37 !important;
 }

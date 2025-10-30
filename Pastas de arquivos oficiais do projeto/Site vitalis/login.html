@@ -1,75 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vitalis | LOGIN</title>
 
-    <link rel="stylesheet" href="assets/style/style.css" />
-    <link rel="icon" href="assets/icon/icon_leaf.png" />
-    <link rel="preconnect" href="" />
-  </head>
-  <body>
-    <div class="header">
-      <div class="container">
-        <div class="logo">
-          <img class="icon" src="assets/icon/icon_leaf.png" />
-          <h1 class="titulo">Vitalis</h1>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vitalis | LOGIN</title>
 
-        <ul class="navbar">
-          <li>
-            <a href="index.html">HOME</a>
-          </li>
+  <link rel="stylesheet" href="assets/style/style.css" />
+  <link rel="icon" href="assets/icon/icon_leaf.png" />
+  <link rel="preconnect" href="" />
+</head>
 
-          <li>
-            <a href="pagCalculadora.html">SIMULADOR</a>
-          </li>
-
-          <li class="campo">
-            <a href="login.html">LOGIN</a>
-          </li>
-
-          <li class="campo">
-            <a href="cadastro.html">CADASTRO</a>
-          </li>
-        </ul>
+<body>
+  <div class="header">
+    <div class="container">
+      <div class="logo">
+        <img class="icon" src="assets/icon/icon_leaf.png" />
+        <h1 class="titulo">Vitalis</h1>
       </div>
+
+      <ul class="navbar">
+        <li>
+          <a href="index.html">HOME</a>
+        </li>
+
+        <li>
+          <a href="pagCalculadora.html">SIMULADOR</a>
+        </li>
+
+        <li class="campo">
+          <a href="login.html">LOGIN</a>
+        </li>
+
+        <li class="campo">
+          <a href="cadastro.html">CADASTRO</a>
+        </li>
+      </ul>
     </div>
-    <div class="login">
-      <div class="container-login">
-        <div class="card-login">
-          <h2>LOGIN</h2>
+  </div>
+  <div class="login">
+    <div class="container-login">
+      <div class="card-login">
+        <h2>LOGIN</h2>
+      </div>
+
+      <div class="formulario-login">
+        <div class="campo-login">
+          <span>E-MAIL</span>
+          <input type="text" id="ipt_email" placeholder="Digite seu email" />
         </div>
 
-        <div class="formulario-login">
-          <div class="campo-login">
-            <span>E-MAIL</span>
-            <input type="text" id="ipt_email" placeholder="Digite seu email" />
-          </div>
+        <div class="campo-login">
+          <span>SENHA</span>
+          <input type="password" id="ipt_senha" placeholder="Digite sua senha"/>
+        </div>
 
-          <div class="campo-login">
-            <span>SENHA</span>
-            <input
-              type="text"
-              id="ipt_senha"
-              placeholder="Digite sua senha"
-              type="password"
-            />
-          </div>
+        <button onclick="logar()" class="botao-login">LOGAR</button>
 
-          <button onclick="logar()" class="botao-login">LOGAR</button>
-
-          <div class="mensagem">
+        <div class="mensagem">
+          <span>
             Você ainda não possui uma conta? Cadastre-se
             <a href="cadastro.html"><b>Aqui</b></a>
-          </div>
+          </span>
+
         </div>
       </div>
-
-      <img src="assets/img/caju.jpg" />
     </div>
-  </body>
+
+    <img src="assets/img/caju.jpg" />
+  </div>
+</body>
+
 </html>
 
 <script>
@@ -78,7 +79,9 @@
     var senha = ipt_senha.value;
 
     if (senha == "caju123" && email == "vitalis@gmail.com") {
-      // ir para home
+      
+      window.location.href = "dashBoard.html";
+
     } else {
       alert("Email ou Senha Inválidos!");
     }

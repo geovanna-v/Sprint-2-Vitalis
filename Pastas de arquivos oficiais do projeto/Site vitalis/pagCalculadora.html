@@ -188,7 +188,7 @@
         desperdicio = Math.abs(desperdicio);
         gastoTotalIdeal = desperdicio * VALOR_AGUA_M3;
 
-        div_mensagem.innerHTML = `
+        div_mensagem.innerHTML = `<div>
                 Hoje, sua fazenda consome <b>${gastoAtual} m³/ano de água</b>. <br><br> 
                 Gasto atual: <b>R$${gastoTotalAtual.toFixed(2)}</b><br><br> 
                 Você está utilizando <b>${desperdicio} m³/ano a menos que o ideal</b>, 
@@ -196,16 +196,17 @@
                 Essa economia pode prejudicar a qualidade do fruto.<br><br>
                 Com nossos sensores, sua irrigação será ajustada para o ideal: 
                 <b>${gastoIdeal} m³/ano</b>.
-            `;
+            </div>`;
       } else if (desperdicio == 0) {
-        div_mensagem.innerHTML = `
+        div_mensagem.innerHTML = `<div>
                 Sua fazenda consome exatamente <b>${gastoAtual} m³/ano</b>, 
                 com um gasto de <b>R$${gastoTotalAtual.toFixed(2)}</b>.<br><br> 
                 Você está utilizando a quantidade ideal. 
                 Nossos sensores ajudarão a manter essa assertividade por mais tempo.
-            `;
+            </div>`;
       } else {
         div_mensagem.innerHTML = `
+              <div>
                 Hoje, sua fazenda consome <b>${gastoAtual} m³/ano</b>, 
                 com um gasto de <b>R$${gastoTotalAtual.toFixed(2)}</b>.<br><br> 
                 Desperdício identificado: <b>${desperdicio} m³/ano</b>.<br><br> 
@@ -213,6 +214,7 @@
                 gerando economia de <b>R$${(
                   desperdicio * VALOR_AGUA_M3
                 ).toFixed(2)}</b>.
+                </div>
             `;
       }
     }
@@ -233,7 +235,7 @@
 
     if (hectare > 0 && producaoAtual > 0) {
       if (producaoTotalAtual < producaoPotencial) {
-        div_mensagem1.innerHTML = `
+        div_mensagem1.innerHTML = `<div>
                 Sua produção atual é de <b>${producaoTotalAtual} Kg/ano</b>, 
                 mas poderia ser <b>${producaoPotencial} Kg/ano</b>.<br><br> 
                 Você deixa de produzir <b>${perdaProducao} Kg/ano</b>, 
@@ -243,19 +245,19 @@
                 Com nossos sensores, seu ganho pode aumentar em até <b>${porcentagemLucro.toFixed(
                   1
                 )}%</b>.
-            `;
+            </div>`;
       } else if (producaoTotalAtual == producaoPotencial) {
-        div_mensagem1.innerHTML = `
+        div_mensagem1.innerHTML = `<div>
                 Sua produção atual é de <b>${producaoTotalAtual} Kg/ano</b>.<br><br> 
                 Você está na média ideal. 
                 Nossos sensores podem ajudar a manter esse desempenho.
-            `;
+            </div>`;
       } else {
-        div_mensagem1.innerHTML = `
+        div_mensagem1.innerHTML = `<div>
                 Sua produção de <b>${producaoTotalAtual} Kg/ano</b> 
                 está acima da média esperada.<br><br> 
                 Parabéns pelo manejo! O monitoramento pode ajudar a manter esse nível.
-            `;
+            </div>`;
       }
     }
   }
