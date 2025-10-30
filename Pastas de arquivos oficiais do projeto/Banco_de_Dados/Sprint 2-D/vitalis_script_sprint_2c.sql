@@ -115,12 +115,6 @@ ALTER TABLE leitura
             describe leitura;
             describe usuario;
             
-			drop table empresa;
-            drop table plantacao;
-            drop table leitura;
-            drop table sensor;
-            drop table usuario;     
-            
 
             
             
