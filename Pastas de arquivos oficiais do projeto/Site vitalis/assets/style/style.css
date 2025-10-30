@@ -1,85 +1,82 @@
 /* style oficial */
 /* header */
- * {
-    width: auto;
-    height: auto;
-    max-width: auto;
-    max-height: auto;
+* {
+  width: auto;
+  height: auto;
+  max-width: auto;
+  max-height: auto;
+  box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    width: auto;
-    height: auto;
+  margin: 0;
+  width: auto;
+  height: auto;
 }
 
 .header {
-    background-color: #FB6717;
-    height: 80px;
-    width: auto;
+  background-color: #fb6717;
+  height: 80px;
+  width: auto;
 }
 
 .header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 120px;
 }
 
 .logo {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .icon {
-    width: 80px;
-    height: 80px;
+  width: 80px;
+  height: 80px;
 }
 
 .titulo {
-    color: #FFFEFE;
+  color: #fffefe;
 }
 
-.navbar { 
-    display: flex;
-    list-style: none;
-    width: 700px;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: bolder;
+.navbar {
+  display: flex;
+  list-style: none;
+  width: 700px;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bolder;
 }
 
-.navbar a {   
-    color: white;
-    outline: none;
-    font-weight: bolder;
-    text-decoration: none;
+.navbar a {
+  color: white;
+  outline: none;
+  font-weight: bolder;
+  text-decoration: none;
 }
 
 .navbar .campo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #E54906;
-    height: 30px;
-    width: 130px;
-    border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e54906;
+  height: 30px;
+  width: 130px;
+  border-radius: 50px;
 }
 
 /* ------------------------------------ */
 
-
-
 /* CONTEUDO LOGIN */
 
-
 /* footer */
-
 
 .footer {
   background-color: #b13f03;
   color: white;
-  width: 100%%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   margin-top: 50px;
@@ -156,7 +153,7 @@ body {
 }
 .footer .middle {
   width: 100%;
-  
+
   margin-top: 10px;
 }
 
@@ -171,9 +168,7 @@ body {
   margin: 0;
 }
 
-
 /* ---------------------------------------------- */
-
 
 /* ================================================================= */
 
@@ -184,7 +179,6 @@ body {
   width: 100%;
   height: 480px;
   background-size: cover;
-
 }
 
 .pagCalculadora {
@@ -238,7 +232,6 @@ body {
   z-index: 1000;
 }
 
-
 .containerTexto .paragrafo {
   display: flex;
   flex-direction: column;
@@ -264,7 +257,6 @@ body {
   font-weight: bold;
   align-content: flex-start;
   font-size: 20px;
-
 }
 
 .botaoCalcular {
@@ -295,7 +287,6 @@ body {
   margin-left: 42%;
   z-index: 1000;
   position: absolute;
-
 }
 
 .imgInput2 {
@@ -333,8 +324,6 @@ body {
   border-radius: 5px;
   border-color: #fb6717;
   color: #fb6717;
-
-
 }
 
 .secao select {
@@ -365,7 +354,6 @@ body {
   margin-top: 16px;
   width: 500px;
   height: 30px;
-
 }
 
 .buttonSalvar {
@@ -378,14 +366,10 @@ body {
   margin-top: 16px;
   width: 500px;
   height: 30px;
-    text-align: center;
+  text-align: center;
   font-size: 14px;
   font-weight: bold;
 }
-
-
-
-
 
 /* ============================ CSS PAGINA_PERFIL =========================== */
 /* ======== ESTILOS GERAIS DO PAINEL PERFIL ======== */
@@ -514,13 +498,13 @@ button {
 
 /* ========================================= style home ========================================= */
 
-.container-index{
+.container-index {
   height: 450px;
   width: 100%;
   border: palevioletred;
 }
 
-.container-index img{
+.container-index img {
   height: 450px;
   width: 100%;
   object-fit: cover;
@@ -528,15 +512,15 @@ button {
   position: absolute;
 }
 
-.filtro_laranja{
-  background-image: linear-gradient(to right, #FB6717,transparent 70% );
+.filtro_laranja {
+  background-image: linear-gradient(to right, #fb6717, transparent 70%);
   width: 100%;
   height: 450px;
   z-index: 2;
   position: absolute;
 }
 
-.div_containerCarrosel-index{
+.div_containerCarrosel-index {
   justify-content: space-around;
   display: flex;
   width: 100%;
@@ -545,7 +529,7 @@ button {
   position: absolute;
 }
 
-.div_containerCarrosel-index img{
+.div_containerCarrosel-index img {
   width: 300px;
   height: 150px;
   object-fit: cover;
@@ -562,39 +546,37 @@ button {
   color: white;
 }
 
-.titulos-index button{
-  background-color: #E54906;
+.titulos-index button {
+  background-color: #e54906;
   color: white;
 }
 
-.botoes-index{
+.botoes-index {
   display: block;
   margin-top: 5%;
-
 }
 
-.botoes-index button{
+.botoes-index button {
   margin-right: 40px;
   padding: 10px;
 }
 
-.botoes-index button:hover{
+.botoes-index button:hover {
   background-color: #e47445;
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.486);
 }
 
-.div_sobreVitalis-index{
-
+.div_sobreVitalis-index {
   margin-top: 10%;
   justify-content: center;
   text-align: center;
-  color: #E54906;
-  background-image: linear-gradient(to right, #FDF0EC);
+  color: #e54906;
+  background-image: linear-gradient(to right, #fdf0ec);
   padding: 40px;
 }
 
-.containerSobrenos-index{
-  background-color: #E54906;
+.containerSobrenos-index {
+  background-color: #e54906;
   padding: 90px;
   max-width: 500px;
   border-radius: 14px;
@@ -603,7 +585,7 @@ button {
   color: white;
 }
 
-.containerSobrenos-index img{
+.containerSobrenos-index img {
   width: 500px;
   height: 500px;
   object-fit: cover;
@@ -615,6 +597,227 @@ button {
   box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.205);
 }
 
-.espacamento-index{
+.espacamento-index {
   height: 80px;
+}
+
+/* ===================================== STYLE CADASTRO/LOGIN ================================================ */
+
+.login {
+  display: flex;
+  width: 100%;
+  height: 850px;
+}
+
+.login .container-login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  background-image: linear-gradient(
+    to right,
+    #e54906,
+    #fb6717,
+    #ff983f,
+    transparent 80%
+  );
+  z-index: 2;
+  position: absolute;
+  padding: 0 120px;
+  width: 100%;
+  height: 850px;
+}
+
+.card-login {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  height: 80px;
+  font-size: 30px;
+}
+
+.formulario-login {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 300px;
+  width: 500px;
+  color: #fffafa;
+}
+
+.campo-login {
+  height: 30%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+
+.campo-login input {
+  background-color: #fffefe;
+  border-style: none;
+  height: 40%;
+  width: 100%;
+  border-radius: 50px;
+  text-align: center;
+}
+
+.botao-login {
+  height: 40px;
+  width: 80%;
+  background-color: #fb6717;
+  color: white;
+  border-radius: 15px;
+  border-style: none;
+  font-weight: bolder;
+}
+
+.mensagem {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.mensagem a {
+  color: white;
+  outline: none;
+  font-weight: bolder;
+  text-decoration: none;
+}
+
+.login img {
+  width: 50%;
+  height: 850px;
+  object-fit: cover;
+  object-position: 50% 20%;
+  z-index: 1;
+  position: absolute;
+  margin-left: 50%;
+  float: right;
+}
+
+/* Aqui termina o login.html */
+
+/* Aqui começa o cadastro.html */
+
+.cadastro {
+  display: flex;
+  width: 100%;
+  height: 850px;
+}
+
+.cadastro .container-cadastro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  background-image: linear-gradient(
+    to right,
+    #e54906,
+    #fb6717,
+    #ff983f,
+    transparent 80%
+  );
+  padding: 0 120px;
+  width: 100%;
+  height: 850px;
+  z-index: 2;
+  position: absolute;
+}
+
+.card-cadastro {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  height: 80px;
+  font-size: 30px;
+}
+
+.formulario-cadastro {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 700px;
+  width: 500px;
+  color: #fffafa;
+}
+
+.campo-cadastro {
+  height: 30%;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+
+.campo-cadastro input {
+  background-color: #fffefe;
+  border-style: none;
+  height: 40%;
+  width: 100%;
+  border-radius: 50px;
+  text-align: center;
+}
+
+.campo-cadastro select {
+  background-color: #fffefe;
+  border-style: none;
+  height: 40%;
+  width: 100%;
+  border-radius: 50px;
+  text-align: center;
+  appearance: none;
+}
+
+.cnpj-telefone {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  height: 30%;
+  align-items: center;
+}
+
+.cnpj-telefone .campo-cadastro {
+  height: 100px;
+  width: 210px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+
+.botao-cadastro {
+  height: 90px;
+  width: 90%;
+  background-color: #fb6717;
+  color: white;
+  border-radius: 15px;
+  border-style: none;
+  font-weight: bolder;
+  margin-bottom: 10px;
+}
+
+.botao-cadastro a {
+  color: white;
+  outline: none;
+  text-decoration: none;
+}
+
+.cadastro img {
+  display: flex;
+  width: 50%;
+  height: 850px;
+  object-fit: cover;
+  object-position: 50% 20%;
+  z-index: 1;
+  position: absolute;
+  margin-left: 50%;
+  float: right;
 }
