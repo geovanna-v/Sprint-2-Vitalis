@@ -915,3 +915,22 @@ canvas {
 .chart-green .chartjs-render-monitor {
   border-color: #2b8c37 !important;
 }
+   .card-metricas {
+      display: flex;
+      justify-content: space-around;
+      margin: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      padding: 20px;
+      text-align: center;
+      width: 22%;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }

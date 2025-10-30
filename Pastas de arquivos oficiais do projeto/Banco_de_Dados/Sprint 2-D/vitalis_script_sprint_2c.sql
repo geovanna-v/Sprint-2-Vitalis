@@ -66,7 +66,24 @@ ALTER TABLE sensor
         REFERENCES plantacao(idPlantacao);
         
 INSERT INTO sensor (idSensor, lote, modelo, coordSensor, fkPlantacao) values 
-(1, 1, 'capacitivo', 'A0', 1);
+(2, 1, 'capacitivo', 'A1', 1),
+(3, 1, 'capacitivo', 'A2', 1),
+(4, 1, 'capacitivo', 'A3', 1),
+
+(5, 1, 'capacitivo', 'B0', 1),
+(6, 1, 'capacitivo', 'B1', 1),
+(7, 1, 'capacitivo', 'B2', 1),
+(8, 1, 'capacitivo', 'B3', 1),
+
+(9, 1, 'capacitivo', 'C0', 1),
+(10, 1, 'capacitivo', 'C1', 1),
+(11, 1, 'capacitivo', 'C2', 1),
+(12, 1, 'capacitivo', 'C3', 1),
+
+(13, 1, 'capacitivo', 'D0', 1),
+(14, 1, 'capacitivo', 'D1', 1),
+(15, 1, 'capacitivo', 'D2', 1),
+(16, 1, 'capacitivo', 'D3', 1);
 
 CREATE TABLE leitura (
 	idLeitura INT PRIMARY KEY AUTO_INCREMENT,
@@ -79,7 +96,7 @@ ALTER TABLE leitura
 	FOREIGN KEY (fkSensor)
 	REFERENCES sensor(idSensor);
     
-    
+    show tables;
             select * from empresa;
             select * from plantacao;
             select * from sensor;
