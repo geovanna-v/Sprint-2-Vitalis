@@ -48,7 +48,10 @@
         <h3>Monitore suas plantações de caju em tempo real.</h3>
         <div class="botoes-index">
           <button onclick="comecar()">Começar agora mesmo</button>
-          <button onclick="contatar()">Entrar em contato</button>
+          <a href="#div_contato">
+            <button onclick="contatar()">Entrar em contato</button>
+          </a>
+
         </div>
       </div>
     </div>
@@ -137,7 +140,8 @@
               </p>
             </div>
 
-            <div class="bellow">
+            <div class="bellow" id="div_contato">
+              
               <h6>Contato</h6>
               <p>vitaliscaju@gmail.com</p>
               <p>+55 11 4002-8922</p>
@@ -145,7 +149,7 @@
           </div>
         </div>
       </div>
-
+  
       <div class="middle">
         <hr />
       </div>
@@ -157,3 +161,9 @@
     </div>
   </body>
 </html>
+<script>
+  function comecar() {
+    window.location.href = 'cadastro.html'
+  }
+
+</script>

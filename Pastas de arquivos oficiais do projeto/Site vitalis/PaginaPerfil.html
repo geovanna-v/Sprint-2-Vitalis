@@ -64,7 +64,8 @@
     <div class="secao_perfil">
       <h3 class="subtitulo_perfil">Pesquisa de Funcionários</h3>
 
-      <label class="label_perfil" for="ipt_funcionarios">Digite o nome do funcionário que deseja pesquisar:</label><br />
+      <label class="label_perfil" for="ipt_funcionarios">Digite o nome do funcionário que deseja
+        pesquisar:</label><br />
       <input class="input_perfil" type="text" id="ipt_funcionarios" placeholder="Ex: João Silva" /><br /><br />
 
       <label class="label_perfil" for="sel_tipo_funcionario">Tipo de Funcionário:</label><br />
@@ -76,7 +77,7 @@
       </select><br /><br />
 
       <button class="btn_adicionar_perfil" onclick="pesquisar()">Pesquisar</button> <br>
-      
+
       <div id="div_pesquisaFuncinario"></div>
     </div>
 
@@ -173,27 +174,31 @@
     var salvarAlteracoes = false;
 
     function pesquisar() {
-      var pesquisarNome = ipt_funcionarios.value
-      var pesquisarCargo = sel_tipo_funcionario.value
-      var listaNomesTamanho = listaNomes.length
-      var i = 0
-      var mensagem = ''
+      var pesquisarNome = ipt_funcionarios.value;
+      var pesquisarCargo = sel_tipo_funcionario.value;
+      var listaNomesTamanho = listaNomes.length;
+      var i = 0;
+      var mensagem = '';
 
-      if ( pesquisarNome != '' && pesquisarCargo != '#' ) {
-        var funcionarioCadastrado = listaNomes.includes(pesquisarNome)
-        while ( i < listaNomesTamanho ) {
-          if ( funcionarioCadastrado ){
+      if (pesquisarNome != '' && pesquisarCargo != '#') {
+        var funcionarioCadastrado = listaNomes.includes(`${pesquisarNome}, ${pesquisarCargo}`);
+        console.log(listaNomes)
+        while (i < listaNomesTamanho) {
+
+          if (funcionarioCadastrado) {
             mensagem = `<br> <br> O usuário ${pesquisarNome}, de cargo ${pesquisarCargo}, está cadastrado.`
+
           } else {
             mensagem = `<br> <br> O usuário ${pesquisarNome}, de cargo ${pesquisarCargo}, não está cadastrado.`
+
           }
           i++
-          
+
           div_pesquisaFuncinario.innerHTML = `${mensagem}`
 
         }
       } else {
-          alert(`Para pesquisa os campos devem estar preenchidos`)
+        alert(`Para pesquisa os campos devem estar preenchidos`)
       }
     }
 
@@ -210,16 +215,18 @@
       possuiMaiusculo = senha != senhaMaiusculo;
       senhaTamanho = senha.length;
       dominioEmail = email.includes("@");
+      var nomeCargo = ''
 
       if (nome != "" && email != "" && cargo != "#" && senha != "") {
         if (possuiMaiusculo && possuiMinusculo && senhaTamanho > 6) {
           if (dominioEmail) {
             alert("Funcionário cadastrado com sucesso!");
-
-            listaNomes.push(nome);
+            nomeCargo += nome
+            nomeCargo += `, ${cargo}`
+            listaNomes.push(nomeCargo);
             listaEmail.push(email);
             listaSenhas.push(senha);
-            
+
 
             salvarAlteracoes = true;
           } else {
