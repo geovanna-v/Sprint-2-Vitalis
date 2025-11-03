@@ -599,7 +599,7 @@ button {
 
 .login {
   width: 100%;
-  height: 850px;
+  height: 100%;
 }
 
 .login .container-login {
@@ -676,6 +676,8 @@ button {
   margin-top: 10px;
   align-items: center;
   justify-content: center;
+  padding: 20px;
+  height: 20px;
 }
 
 .mensagem#div_mensagem {
@@ -718,7 +720,7 @@ button {
 
 .cadastro {
   width: 100%;
-  height: 850px;
+  height: 100%;
 }
 
 .cadastro .container-cadastro {
@@ -806,7 +808,7 @@ button {
 }
 
 .botao-cadastro {
-  height: 90px;
+  height: 50px;
   width: 90%;
   background-color: #fb6717;
   color: white;
