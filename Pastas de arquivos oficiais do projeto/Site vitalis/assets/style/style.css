@@ -194,10 +194,11 @@ body {
   border-radius: 30px;
   padding: 20px;
   font-family: "Inter", sans-serif;
-  height: 250px;
+  height: 200px;
   width: 85%;
   margin-top: 15px;
   margin-inline-start: 80px;
+  text-align: center;
 }
 
 .containerCalculo {
