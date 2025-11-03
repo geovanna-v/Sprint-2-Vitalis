@@ -21,6 +21,7 @@
     </div>
 
     <script>
+        
         var sensorAnalogico = new Chart(document.getElementById('sensorDigital').getContext('2d'), {
             type: 'line',
             data: {
@@ -45,7 +46,7 @@
                 },
             }
         });
-
+        
         var sensorDigital = new Chart(document.getElementById('sensorAnalogico').getContext('2d'), {
             type: 'line',
             data: {
@@ -70,7 +71,7 @@
                 }
             }
         });
-
+        
         var paginacao = {};
         var tempo = {};
 
