@@ -213,12 +213,13 @@
       senhaMaiusculo = senha.toUpperCase();
       possuiMinusculo = senha != senhaMinusculo;
       possuiMaiusculo = senha != senhaMaiusculo;
+      possuiEspecial = ((senha.includes('!')) || (senha.includes('?')) || (senha.includes('*')) || (senha.includes('@')) || (senha.includes('&')) || (senha.includes('|')) || (senha.includes('+') || (senha.includes('-')) || (senha.includes('=')) || (senha.includes('$')) || (senha.includes('(')) || (senha.includes(')')) || (senha.includes('_'))));
       senhaTamanho = senha.length;
-      dominioEmail = email.includes("@");
+      dominioEmail = (email.includes("@") && !(email[0].includes("@")));
       var nomeCargo = ''
 
       if (nome != "" && email != "" && cargo != "#" && senha != "") {
-        if (possuiMaiusculo && possuiMinusculo && senhaTamanho > 6) {
+        if (possuiEspecial && possuiMaiusculo && possuiMinusculo && senhaTamanho > 6) {
           if (dominioEmail) {
             alert("Funcionário cadastrado com sucesso!");
             nomeCargo += nome
@@ -236,7 +237,7 @@
           }
         } else {
           alert(
-            "A senha precisa de: um caracter maiúsculo, um mínusculo, ter mais que 6 caracteres"
+            "A senha precisa de: um caracter maiúsculo, um mínusculo, ter mais que 6 caracteres, com um caractere especiail"
           );
         }
       } else {

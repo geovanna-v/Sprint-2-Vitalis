@@ -1,143 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cadastro</title>
 
-    <link rel="stylesheet" href="assets/style/style.css" />
-    <link rel="icon" href="assets/icon/icon_leaf.png" />
-    <link rel="preconnect" href="" />
-  </head>
-  <body>
-    <div class="header">
-      <div class="container">
-        <div class="logo">
-          <img class="icon" src="assets/icon/icon_leaf.png" />
-          <h1 class="titulo">Vitalis</h1>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro</title>
+
+  <link rel="stylesheet" href="assets/style/style.css" />
+  <link rel="icon" href="assets/icon/icon_leaf.png" />
+  <link rel="preconnect" href="" />
+</head>
+
+<body>
+  <div class="header">
+    <div class="container">
+      <div class="logo">
+        <img class="icon" src="assets/icon/icon_leaf.png" />
+        <h1 class="titulo">Vitalis</h1>
+      </div>
+
+      <ul class="navbar">
+        <li>
+          <a href="index.html">HOME</a>
+        </li>
+
+        <li>
+          <a href="pagCalculadora.html">SIMULADOR</a>
+        </li>
+
+        <li class="campo">
+          <a href="login.html">LOGIN</a>
+        </li>
+
+        <li class="campo">
+          <a href="cadastro.html">CADASTRO</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cadastro">
+    <div class="container-cadastro">
+      <div class="card-cadastro">
+        <h2>CADASTRE-SE</h2>
+      </div>
+
+      <div class="formulario-cadastro">
+        <div class="campo-cadastro">
+          <span>NOME DA EMPRESA</span>
+          <input type="text" value="Empresa" id="ipt_empresa" placeholder="Digite o nome da empresa" />
         </div>
 
-        <ul class="navbar">
-          <li>
-            <a href="index.html">HOME</a>
-          </li>
+        <div class="cnpj-telefone">
+          <div class="campo-cadastro">
+            <span>CNPJ</span>
+            <input type="text" value="XX.XXX.XXX/YYYY-ZZ" id="ipt_cnpj" placeholder="Digite o CNPJ: XX.XXX.XXX/YYYY-ZZ" />
+          </div>
 
-          <li>
-            <a href="pagCalculadora.html">SIMULADOR</a>
-          </li>
+          <div class="campo-cadastro">
+            <span>TELEFONE</span>
+            <input type="text" value="123" id="ipt_telefone" placeholder="Digite o telefone" />
+          </div>
+        </div>
 
-          <li class="campo">
-            <a href="login.html">LOGIN</a>
-          </li>
+        <div class="campo-cadastro">
+          <span>E-MAIL</span>
+          <input type="text" id="ipt_email" placeholder="Digite o email" />
+        </div>
 
-          <li class="campo">
-            <a href="cadastro.html">CADASTRO</a>
-          </li>
-        </ul>
+        <div class="campo-cadastro">
+          <span>CRIE UMA SENHA</span>
+          <input id="ipt_senha" value="Caju!@#" placeholder="Digite a senha" type="password" />
+        </div>
+
+        <div class="campo-cadastro">
+          <span>CONFIRME SUA SENHA</span>
+          <input id="ipt_confirmacao" value="Caju!@#" placeholder="Confirme a senha" type="password" />
+        </div>
+
+        <br />
+
+        <button onclick="cadastrar()" class="botao-cadastro">
+          CADASTRAR
+        </button>
+
+        <div class="mensagem">
+          Você já possui uma conta? Logue <a href="login.html"><b>Aqui</b></a>
+        </div>
       </div>
     </div>
 
-     <div class="cadastro">
-      <div class="container-cadastro">
-        <div class="card-cadastro">
-          <h2>CADASTRE-SE</h2>
-        </div>
+    <img src="assets/img/caju.jpg" />
+  </div>
+</body>
 
-        <div class="formulario-cadastro">
-          <div class="campo-cadastro">
-            <span>NOME DA EMPRESA</span>
-            <input
-              type="text"
-              id="ipt_empresa"
-              placeholder="Digite o nome da empresa"
-            />
-          </div>
-
-          <div class="cnpj-telefone">
-            <div class="campo-cadastro">
-              <span>CNPJ</span>
-              <input type="text" id="ipt_cnpj" placeholder="Digite o CNPJ" />
-            </div>
-
-            <div class="campo-cadastro">
-              <span>TELEFONE</span>
-              <input
-                type="text"
-                id="ipt_telefone"
-                placeholder="Digite o telefone"
-              />
-            </div>
-          </div>
-
-          <div class="campo-cadastro">
-            <span>E-MAIL</span>
-            <input type="text" id="ipt_email" placeholder="Digite o email" />
-          </div>
-
-          <div class="campo-cadastro">
-            <span>CRIE UMA SENHA</span>
-            <input
-              id="ipt_senha"
-              placeholder="Digite a senha"
-              type="password"
-            />
-          </div>
-
-          <div class="campo-cadastro">
-            <span>CONFIRME SUA SENHA</span>
-            <input
-              id="ipt_confirmacao"
-              placeholder="Confirme a senha"
-              type="password"
-            />
-          </div>
-  
-
-          <br/>
-
-          <button onclick="cadastrar()" class="botao-cadastro">
-            CADASTRAR
-          </button>
-
-          <div class="mensagem">
-            Você já possui uma conta? Logue <a href="login.html"><b>Aqui</b></a>
-          </div>
-        </div>
-      </div>
-
-      <img src="assets/img/caju.jpg" />
-    </div>
-  </body>
 </html>
 
 <script>
-  function cadastrar() {
-    var empresa = ipt_empresa.value;
-    var cnpj = ipt_cnpj.value;
-    var telefone = ipt_telefone.value;
-    var email = ipt_email.value;
-    var senha = ipt_senha.value;
-    var confirmacao = ipt_confirmacao.value;
+  var empresa     = '';
+  var cnpj        = '';
+  var telefone    = '';
+  var email       = '';
+  var senha       = '';
+  var confirmacao = '';
+  
+  var senhaMinusculo = '';
+  var senhaMaiusculo = '';
+  var possuiMinusculo = false;
+  var possuiMaiusculo = false;
+  var possuiEspecial = false;
+  var dominioEmail = false;
+  var senhaTamanho = 0;
 
-    if (
-      empresa == "" ||
-      cnpj == "" ||
-      telefone == "" ||
-      email == "" ||
-      senha == "" ||
-      confirmacao == ""
-    ) {
-      alert("Verifique-se de Preencher Todos os Campos!");
-    } else {
-      if (
-        email == "vitalis@gmail.com" &&
-        senha == "caju123" &&
-        confirmacao == "caju123"
-      ) {
-        window.location.href = "login.html";
-      } else {
-        alert("Email ou Senha Inválidos!");
-      }
-    }
+
+  function cadastrar() {
+    empresa = ipt_empresa.value;
+    cnpj = ipt_cnpj.value;
+    telefone = ipt_telefone.value;
+    email = ipt_email.value;
+    senha = ipt_senha.value;
+    confirmacao = ipt_confirmacao.value;
+    senhaMinusculo = senha.toLowerCase();
+    senhaMaiusculo = senha.toUpperCase();
+    possuiMinusculo = senha != senhaMinusculo;
+    possuiMaiusculo = senha != senhaMaiusculo;
+    possuiEspecial = ((senha.includes('!')) || (senha.includes('?')) || (senha.includes('*')) || (senha.includes('@')) || (senha.includes('&')) || (senha.includes('|')) || (senha.includes('+') || (senha.includes('-')) || (senha.includes('=')) || (senha.includes('$')) || (senha.includes('(')) || (senha.includes(')')) || (senha.includes('_'))));
+    senhaTamanho = senha.length;
+    dominioEmail = (email.includes("@") && !(email[0].includes("@")));
+
+
+      if ((empresa != "") && (email != "") && (senha != "") && (cnpj != '') && (senha == confirmacao) && (telefone != '')) {
+        if (possuiEspecial && possuiMaiusculo && possuiMinusculo && senhaTamanho > 6) {
+          if (dominioEmail && cnpj.length == 18) {
+            alert('tudo certo!');
+
+            window.location.href = "login.html";
+
+          }else { alert('O email precisa de um domínio. Exemplo <i>"Vitalis@gmail.com"</i> E cnpj precisa contén 18 caracteres (incluso `.`, `-`, `\\`)');}
+        }else {alert("senha inválida, precisa ter caractere maiúsculo, minúsculo e caractere especial");}
+      } else {alert("Todos campos precisam estar preenchidos e senha deve ser igual");}
+
+
+
+
   }
+
+
 </script>
