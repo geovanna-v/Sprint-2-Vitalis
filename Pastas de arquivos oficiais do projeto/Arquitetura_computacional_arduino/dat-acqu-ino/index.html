@@ -2,26 +2,27 @@
 <html>
 
 <head>
-    <title>Graphics</title>
+    <title>Gráfico de Umidade do Solo</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
-
-    <h1>Graphics</h1>
-    <div style="display: flex;">
-        <div style="width: 50%;">
+    <div style="display: flex; align-items: center; justify-content: center;">
+        <h1>Gráfico de Umidade do Solo</h1>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: center; margin-top: 20px">
+        <div style="width: 70%;">
             <canvas id="sensorAnalogico"></canvas>
         </div>
 
-
+        <!--
         <div style="width: 50%;">
             <canvas id="sensorDigital"></canvas>
         </div>
+        -->
     </div>
-
     <script>
-        
+        /*
         var sensorAnalogico = new Chart(document.getElementById('sensorDigital').getContext('2d'), {
             type: 'line',
             data: {
@@ -46,14 +47,14 @@
                 },
             }
         });
-        
+        */
         var sensorDigital = new Chart(document.getElementById('sensorAnalogico').getContext('2d'), {
             type: 'line',
             data: {
                 datasets: [{
-                    label: 'analogico',
-                    borderColor: 'green',
-                    backgroundColor: '#blue'
+                    label: 'Umidade do Solo',
+                    borderColor: '#63B1BC',
+                    backgroundColor: '#63B1BC'
                 }]
             },
             options: {
@@ -71,7 +72,7 @@
                 }
             }
         });
-        
+
         var paginacao = {};
         var tempo = {};
 
@@ -110,6 +111,7 @@
         }, 1000);
 
     </script>
+
 </body>
 
 </html>
