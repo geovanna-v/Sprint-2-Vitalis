@@ -940,24 +940,24 @@ canvas {
 }
 
 #card_umidade {
-  box-shadow: 0px 2px 8px #02a4f0;
-  background-color: #dbf0fa;
+  box-shadow: 0px 2px 8px #d60a0a;
+  background-color: #fadbdb;
 
 }
 
 #card_umidade h2 {
-  color: #02a4f0;
+  color: #d60a0a;
 }
 
 /**/
 #card_produção {
-  box-shadow: 0px 2px 8px #d60a0a;
-  background-color: #FFC3C2;
+  box-shadow: 0px 2px 8px #2b38ac;
+  background-color: #dbf0fa;
 
 }
 
 #card_produção h2 {
-  color: #d60a0a;
+  color: #02a4f0;
   ;
 }
 
@@ -977,8 +977,8 @@ canvas {
 }
 
 #div_abaixo {
-  background-color: #02a4f0;
-  border: solid 1px #2b38ac;
+  background-color: #ee5252;
+  border: solid 1px #d60a0a;
   border-radius: 5px;
   width: 30px;
   height: 20px;
@@ -993,8 +993,8 @@ canvas {
 }
 
 #div_acima {
-  background-color: #ee5252;
-  border: solid 1px #d60a0a;
+  background-color: #02a4f0;
+  border: solid 1px #2b38ac;
   border-radius: 5px;
   width: 30px;
   height: 20px;
