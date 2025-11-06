@@ -1,6 +1,6 @@
 SELECT 
 empresa.razaoSocial AS empresa,
-plantacao.tipoSolo AS "Quantidade plantado",
+plantacao.tipoSolo AS "Tipo de solo",
 sensor.coordSensor AS "Localização sensor",
 leitura.dataLeitura AS "Data de registro",
 leitura.leituraUmidadeSolo AS "Resgistro"
