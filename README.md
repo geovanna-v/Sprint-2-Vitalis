@@ -4,6 +4,7 @@
 Repositório do Projeto de Pesquisa e Inovação - VITALIS Tema do projeto: Umidade do Solo em Plantações de Caju Anão Precoce no Nordeste.
 <br>
 <br>
+
 ## Integrantes: 
 <br>
 <img valign="middle" width="32" height="32" alt="dev" src="https://github.com/user-attachments/assets/34f7ac0a-5445-412b-aec7-c0a56340d20b" />Geovanna Vitoriana de Oliveira;<br>
