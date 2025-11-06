@@ -680,19 +680,18 @@ button {
   height: 20px;
 }
 
-.mensagem#div_mensagem {
+#div_mensagem {
   display: flex;
   flex-direction: column;
   justify-items: center;
   align-items: center;
 }
 
-.mensagem#div_mensagem1 {
+#div_mensagem1 {
   display: flex;
   flex-direction: column;
   justify-items: center;
   align-items: center;
-
 }
 
 .mensagem a {
