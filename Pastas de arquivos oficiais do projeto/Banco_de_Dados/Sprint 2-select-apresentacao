@@ -1,0 +1,13 @@
+SELECT 
+empresa.razaoSocial AS empresa,
+plantacao.tipoSolo AS "Quantidade plantado",
+sensor.coordSensor AS "Localização sensor",
+leitura.dataLeitura AS "Data de registro",
+leitura.leituraUmidadeSolo AS "Resgistro"
+	FROM empresa
+    LEFT JOIN plantacao 
+		ON plantacao.fkEmpresa = empresa.idEmpresa
+	LEFT JOIN sensor 
+		ON sensor.fkPlantacao = plantacao.idPlantacao
+	LEFT JOIN leitura
+		ON leitura.fkSensor = sensor.idSensor;
