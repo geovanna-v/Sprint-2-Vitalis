@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet" />
+
+  <link rel="icon" href="assets/icon/icon_leaf.png" />
+
+  <title>Vitalis | PAINEL DE CONFIGURAÇÕES</title>
+</head>
+
+<body>
+  <div class="header">
+    <div class="container">
+      <div class="logo">
+        <img class="icon" src="assets/icon/icon_leaf.png" />
+        <h1 class="titulo">Vitalis</h1>
+      </div>
+
+      <ul class="navbar">
+        <li>
+          <a href="index.html">HOME</a>
+        </li>
+
+        <li>
+          <a href="pagCalculadora.html">SIMULADOR</a>
+        </li>
+
+        <li class="campo">
+          <a href="login.html">LOGIN</a>
+        </li>
+
+        <li class="campo">
+          <a href="cadastro.html">CADASTRO</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Painel de Configuração -->
+  <div class="container_perfil">
+    <h2 class="titulo_perfil">Painel de Configuração</h2>
+
+    <div class="secao_perfil">
+      <h3 class="subtitulo_perfil">Informações da Empresa</h3>
+
+      <label class="label_perfil" for="ipt_nome_empresa">Nome da Empresa:</label><br />
+      <input class="input_perfil" oninput="infoPerfil()" type="text" id="ipt_nome_empresa"
+        placeholder="Digite o nome da empresa" /><br /><br />
+
+      <label class="label_perfil" for="ipt_bio">Bio da Empresa:</label><br />
+      <textarea class="textarea_perfil" oninput="infoPerfil()" id="ipt_bio" rows="4" cols="40"
+        placeholder="Digite uma breve descrição da empresa"></textarea><br /><br />
+      <div id="div_infoPerfil"></div>
+    </div>
+
+    <div class="secao_perfil">
+      <h3 class="subtitulo_perfil">Pesquisa de Funcionários</h3>
+
+      <label class="label_perfil" for="ipt_funcionarios">Digite o nome do funcionário que deseja
+        pesquisar:</label><br />
+      <input class="input_perfil" type="text" id="ipt_funcionarios" placeholder="Ex: João Silva" /><br /><br />
+
+      <label class="label_perfil" for="sel_tipo_funcionario">Tipo de Funcionário:</label><br />
+      <select class="select_perfil" id="sel_tipo_funcionario">
+        <option value="#">Selecione um cargo</option>
+        <option value="estrategico">Estratégico</option>
+        <option value="tatico">Tático</option>
+        <option value="operacional">Operacional</option>
+      </select><br /><br />
+
+      <button class="btn_adicionar_perfil" onclick="pesquisar()">Pesquisar</button> <br>
+
+      <div id="div_pesquisaFuncinario"></div>
+    </div>
+
+    <div class="secao_perfil">
+      <h3 class="subtitulo_perfil">Adicionar Novo Funcionário</h3>
+
+      <label class="label_perfil" for="ipt_nome_funcionario">Nome:</label><br />
+      <input class="input_perfil" type="text" id="ipt_nome_funcionario" placeholder="Nome do funcionário" /><br /><br />
+
+      <label class="label_perfil" for="ipt_email_funcionario">Email:</label><br />
+      <input class="input_perfil" type="email" id="ipt_email_funcionario" placeholder="email@exemplo.com" /><br /><br />
+
+      <label class="label_perfil" for="ipt_senha_funcionario">Senha:</label><br />
+      <input class="input_perfil" type="password" id="ipt_senha_funcionario" placeholder="********" /><br /><br />
+
+      <label class="label_perfil" for="sel_novo_tipo">Cargo:</label><br />
+      <select class="select_perfil" id="sel_novo_tipo">
+        <option value="#">Selecione um cargo</option>
+        <option value="estrategico">Estratégico</option>
+        <option value="tatico">Tático</option>
+        <option value="operacional">Operacional</option>
+      </select><br /><br />
+
+      <button class="btn_adicionar_perfil" onclick="adicionar()">
+        Adicionar Funcionário
+      </button>
+    </div>
+
+    <div class="secao_perfil">
+      <button class="buttonSalvar_perfil" onclick="salvar()">
+        Salvar Configurações
+      </button>
+    </div>
+  </div>
+  <!-- Fim da página de perfil -->
+
+  <div class="footer">
+    <div class="container">
+      <div class="left_container">
+        <h4>Soluções inteligentes para o agronegócio</h4>
+        <div class="contacts_container">
+          <img src="./assets/icon/instagran.png" alt="Instagram" />
+          <img src="./assets/icon/whatzapp.png" alt="WhatsApp" />
+          <img src="./assets/icon/facebook.png" alt="Facebook" />
+        </div>
+      </div>
+
+      <div class="right_container">
+        <div class="left">
+          <h6>Explore</h6>
+          <p>Home</p>
+          <p>Sobre Nós</p>
+          <p>Equipe</p>
+        </div>
+
+        <div class="vertical_ruler">
+          <hr />
+        </div>
+
+        <div class="right">
+          <div class="above">
+            <h6>Endereço</h6>
+            <p>
+              Rua Haddock Lobo 595<br />
+              São Paulo, SP<br />
+              01414-905
+            </p>
+          </div>
+
+          <div class="bellow">
+            <h6>Contato</h6>
+            <p>vitaliscaju@gmail.com</p>
+            <p>+55 11 4002-8922</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="middle">
+      <hr />
+    </div>
+
+    <div class="page_end">
+      <p>© 2025 Vitalis. Todos os direitos reservados.</p>
+      <p>Política de Privacidade</p>
+    </div>
+  </div>
+
+  <script>
+    var listaNomes = [];
+    var listaEmail = [];
+    var listaSenhas = [];
+
+    var salvarAlteracoes = false;
+
+    function pesquisar() {
+      var pesquisarNome = ipt_funcionarios.value;
+      var pesquisarCargo = sel_tipo_funcionario.value;
+      var listaNomesTamanho = listaNomes.length;
+      var i = 0;
+      var mensagem = '';
+
+      if (pesquisarNome != '' && pesquisarCargo != '#') {
+        var funcionarioCadastrado = listaNomes.includes(`${pesquisarNome}, ${pesquisarCargo}`);
+        console.log(listaNomes)
+        while (i < listaNomesTamanho) {
+
+          if (funcionarioCadastrado) {
+            mensagem = `<br> <br> O usuário ${pesquisarNome}, de cargo ${pesquisarCargo}, está cadastrado.`
+
+          } else {
+            mensagem = `<br> <br> O usuário ${pesquisarNome}, de cargo ${pesquisarCargo}, não está cadastrado.`
+
+          }
+          i++
+
+          div_pesquisaFuncinario.innerHTML = `${mensagem}`
+
+        }
+      } else {
+        alert(`Para pesquisa os campos devem estar preenchidos`)
+      }
+    }
+
+    function adicionar() {
+      var nome = ipt_nome_funcionario.value;
+      var email = ipt_email_funcionario.value;
+      var cargo = sel_novo_tipo.value;
+      var senha = ipt_senha_funcionario.value;
+
+      //validações para senha
+      senhaMinusculo = senha.toLowerCase();
+      senhaMaiusculo = senha.toUpperCase();
+      possuiMinusculo = senha != senhaMinusculo;
+      possuiMaiusculo = senha != senhaMaiusculo;
+      possuiEspecial = ((senha.includes('!')) || (senha.includes('?')) || (senha.includes('*')) || (senha.includes('@')) || (senha.includes('&')) || (senha.includes('|')) || (senha.includes('+') || (senha.includes('-')) || (senha.includes('=')) || (senha.includes('$')) || (senha.includes('(')) || (senha.includes(')')) || (senha.includes('_'))));
+      senhaTamanho = senha.length;
+      dominioEmail = (email.includes("@") && !(email[0].includes("@")));
+      var nomeCargo = ''
+
+      if (nome != "" && email != "" && cargo != "#" && senha != "") {
+        if (possuiEspecial && possuiMaiusculo && possuiMinusculo && senhaTamanho > 6) {
+          if (dominioEmail) {
+            alert("Funcionário cadastrado com sucesso!");
+            nomeCargo += nome
+            nomeCargo += `, ${cargo}`
+            listaNomes.push(nomeCargo);
+            listaEmail.push(email);
+            listaSenhas.push(senha);
+
+
+            salvarAlteracoes = true;
+          } else {
+            alert(
+              'O email precisa de um domínio. Exemplo <i>"@gmail.com"</i>'
+            );
+          }
+        } else {
+          alert(
+            "A senha precisa de: um caracter maiúsculo, um mínusculo, ter mais que 6 caracteres, com um caractere especiail"
+          );
+        }
+      } else {
+        alert("Todos campos precisam estar preenchidos.");
+      }
+    }
+
+    function salvar() {
+      if (salvarAlteracoes == true) {
+        alert("Alterações salvas.");
+        salvarAlteracoes = false;
+      } else {
+        alert("Não há modificações a serem feitas.");
+      }
+    }
+
+    function infoPerfil() {
+      nomeEmpresa = ipt_nome_empresa.value
+      bioEmpresa = ipt_bio.value
+
+      div_infoPerfil.innerHTML = `Nome da empresa: ${nomeEmpresa} <br> <br>
+        Bios: <Br>
+        ${bioEmpresa}`
+    }
+
+  </script>
+</body>
+
+</html>
