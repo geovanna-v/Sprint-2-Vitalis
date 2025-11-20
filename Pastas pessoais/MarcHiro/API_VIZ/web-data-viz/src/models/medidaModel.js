@@ -1,30 +1,40 @@
 var database = require("../database/config");
 
-function buscarUltimasMedidas(idAquario, limite_linhas) {
+function buscarUltimasMedidas(idplantacao, limite_linhas) {
 
     var instrucaoSql = `SELECT 
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,
-                        momento,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico
-                    FROM medida
-                    WHERE fk_aquario = ${idAquario}
-                    ORDER BY id DESC LIMIT ${limite_linhas}`;
+                    avg(l.leituraUmidadeSolo) as umidade,
+                    time(l.dataLeitura) as momento
+                    FROM leitura l 
+                    join sensor s on l.fkSensor = s.idSensor
+                    join plantacao p on s.fkPlantacao = p.idPlantacao
+                    where p.idPlantacao = 1 AND p.fkEmpresa = 1 AND s.lote = 1
+                    group by time(l.dataLeitura)
+                    order by l.dataLeitura desc
+                    LIMIT 10;
+                    `;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
-function buscarMedidasEmTempoReal(idAquario) {
+function buscarMedidasEmTempoReal(idplantacao) {
 
-    var instrucaoSql = `SELECT 
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico, 
-                        fk_aquario 
-                        FROM medida WHERE fk_aquario = ${idAquario} 
-                    ORDER BY id DESC LIMIT 1`;
+    var instrucaoSql = `
+                SELECT 
+                    avg(l.leituraUmidadeSolo) as umidade,
+                    time(l.dataLeitura) as momento
+                    FROM leitura l 
+                    join sensor s on l.fkSensor = s.idSensor
+                    join plantacao p on s.fkPlantacao = p.idPlantacao
+                    where p.idPlantacao = 1 AND p.fkEmpresa = 1 AND s.lote = 1
+                    group by time(l.dataLeitura)
+                    order by l.dataLeitura desc
+                    LIMIT 1;`;
 
+    
+    
+                            
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }

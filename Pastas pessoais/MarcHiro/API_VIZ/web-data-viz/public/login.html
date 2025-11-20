@@ -48,7 +48,7 @@
             <span>E-MAIL</span>
             <input
               type="text"
-              value="vitalis@gmail.com"
+              value="contato@agrovale.com.br"
               id="ipt_email"
               placeholder="Digite seu email"
             />
@@ -58,7 +58,7 @@
             <span>SENHA</span>
             <input
               type="password"
-              value="caju123"
+              value="Senha#2025"
               id="ipt_senha"
               placeholder="Digite sua senha"
             />
@@ -74,7 +74,6 @@
           </div>
         </div>
       </div>
-
       <img src="assets/img/caju.jpg" />
     </div>
   </body>
@@ -110,11 +109,21 @@
             console.log(json);
             console.log(JSON.stringify(json));
             sessionStorage.EMAIL_USUARIO = json.email;
-            sessionStorage.ID_USUARIO = json.idEmpresa;
-            sessionStorage.NOME_USUARIO = json.razaoSocial;
-            // sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
-
-            window.location = "dashBoard.html";
+            if( json.idEmpresa == undefined){
+              sessionStorage.ID_EMPRESA = json.fkEmpresa;
+            } else {
+              sessionStorage.ID_USUARIO = json.idEmpresa; 
+            }
+            if(json.razaoSocial == undefined){
+              sessionStorage.NOME_USUARIO = json.apelidoUsuario;
+            } else {
+              sessionStorage.NOME_USUARIO = json.razaoSocial;
+            }
+            if(json.idUsuario != undefined){
+              sessionStorage.ID_USUARIO = json.idUsuario;
+            }
+            sessionStorage.plantacoes = JSON.stringify(json.plantacoes);
+            window.location = "./dashboard/cards.html";
           });
         } else {
           console.log("Houve um erro ao tentar realizar o login!");

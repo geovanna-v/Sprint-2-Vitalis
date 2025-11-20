@@ -7,10 +7,10 @@ let idSensor;
 let poolBancoDados = mysql
   .createPool({
     host: "127.0.0.1",
-    user: "aluno",
-    password: "Sptech#2024",
+    user: "root",
+    password: "Alucard22*",
     database: "vitalis",
-    port: 3307,
+    port: 3306,
   })
   .promise();
 
@@ -26,7 +26,7 @@ async function asyncCall() {
 
 function waveFunc() {
 
-idSensor = Math.floor(Math.random() * 511) + 1;
+idSensor = pickRandom();
 
   x += 0.025;
   y = Math.sin(x) * 100;
@@ -36,7 +36,19 @@ idSensor = Math.floor(Math.random() * 511) + 1;
     return Math.abs(y);
   }
 }
+function pickRandom() {
+    const nums = 
+    [
+      1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16
+    ];
 
-const intervalId = setInterval(() => {
-  asyncCall();
+    const randomIndex = Math.floor(Math.random() * nums.length);
+    return nums[randomIndex];
+}
+
+
+setInterval(() => {
+  for (let i = 0; i < 4; i++) {
+    asyncCall().catch(console.error);
+  }
 }, 100);

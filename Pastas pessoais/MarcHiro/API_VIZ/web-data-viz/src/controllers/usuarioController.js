@@ -1,5 +1,5 @@
 var usuarioModel = require("../models/usuarioModel");
-// var aquarioModel = require("../models/aquarioModel");
+var plantacaoModel = require("../models/plantacaoModel");
 
 function autenticar(req, res) {
   var email = req.body.emailServer;
@@ -15,19 +15,44 @@ function autenticar(req, res) {
       .then(function (resultadoAutenticar) {
         console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
         console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
-
         if (resultadoAutenticar.length == 1) {
           console.log(resultadoAutenticar);
-            res.json({
-              idEmpresa: resultadoAutenticar[0].idEmpresa,
-              email: resultadoAutenticar[0].email,
-              razaoSocial: resultadoAutenticar[0].razaoSocial,
-              senha: resultadoAutenticar[0].senha,
+          plantacaoModel
+            .buscarplantacaosPorEmpresa(resultadoAutenticar[0].idEmpresa)
+            .then((resultadoplantacoes) => {
+              if (resultadoplantacoes.length > 0) {
+                res.json({
+                  idEmpresa: resultadoAutenticar[0].idEmpresa,
+                  email: resultadoAutenticar[0].email,
+                  razaoSocial: resultadoAutenticar[0].razaoSocial,
+                  senha: resultadoAutenticar[0].senha,
+                  plantacoes: resultadoplantacoes,
+                });
+              }
             });
         } else if (resultadoAutenticar.length == 0) {
-          res.status(403).send("Email e/ou senha inválido(s)");
-        } else {
-          res.status(403).send("Mais de um usuário com o mesmo login e senha!");
+          usuarioModel
+            .autenticar_user(email, senha)
+            .then(function (resultadoAutenticar) {
+              console.log(
+                `\nResultados encontrados: ${resultadoAutenticar.length}`
+              );
+              console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
+              console.log(resultadoAutenticar);
+              plantacaoModel
+                .buscarplantacoesPorEmpresa(resultadoAutenticar[0].fkEmpresa)
+                .then((resultadoplantacoes) => {
+                  if (resultadoplantacoes.length > 0) {
+                    res.json({
+                      idUsuario: resultadoAutenticar[0].idUsuario,
+                      fkEmpresa: resultadoAutenticar[0].fkEmpresa,
+                      apelidoUsuario: resultadoAutenticar[0].apelidoUsuario,
+                      email: resultadoAutenticar[0].email,
+                      plantacoes: resultadoplantacoes,
+                    });
+                  }
+                });
+            });
         }
       })
       .catch(function (erro) {
