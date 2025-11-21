@@ -48,29 +48,29 @@
       <div class="formulario-cadastro">
         <div class="campo-cadastro">
           <span>NOME DA EMPRESA</span>
-          <input type="text" value="Empresa" id="ipt_empresa" placeholder="Digite o nome da empresa" />
+          <input type="text" id="ipt_empresa" placeholder="Digite o nome da empresa" />
         </div>
 
-        <div class="cnpj-telefone">
-          <div class="campo-cadastro">
-            <span>CNPJ</span>
-            <input type="text" value="XXXXXXXXYYYYZZ" id="ipt_cnpj" placeholder="Digite o CNPJ: XX.XXX.XXX/YYYY-ZZ" />
-          </div>
+
+        <div class="campo-cadastro">
+          <span>CNPJ</span>
+          <input type="text" id="ipt_cnpj" placeholder="Digite o CNPJ: XX.XXX.XXX/YYYY-ZZ" />
         </div>
+
 
         <div class="campo-cadastro">
           <span>E-MAIL</span>
-          <input type="text" value="vitalis@gmail.com" id="ipt_email" placeholder="Digite o email" />
+          <input type="text" .com" id="ipt_email" placeholder="Digite o email" />
         </div>
 
         <div class="campo-cadastro">
           <span>CRIE UMA SENHA</span>
-          <input id="ipt_senha" value="Caju!@#" placeholder="Digite a senha" type="password" />
+          <input id="ipt_senha" placeholder="Digite a senha" type="password" />
         </div>
 
         <div class="campo-cadastro">
           <span>CONFIRME SUA SENHA</span>
-          <input id="ipt_confirmacao" value="Caju!@#" placeholder="Confirme a senha" type="password" />
+          <input id="ipt_confirmacao" placeholder="Confirme a senha" type="password" />
         </div>
 
         <br />
@@ -92,7 +92,7 @@
 </html>
 
 <script>
-  
+
 
   function cadastrar() {
     // aguardar();
@@ -105,23 +105,67 @@
     var senhaVar = ipt_senha.value;
     var confirmacaoSenhaVar = ipt_confirmacao.value;
 
+    var senhaMaiuscula = senhaVar.toUpperCase();
+    var incluiMaiuscula = senhaVar != senhaMaiuscula; // @OIECAJU   //@Oiecaju
+    var senhaMinuscula = senhaVar.toLowerCase();
+    var incluiMinuscula = senhaVar != senhaMinuscula // @oiecaju
+
+    console.log(cnpjVar)
     // Verificando se há algum campo em branco
     if (
       empresaVar == "" ||
       emailVar == "" ||
       senhaVar == "" ||
-      confirmacaoSenhaVar == ""
+      confirmacaoSenhaVar == "" ||
+      cnpjVar == ''
+
     ) {
       // cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
+
+      alert("Todos campos devem estar preenchidos");
 
       // finalizarAguardar();
       return false;
+
+    } else if ( // cenário de erro
+      senhaVar.length < 8 ||
+      confirmacaoSenhaVar != senhaVar ||
+      incluiMaiuscula == false || 
+      incluiMinuscula == false
+
+
+    ) {
+      // cardErro.style.display = "block";
+
+      alert("Coloque uma senha forte. A senha deve ter 8 ou mais caracteres, 1 letra maiúscula e 1 minúscula.");
+
+      // finalizarAguardar();
+      return false;
+    } else if (
+      cnpjVar.length != 14
+
+
+    ) {
+      // cardErro.style.display = "block";
+
+      alert("CNPJ deve ter 14 números");
+
+      // finalizarAguardar();
+      return false;
+    
+    } else if (
+      !emailVar.includes('@') || !emailVar.endsWith('.com') // cenario de erro
+    
+    ) {
+
+      alert("O email deve incluir '@' e finalizar com '.com'");
+
+      return false;
+
     }
 
     // Verificando se o código de ativação é de alguma empresa cadastrada
-    
+
 
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
@@ -164,11 +208,5 @@
 
     return false;
   }
-
-
-
-
-
-
 
 </script>

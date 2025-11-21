@@ -13,12 +13,12 @@ function autenticar(req, res) {
     usuarioModel
       .autenticar(email, senha)
       .then(function (resultadoAutenticar) {
-        console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
+        console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`); // empresas 
         console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
         if (resultadoAutenticar.length == 1) {
           console.log(resultadoAutenticar);
           plantacaoModel
-            .buscarplantacaosPorEmpresa(resultadoAutenticar[0].idEmpresa)
+            .buscarplantacoesPorEmpresa(resultadoAutenticar[0].idEmpresa)
             .then((resultadoplantacoes) => {
               if (resultadoplantacoes.length > 0) {
                 res.json({
@@ -30,7 +30,7 @@ function autenticar(req, res) {
                 });
               }
             });
-        } else if (resultadoAutenticar.length == 0) {
+        } else if (resultadoAutenticar.length == 0) { // funcionários
           usuarioModel
             .autenticar_user(email, senha)
             .then(function (resultadoAutenticar) {
@@ -42,7 +42,7 @@ function autenticar(req, res) {
               plantacaoModel
                 .buscarplantacoesPorEmpresa(resultadoAutenticar[0].fkEmpresa)
                 .then((resultadoplantacoes) => {
-                  if (resultadoplantacoes.length > 0) {
+                  if (resultadoplantacoes.length >= 0) {
                     res.json({
                       idUsuario: resultadoAutenticar[0].idUsuario,
                       fkEmpresa: resultadoAutenticar[0].fkEmpresa,
