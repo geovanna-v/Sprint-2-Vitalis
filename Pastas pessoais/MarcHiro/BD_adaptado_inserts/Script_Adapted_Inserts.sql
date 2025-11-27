@@ -63,7 +63,7 @@ INSERT INTO usuario (idSupervisor, fkEmpresa, apelidoUsuario, cpf, email, senha,
     
     
 CREATE TABLE plantacao(
-	idPlantacao INT PRIMARY KEY,
+	idPlantacao INT PRIMARY KEY AUTO_INCREMENT,
     fkEmpresa INT,
 	areaM2 DECIMAL (7,3) NOT NULL,
     tipoSolo varchar(100)

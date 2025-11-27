@@ -7,8 +7,8 @@ router.get("/:empresaId", function (req, res) {
   plantacaoController.buscarPlantacaoEmpresa(req, res);
 });
 
-router.post("/cadastrar", function (req, res) {
-  plantacaoController.cadastrar(req, res);
+router.post("/adcionarPlantacao", function (req, res) {
+  plantacaoController.adcionarPlantacao(req, res);
 })
 
 module.exports = router;

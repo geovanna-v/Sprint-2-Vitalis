@@ -13,10 +13,9 @@ function autenticar(req, res) {
     usuarioModel
       .autenticar(email, senha)
       .then(function (resultadoAutenticar) {
-        console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`); // empresas 
-        console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
+        // console.log(idEmpresa);
+        // console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
         if (resultadoAutenticar.length == 1) {
-          console.log(resultadoAutenticar);
           plantacaoModel
             .buscarplantacoesPorEmpresa(resultadoAutenticar[0].idEmpresa)
             .then((resultadoplantacoes) => {
@@ -29,6 +28,15 @@ function autenticar(req, res) {
                   plantacoes: resultadoplantacoes,
                 });
               }
+              else if (resultadoplantacoes.length == 0) {
+                res.json({
+                  idEmpresa: resultadoAutenticar[0].idEmpresa,
+                  email: resultadoAutenticar[0].email,
+                  razaoSocial: resultadoAutenticar[0].razaoSocial,
+                  senha: resultadoAutenticar[0].senha,
+                  
+                });
+              }
             });
         } else if (resultadoAutenticar.length == 0) { // funcionários
           usuarioModel
@@ -37,8 +45,8 @@ function autenticar(req, res) {
               console.log(
                 `\nResultados encontrados: ${resultadoAutenticar.length}`
               );
-              console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
-              console.log(resultadoAutenticar);
+              console.log(`Resultados: ${JSON.stringify(resultadoAutenticar[0])}`); // transforma JSON em String
+              console.log(resultadoAutenticar[0]);
               plantacaoModel
                 .buscarplantacoesPorEmpresa(resultadoAutenticar[0].fkEmpresa)
                 .then((resultadoplantacoes) => {

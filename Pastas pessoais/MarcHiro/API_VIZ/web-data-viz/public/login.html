@@ -47,12 +47,12 @@
       <div class="formulario-login">
         <div class="campo-login">
           <span>E-MAIL</span>
-          <input type="text" id="ipt_email" placeholder="Digite seu email" />
+          <input type="text" id="ipt_email" placeholder="Digite seu email" value="agrovale@gmail.com"/>
         </div>
 
         <div class="campo-login">
           <span>SENHA</span>
-          <input type="password" id="ipt_senha" placeholder="Digite sua senha" />
+          <input type="password" id="ipt_senha" placeholder="Digite sua senha" value="agrovale123"/>
         </div>
 
         <button onclick="entrar()" class="botao-login">LOGAR</button>
@@ -108,18 +108,18 @@
               if (json.idUsuario != undefined) {
                 sessionStorage.ID_USUARIO = json.idUsuario;
               }
-            } else {
-            sessionStorage.ID_USUARIO = json.idEmpresa;
+            } 
+            else {
+            sessionStorage.ID_EMPRESA = json.idEmpresa;
             }
             if (json.razaoSocial == undefined) {
             sessionStorage.NOME_USUARIO = json.apelidoUsuario;
             } else {
             sessionStorage.NOME_USUARIO = json.razaoSocial;
             }
-
-          
-
-            sessionStorage.plantacoes = JSON.stringify(json.plantacoes);
+            if(json.plantacoes != undefined){
+              sessionStorage.plantacoes = JSON.stringify(json.plantacoes);
+            }
             window.location = "./dashboard/cards.html";
           });
           

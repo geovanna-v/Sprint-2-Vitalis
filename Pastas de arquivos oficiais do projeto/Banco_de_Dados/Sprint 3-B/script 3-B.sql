@@ -1,5 +1,7 @@
 CREATE DATABASE vitalis; 
-
+drop table sensor;
+drop table leitura;
+drop table plantacao;
 USE vitalis;
 
 CREATE TABLE empresa (
@@ -62,16 +64,21 @@ INSERT INTO usuario (idSupervisor, fkEmpresa, apelidoUsuario, cpf, email, senha,
     
     
 CREATE TABLE plantacao(
-	idPlantacao INT PRIMARY KEY,
+	idPlantacao INT,
     fkEmpresa INT,
 	areaM2 DECIMAL (7,3) NOT NULL,
     tipoSolo varchar(100)
 );
-
+show tables;
 ALTER TABLE plantacao 
 	ADD constraint fk_empresa_plantacao
 		foreign key (fkEmpresa)
         references empresa(idEmpresa);
+        
+        describe sensor;
+ALTER TABLE plantacao 
+	ADD constraint pk_plantacao
+		primary key (idPlantacao);
 
 INSERT INTO plantacao (idPlantacao, fkEmpresa, areaM2) values 
 (1,1,55.75);
@@ -155,6 +162,44 @@ INSERT INTO leitura VALUES
             DESCRIBE leitura;
             DESCRIBE usuario;
 		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 SELECT  s.lote AS 'Lote',
 		s.coordSensor AS 'Coordenada',

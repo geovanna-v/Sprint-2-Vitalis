@@ -106,6 +106,34 @@
       </button>
     </div>
 
+
+    <div class="secao_perfil">
+      <h3 class="subtitulo_perfil">Adicionar Nova Plantacao</h3>
+
+
+
+      <label class="label_perfil" for="imp_area_plantacao">
+        Area da plantacao(m2):
+        <input class="input_perfil" type="number" id="imp_area_plantacao" placeholder="102.25" /><br /><br />
+      </label>
+      <br />
+      <label class="label_perfil" for="sel_solo_tipo">
+        Tipo do Solo:
+        <select class="select_perfil" id="sel_solo_tipo">
+          <option value="#">Selecione um tipo de solo</option>
+          <option value="Argissolo">Argissolo</option>
+          <option value="Latossolo">Latossolo</option>
+        </select>
+        <br />
+        <br />
+      </label>
+      <br />
+
+      <button class="btn_adicionar_perfil" onclick="adicionar_plantacao()">
+        Adicionar Plantacao
+      </button>
+    </div>
+
     <div class="secao_perfil">
       <button class="buttonSalvar_perfil" onclick="salvar()">
         Salvar Configurações
@@ -263,7 +291,68 @@
         ${bioEmpresa}`
     }
 
+
+
+
+
+
+
+
   </script>
 </body>
 
 </html>
+
+
+<script>
+
+  function adicionar_plantacao() {
+
+    var area = Number(imp_area_plantacao.value);
+    var tipo_solo = sel_solo_tipo.value;
+
+    // aguardar();
+
+    // console.log("FORM LOGIN: ", emailVar);
+    // console.log("FORM SENHA: ", senhaVar);
+
+    fetch("/plantacao/adcionarPlantacao", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+
+        idEmpresa: sessionStorage.ID_EMPRESA,
+        areaM2: area,
+        tipoSolo: tipo_solo
+      }),
+    }) 
+      .then(function (resposta) {
+        console.log(resposta);
+        if (resposta.ok) {
+          resposta.json().then((json) => {
+            console.log(json);
+            console.log(JSON.stringify(json));
+
+            // window.location = "./dashboard/cards.html";
+          });
+          
+        } else {
+          console.log("Houve um erro ao tentar adicionar plantacao!");
+          alert("Houve um erro ao tentar realizar o login!");
+
+
+          resposta.text().then((texto) => {
+            console.error(texto);
+            // finalizarAguardar(texto);
+          });
+        }
+      })
+      .catch(function (erro) {
+        console.log(erro);
+      });
+
+    return false;
+  }
+</script>
