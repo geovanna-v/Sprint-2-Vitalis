@@ -28,6 +28,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
 
 app.use("/", indexRouter);
+app.use("/dashboard")
 app.use("/usuarios", usuarioRouter);
 // app.use("/medidas", medidasRouter);
 app.use("/plantacao", plantacaoRouter);
