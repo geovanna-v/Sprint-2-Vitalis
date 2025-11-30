@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vitalis | DASHBOARD</title>
+  <link rel="stylesheet" href="./assets/style/style.css">
+</head>
+
+<body>
+
+  <div class="header">
+    <div class="container">
+      <div class="logo">
+        <img class="icon" src="assets/icon/icon_leaf.png" />
+        <h1 class="titulo">Vitalis</h1>
+      </div>
+
+      <ul class="navbar">
+        <li>
+          <a href="index.html">HOME</a>
+        </li>
+
+        <li>
+          <a href="pagCalculadora.html">SIMULADOR</a>
+        </li>
+
+        <li class="campo" style="width: 150px;">
+          <a style="width: 150px;" href="PaginaPerfil.html">
+            <div style="width: 100%; display: flex;justify-content: center; align-items: center;"><span>MEU
+                PERFIL</span><img alt="perfil" src="./assets/icon/icon_person.png"></div>
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+
+
+  <div class="banner">
+    <div class="container">
+      <h2>Plantação Cajueiro - BRS 226</h2>
+      <p>Tipo de solo: Argiloso vermelho</p>
+      <p>Data inicial: 15/10/2025</p>
+      <p>Local: Limoeiro do Norte, CE</p>
+      <p>Responsável: Luciana Mendes Souza</p>
+      <br>
+
+      <p>Umidade ideal: 20–30%</p>
+      <p>Última atualização: 12:59:59 15/10/2025</p>
+    </div>
+    <div class="container">
+      <div class="card-metricas">
+        <div class="card" id="card_lote">
+          <h2>100</h2>
+          <p>Quantidade de Sensores em Funcionamento</p>
+        </div>
+        <div class="card" id="card_umidade">
+          <h2>15%</h2>
+          <p>Umidade do Solo</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="labels">
+      <div id="div_abaixo"></div>Abaixo
+      <div id="div_faixaIdeal"></div>Faixa Ideal
+      <div id="div_acima"></div>Acima
+    </div>
+
+
+    <div class="chart-container">
+      <h3>Gráfico de Monitoramento de Umidade do Solo Semanal</h3>
+      <canvas id="chartSemanal" class="chart"></canvas>
+    </div>
+
+    <div class="chart-container green">
+      <h3>Gráfico de Monitoramento de Umidade do Solo Diário</h3>
+      <canvas id="chartDiario" class="chart"></canvas>
+    </div>
+
+
+
+
+  </div>
+
+
+  <div class="footer">
+    <div class="container">
+      <div class="left_container">
+        <h4>Soluções inteligentes para o agronegócio</h4>
+        <div class="contacts_container">
+          <img src="./assets/icon/instagran.png" alt="Instagram" />
+          <img src="./assets/icon/whatzapp.png" alt="WhatsApp" />
+          <img src="./assets/icon/facebook.png" alt="Facebook" />
+        </div>
+      </div>
+
+      <div class="right_container">
+        <div class="left">
+          <h6>Explore</h6>
+          <p>Home</p>
+          <p>Sobre Nós</p>
+          <p>Equipe</p>
+        </div>
+
+        <div class="vertical_ruler">
+          <hr />
+        </div>
+
+        <div class="right">
+          <div class="above">
+            <h6>Endereço</h6>
+            <p>
+              Rua Haddock Lobo 595<br />
+              São Paulo, SP<br />
+              01414-905
+            </p>
+          </div>
+
+          <div class="bellow">
+            <h6>Contato</h6>
+            <p>vitaliscaju@gmail.com</p>
+            <p>+55 11 4002-8922</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="middle">
+      <hr />
+    </div>
+
+    <div class="page_end">
+      <p>© 2025 Vitalis. Todos os direitos reservados.</p>
+      <p>Política de Privacidade</p>
+    </div>
+  </div>
+
+</body>
+
+</html>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+const idPlantacao = sessionStorage.ID_EMPRESA; // ou pegar do sessionStorage se quiser dinamismo
+let graficoSemanal = null;
+let graficoDiario = null;
+let proximaAtualizacao;
+
+// Inicializa o dashboard
+window.onload = function () {
+    atualizarDashboard();
+    setInterval(atualizarDashboard, 3000); // Atualiza a cada 3 segundos
+};
+
+function atualizarDashboard() {
+    atualizarUmidadeAtual();
+    atualizarGraficoSemanal();
+    atualizarGraficoDiario();
+}
+
+function atualizarUmidadeAtual() {
+    fetch(`/umidade/atual/${idPlantacao}`)
+        .then(r => r.json())
+        .then(data => {
+            document.querySelector("#card_umidade h2").innerHTML = data.valor + "%";
+        })
+        .catch(err => console.error("Erro card umidade:", err));
+}
+
+function atualizarGraficoSemanal() {
+    fetch(`/umidade/semanal/${idPlantacao}`)
+        .then(r => r.json())
+        .then(lista => {
+            if (!Array.isArray(lista)) return;
+
+            const labels = [];
+            const valores = [];
+
+            for (let i = 0; i < lista.length; i++) {
+                labels.push(lista[i].dia);
+                valores.push(lista[i].media);
+            }
+
+            const ctx = document.getElementById("chartSemanal");
+
+            if (graficoSemanal) {
+                graficoSemanal.data.labels = labels;
+                graficoSemanal.data.datasets[0].data = valores;
+                graficoSemanal.update();
+                return;
+            }
+
+            graficoSemanal = new Chart(ctx, {
+                type: "line",
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: "Umidade (%)",
+                        data: valores,
+                        borderWidth: 3,
+                        borderColor: "green",
+                        backgroundColor: "rgba(0,150,0,0.2)",
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 5,
+                        pointBackgroundColor: "green"
+                    }]
+                },
+                options: {
+                    scales: { y: { beginAtZero: true, max: 100, min: 20} }
+                }
+            });
+        })
+        .catch(err => console.error("Erro gráfico semanal:", err));
+}
+
+// ----------------------------
+// GRÁFICO DIÁRIO
+// ----------------------------
+function atualizarGraficoDiario() {
+    fetch(`/umidade/diaria/${idPlantacao}`)
+        .then(r => r.json())
+        .then(lista => {
+            if (!Array.isArray(lista)) return;
+
+            const labels = [];
+            const valores = [];
+
+            for (let i = 0; i < lista.length; i++) {
+                labels.push(lista[i].hora);
+                valores.push(lista[i].umidade);
+            }
+
+            const ctx = document.getElementById("chartDiario");
+
+            if (graficoDiario) {
+                graficoDiario.data.labels = labels;
+                graficoDiario.data.datasets[0].data = valores;
+                graficoDiario.update();
+                return;
+            }
+
+            graficoDiario = new Chart(ctx, {
+                type: "line",
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: "Umidade (%)",
+                        data: valores,
+                        borderWidth: 3,
+                        borderColor: "green",
+                        backgroundColor: "rgba(0,180,0,0.2)",
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 4,
+                        pointBackgroundColor: "green"
+                    }]
+                },
+                options: {
+                    scales: { y: { beginAtZero: true, max: 100, min: 20} }
+                }
+            });
+        })
+        .catch(err => console.error("Erro gráfico diário:", err));
+}
+</script>
