@@ -26,6 +26,10 @@
           <a href="pagCalculadora.html">SIMULADOR</a>
         </li>
 
+        <li>
+          <a href="bobia.html">BOB IA</a>
+        </li>
+
         <li class="campo" style="width: 150px;">
           <a style="width: 150px;" href="PaginaPerfil.html">
             <div style="width: 100%; display: flex;justify-content: center; align-items: center;"><span>MEU
@@ -144,126 +148,126 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-const idPlantacao = sessionStorage.ID_EMPRESA; // ou pegar do sessionStorage se quiser dinamismo
-let graficoSemanal = null;
-let graficoDiario = null;
-let proximaAtualizacao;
+  const idPlantacao = sessionStorage.ID_EMPRESA; // ou pegar do sessionStorage se quiser dinamismo
+  let graficoSemanal = null;
+  let graficoDiario = null;
+  let proximaAtualizacao;
 
-// Inicializa o dashboard
-window.onload = function () {
+  // Inicializa o dashboard
+  window.onload = function () {
     atualizarDashboard();
     setInterval(atualizarDashboard, 3000); // Atualiza a cada 3 segundos
-};
+  };
 
-function atualizarDashboard() {
+  function atualizarDashboard() {
     atualizarUmidadeAtual();
     atualizarGraficoSemanal();
     atualizarGraficoDiario();
-}
+  }
 
-function atualizarUmidadeAtual() {
+  function atualizarUmidadeAtual() {
     fetch(`/umidade/atual/${idPlantacao}`)
-        .then(r => r.json())
-        .then(data => {
-            document.querySelector("#card_umidade h2").innerHTML = data.valor + "%";
-        })
-        .catch(err => console.error("Erro card umidade:", err));
-}
+      .then(r => r.json())
+      .then(data => {
+        document.querySelector("#card_umidade h2").innerHTML = data.valor + "%";
+      })
+      .catch(err => console.error("Erro card umidade:", err));
+  }
 
-function atualizarGraficoSemanal() {
+  function atualizarGraficoSemanal() {
     fetch(`/umidade/semanal/${idPlantacao}`)
-        .then(r => r.json())
-        .then(lista => {
-            if (!Array.isArray(lista)) return;
+      .then(r => r.json())
+      .then(lista => {
+        if (!Array.isArray(lista)) return;
 
-            const labels = [];
-            const valores = [];
+        const labels = [];
+        const valores = [];
 
-            for (let i = 0; i < lista.length; i++) {
-                labels.push(lista[i].dia);
-                valores.push(lista[i].media);
-            }
+        for (let i = 0; i < lista.length; i++) {
+          labels.push(lista[i].dia);
+          valores.push(lista[i].media);
+        }
 
-            const ctx = document.getElementById("chartSemanal");
+        const ctx = document.getElementById("chartSemanal");
 
-            if (graficoSemanal) {
-                graficoSemanal.data.labels = labels;
-                graficoSemanal.data.datasets[0].data = valores;
-                graficoSemanal.update();
-                return;
-            }
+        if (graficoSemanal) {
+          graficoSemanal.data.labels = labels;
+          graficoSemanal.data.datasets[0].data = valores;
+          graficoSemanal.update();
+          return;
+        }
 
-            graficoSemanal = new Chart(ctx, {
-                type: "line",
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: "Umidade (%)",
-                        data: valores,
-                        borderWidth: 3,
-                        borderColor: "green",
-                        backgroundColor: "rgba(0,150,0,0.2)",
-                        fill: true,
-                        tension: 0.4,
-                        pointRadius: 5,
-                        pointBackgroundColor: "green"
-                    }]
-                },
-                options: {
-                    scales: { y: { beginAtZero: true, max: 100, min: 20} }
-                }
-            });
-        })
-        .catch(err => console.error("Erro gráfico semanal:", err));
-}
+        graficoSemanal = new Chart(ctx, {
+          type: "line",
+          data: {
+            labels: labels,
+            datasets: [{
+              label: "Umidade (%)",
+              data: valores,
+              borderWidth: 3,
+              borderColor: "green",
+              backgroundColor: "rgba(0,150,0,0.2)",
+              fill: true,
+              tension: 0.4,
+              pointRadius: 5,
+              pointBackgroundColor: "green"
+            }]
+          },
+          options: {
+            scales: { y: { beginAtZero: true, max: 100, min: 20 } }
+          }
+        });
+      })
+      .catch(err => console.error("Erro gráfico semanal:", err));
+  }
 
-// ----------------------------
-// GRÁFICO DIÁRIO
-// ----------------------------
-function atualizarGraficoDiario() {
+  // ----------------------------
+  // GRÁFICO DIÁRIO
+  // ----------------------------
+  function atualizarGraficoDiario() {
     fetch(`/umidade/diaria/${idPlantacao}`)
-        .then(r => r.json())
-        .then(lista => {
-            if (!Array.isArray(lista)) return;
+      .then(r => r.json())
+      .then(lista => {
+        if (!Array.isArray(lista)) return;
 
-            const labels = [];
-            const valores = [];
+        const labels = [];
+        const valores = [];
 
-            for (let i = 0; i < lista.length; i++) {
-                labels.push(lista[i].hora);
-                valores.push(lista[i].umidade);
-            }
+        for (let i = 0; i < lista.length; i++) {
+          labels.push(lista[i].hora);
+          valores.push(lista[i].umidade);
+        }
 
-            const ctx = document.getElementById("chartDiario");
+        const ctx = document.getElementById("chartDiario");
 
-            if (graficoDiario) {
-                graficoDiario.data.labels = labels;
-                graficoDiario.data.datasets[0].data = valores;
-                graficoDiario.update();
-                return;
-            }
+        if (graficoDiario) {
+          graficoDiario.data.labels = labels;
+          graficoDiario.data.datasets[0].data = valores;
+          graficoDiario.update();
+          return;
+        }
 
-            graficoDiario = new Chart(ctx, {
-                type: "line",
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: "Umidade (%)",
-                        data: valores,
-                        borderWidth: 3,
-                        borderColor: "green",
-                        backgroundColor: "rgba(0,180,0,0.2)",
-                        fill: true,
-                        tension: 0.4,
-                        pointRadius: 4,
-                        pointBackgroundColor: "green"
-                    }]
-                },
-                options: {
-                    scales: { y: { beginAtZero: true, max: 100, min: 20} }
-                }
-            });
-        })
-        .catch(err => console.error("Erro gráfico diário:", err));
-}
+        graficoDiario = new Chart(ctx, {
+          type: "line",
+          data: {
+            labels: labels,
+            datasets: [{
+              label: "Umidade (%)",
+              data: valores,
+              borderWidth: 3,
+              borderColor: "green",
+              backgroundColor: "rgba(0,180,0,0.2)",
+              fill: true,
+              tension: 0.4,
+              pointRadius: 4,
+              pointBackgroundColor: "green"
+            }]
+          },
+          options: {
+            scales: { y: { beginAtZero: true, max: 100, min: 20 } }
+          }
+        });
+      })
+      .catch(err => console.error("Erro gráfico diário:", err));
+  }
 </script>
