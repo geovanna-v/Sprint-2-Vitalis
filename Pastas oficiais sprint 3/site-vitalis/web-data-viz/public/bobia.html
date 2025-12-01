@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vitalis | BobIA</title>
-    <link rel="stylesheet" href="./assets/style/style.css">
+    <link rel="stylesheet" href="./assets/style/style.css"
 </head>
 
 <body>
@@ -38,15 +38,21 @@
 
     <!-- Aqui termina o header -->
 
+    <div id="imgFundo">
+      <img src="./assets/imgs/cajuzao.jpg" width="100%" alt="">
+    </div>
+
     <div id="container-bob">
-        <h1>BobIA</h1>
+        <div id="div_glass">
+          <h1>BobIA</h1>
         <textarea id="pergunta" type="text" placeholder="Digite a pergunta..."></textarea>
         <br><br>
         <button onclick="gerarResposta()">Gerar Resposta</button>
         <h3>Resposta da IA:</h3>
-        <div id="resposta"></div>
-    </div>
-
+      </div>
+      <div id="resposta"></div>
+      </div>
+      
 
 <!-- Aqui começa o footer -->
    <div class="footer">

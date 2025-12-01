@@ -1044,3 +1044,75 @@ canvas {
   max-width: 400px;
   margin-left: 33%;
 }
+
+/* BobIA */
+
+#container-bob{
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    display: grid;
+    object-fit: cover;
+    object-position: center;
+    object-fit: cover;
+}
+
+#imgFundo{
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    opacity: 15%;
+}
+
+#div_glass{
+    background-color: #ffcfa08e;
+    margin-top: 40%;
+    width: 400px;
+    display: grid;
+    height: 300px;
+    border-radius: 10px;
+    border-color: #ffebd7;
+    filter: opacity(100%);
+    padding: 20px;
+    transition: 1s ease;
+    box-shadow: 0px 0px 20px #4421004d;
+}
+
+#div_glass:hover{
+    scale: 101%;
+    transform: translateZ(10px);
+    box-shadow: 0px 0px 10px rgba(255, 136, 0, 0.445);
+    border-color: #fcdfc3;
+}
+
+#pergunta{
+    padding: 10px;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 10px;
+    resize: none;
+    overflow: hidden;
+    outline: #ff7b00;
+    transition: 1s ease;
+    height: 150px;
+}
+
+#pergunta:focus{
+    outline-color: #fcdfc3;
+    overflow: auto;
+}
+
+button{
+    transition: 0.3s ease;
+}
+
+button:hover{
+    background-color: #ff7b00;
+    color: #ffffff;
+    text-shadow: 0px 0px 1px greenyellow;
+}
+
+h1{
+    text-align: center;
+}
