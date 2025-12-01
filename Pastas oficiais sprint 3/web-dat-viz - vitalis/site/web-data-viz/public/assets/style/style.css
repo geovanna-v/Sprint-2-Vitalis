@@ -28,6 +28,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-left: -16%;
 }
 
 .icon {
@@ -42,10 +43,11 @@ body {
 .navbar {
   display: flex;
   list-style: none;
-  width: 700px;
+  width: 550px;
   justify-content: space-between;
   align-items: center;
   font-weight: bolder;
+  margin-right: -8%;
 }
 
 .navbar a {
@@ -382,6 +384,26 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
 }
 
+.div_sobreVitalis-suporte{
+  margin-top: 10%;
+  justify-content: space-around;
+  text-align: center;
+  color: #e54906;
+  background-image: linear-gradient(to right, #fdf0ec);
+  padding: 40px;
+  display: flex;
+  height: 80%;
+  width: 90%;
+}
+
+.div_conteudo-suporte{
+  width: 30%;
+  border: 0 2px solid;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
 /* ======== TÍTULOS ======== */
 .titulo_perfil {
   color: #e9791a;
@@ -506,7 +528,7 @@ button {
 }
 
 .filtro_laranja {
-  background-image: linear-gradient(to right, #fb6717, transparent 70%);
+  background-image: linear-gradient(to right, #fb6717c0, transparent 70%);
   width: 100%;
   height: 450px;
   z-index: 2;
@@ -544,9 +566,25 @@ button {
   color: white;
 }
 
+.titulos-index a{
+  font-size: 24px;
+  color: white;
+  text-decoration: none;
+  transition: 2.0s ease;
+  justify-content: space-between;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.titulos-index a:hover{
+  color: orange;
+}
+
 .botoes-index {
   display: block;
   margin-top: 5%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .botoes-index button {
@@ -1006,4 +1044,3 @@ canvas {
   max-width: 400px;
   margin-left: 33%;
 }
-
