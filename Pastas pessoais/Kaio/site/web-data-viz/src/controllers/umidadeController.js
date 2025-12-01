@@ -1,6 +1,6 @@
 var umidadeModel = require("../models/umidadeModel");
 function buscarUmidadeAtual(req, res) {
-    const idPlantacao = req.params.idPlantacao;
+    const idEmpresa = req.params.idEmpresa;
 
     umidadeModel.buscarUmidadeAtual(idPlantacao)
         .then(resultado => res.json(resultado[0] || { valor: null }))
@@ -11,7 +11,7 @@ function buscarUmidadeAtual(req, res) {
 }
 
 function buscarUmidadeDiaria(req, res) {
-    const idPlantacao = req.params.idPlantacao;
+    const idEmpresa = req.params.idEmpresa;
 
     umidadeModel.buscarUmidadeDiaria(idPlantacao)
         .then(resultado => res.json(resultado.reverse())) // Mais antigo → mais recente
@@ -22,7 +22,7 @@ function buscarUmidadeDiaria(req, res) {
 }
 
 function buscarUmidadeSemanal(req, res) {
-    const idPlantacao = req.params.idPlantacao;
+    const idEmpresa = req.params.idEmpresa;
 
     umidadeModel.buscarUmidadeSemanal(idPlantacao)
         .then(resultado => {

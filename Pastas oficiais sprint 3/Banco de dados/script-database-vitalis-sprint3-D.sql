@@ -132,4 +132,53 @@ CREATE TABLE leitura (
             describe sensor;
             describe leitura;
             describe usuario;
-            
+
+-- VIEWS PARA A DASHBOARD (acrescentar datas e horas diferentes para a dashboard diária e semanal)           
+CREATE VIEW vw_kpiUmidade AS  
+	SELECT leitura.leituraUmidadeSolo AS valor
+	FROM leitura
+	JOIN sensor ON leitura.fkSensor = sensor.idSensor 
+    JOIN plantacao ON sensor.fkPlantacao = plantacao.idPlantacao
+    JOIN empresa ON plantacao.fkEmpresa = empresa.idEmpresa
+	ORDER BY leitura.idLeitura DESC
+	LIMIT 1; -- // KPI da umidade do solo (última leitura)
+
+CREATE VIEW vw_dashboardDiaria AS
+	SELECT HOUR(dataLeitura) AS hora,
+	ROUND(AVG(leituraUmidadeSolo), 2) AS umidade
+	FROM leitura
+	JOIN sensor ON leitura.fkSensor = sensor.idSensor
+    JOIN plantacao ON sensor.fkPlantacao = plantacao.idPlantacao
+    JOIN empresa ON plantacao.fkEmpresa = empresa.idEmpresa
+	GROUP BY HOUR(dataLeitura)
+	ORDER BY hora; DESC
+    LIMIT 12 -- // Dados para a dashboard de umidade diaria (de hora em hora) -- As últimas 12 horas 
+        
+CREATE VIEW wv_dashboardSemanal AS 
+	SELECT DATE(dataLeitura) AS dia,
+	ROUND(AVG(leituraUmidadeSolo), 2) AS media
+	FROM leitura
+	JOIN sensor ON leitura.fkSensor = sensor.idSensor
+    JOIN plantacao ON sensor.fkPlantacao = plantacao.idPlantacao
+    JOIN empresa ON plantacao.fkEmpresa = empresa.idEmpresa
+	GROUP BY DATE(dataLeitura)
+	ORDER BY dia DESC
+    LIMIT 7; -- // Dados para a dashboard de umidade semanal -- últimos 7 dias
+
+CREATE VIEW vw_kpiQtdSensores AS
+	SELECT COUNT(idSensor) as "Quantidade de Sensores"
+    FROM sensor JOIN plantacao 
+    ON sensor.fkPlantacao = plantacao.idPlantacao;
+	
+SELECT * FROM vw_dashboardDiaria;
+SELECT * FROM vw_dashboardDiaria WHERE plantacao.fkEmpresa = 1;
+SELECT * FROM leitura ORDER BY (dataLeitura) DESC LIMIT 1;
+SELECT * FROM wv_dashboardSemanal LIMIT 7;
+
+SELECT COUNT(idSensor) as "Quantidade de Sensores"
+    FROM sensor JOIN plantacao 
+    ON sensor.fkPlantacao = plantacao.idPlantacao;
+
+select * from leitura JOIN sensor ON leitura.fkSensor = sensor.idSensor JOIN plantacao ON sensor.fkPlantacao = plantacao.idPlantacao JOIN empresa ON plantacao.fkEmpresa = empresa.idEmpresa;
+
+

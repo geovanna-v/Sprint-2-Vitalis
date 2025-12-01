@@ -144,7 +144,9 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-const idPlantacao = sessionStorage.ID_EMPRESA; // ou pegar do sessionStorage se quiser dinamismo
+const idEmpresa = sessionStorage.ID_EMPRESA; // ou pegar do sessionStorage se quiser dinamismo
+const idPlantacao = sessionStorage.plantacoes[0].idPlantacao; //  pegar o id da plantação
+
 let graficoSemanal = null;
 let graficoDiario = null;
 let proximaAtualizacao;

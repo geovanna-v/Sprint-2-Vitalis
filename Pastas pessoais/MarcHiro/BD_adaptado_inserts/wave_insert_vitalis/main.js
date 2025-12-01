@@ -7,8 +7,8 @@ let idSensor;
 let poolBancoDados = mysql
   .createPool({
     host: "127.0.0.1",
-    user: "root",
-    password: "Alucard22*",
+    user: "aluno",
+    password: "sptech",
     database: "vitalis",
     port: 3306,
   })

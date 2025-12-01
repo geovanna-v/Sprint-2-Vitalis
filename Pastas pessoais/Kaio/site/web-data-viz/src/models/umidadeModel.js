@@ -1,45 +1,35 @@
 var database = require("../database/config");
 
-function buscarUmidadeAtual(idPlantacao) {
+function buscarUmidadeAtual(idEmpresa) { // KPI da umidade do solo (última leitura)
   const sql = `
-    SELECT leitura.leituraUmidadeSolo AS valor
-        FROM leitura
-        JOIN sensor ON leitura.fkSensor = sensor.idSensor
-        WHERE sensor.fkPlantacao = ${idPlantacao}
-        ORDER BY leitura.idLeitura DESC
-        LIMIT 1;
+    SELECT * FROM vw_kpiUmidade;
     `;
   return database.executar(sql);
 }
 
-function buscarUmidadeDiaria(idPlantacao) {
+function buscarUmidadeDiaria(idEmpresa) { // Dados para a dashboard de umidade diaria (de hora em hora)
   const sql = `
-    SELECT HOUR(dataLeitura) AS hora,
-        ROUND(AVG(leituraUmidadeSolo), 2) AS umidade
-        FROM leitura
-        JOIN sensor ON leitura.fkSensor = sensor.idSensor
-        WHERE sensor.fkPlantacao = 1
-        GROUP BY HOUR(dataLeitura)
-        ORDER BY hora;
+    SELECT * FROM vw_dashboardUmidade;
     `;
   return database.executar(sql);
 }
 
-function buscarUmidadeSemanal(idPlantacao) {
+function buscarUmidadeSemanal(idEmpresa) { // Dados para a dashboard de umidade semanal
   const sql = `
-SELECT DATE(dataLeitura) AS dia,
-       ROUND(AVG(leituraUmidadeSolo), 2) AS media
-FROM leitura
-JOIN sensor ON leitura.fkSensor = sensor.idSensor
-WHERE sensor.fkPlantacao = ${idPlantacao}
-GROUP BY DATE(dataLeitura)
-ORDER BY dia;
+    SELECT * FROM vw_dashboardSemanal;
     `;
   return database.executar(sql);
+}
+
+function buscarQtdSensor() {
+  const sql = `
+  SELECT * FROM vw_kpiQtdSensores;
+  `
 }
 
 module.exports = {
   buscarUmidadeAtual,
   buscarUmidadeDiaria,
   buscarUmidadeSemanal,
+  buscarQtdSensor
 };
