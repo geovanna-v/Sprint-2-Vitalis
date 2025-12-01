@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/style/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="assets/icon/icon_leaf.png" />
+
+    <title>Vitalis | SIMULADOR</title>
+  </head>
+
+  <body>
+    <div class="header">
+      <div class="container">
+        <div class="logo">
+          <img class="icon" src="assets/icon/icon_leaf.png" />
+          <h1 class="titulo">Vitalis</h1>
+        </div>
+
+        <ul class="navbar">
+          <li>
+            <a href="index.html">HOME</a>
+          </li>
+
+          <li>
+            <a href="pagCalculadora.html">SIMULADOR</a>
+          </li>
+
+          <li class="campo">
+            <a href="login.html">LOGIN</a>
+          </li>
+
+          <li class="campo">
+            <a href="cadastro.html">CADASTRO</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Inicio da Calculadora -->
+
+    <div class="pagCalculadora">
+      <div class="bannerCalculadora"></div>
+
+      <div class="box" style="display: flex" style="align-items: center">
+        <span class="titulo"> Como Funciona? </span>
+        <p class="paragrafo">
+          A Cajulcadora é uma ferramenta desenvolvida para apoiar produtores de
+          caju na gestão eficiente da água e no aumento da produtividade da
+          plantação.
+        </p>
+        <span class="titulo">Com ela, você pode simular:</span> <br />
+        <p>
+          O quanto de água está gastando em relação ao ideal; Quanto poderia
+          economizar por ano com a irrigação adequada; Qual seria o ganho
+          potencial de produção de castanhas utilizando nossos sensores. Assim,
+          o produtor tem uma visão clara de onde pode economizar e como melhorar
+          seus resultados, unindo sustentabilidade e lucratividade.
+        </p>
+      </div>
+    </div>
+
+    <div class="containerPai">
+      <div class="containerCalculo">
+        <p class="conteudo">Digite a área da sua plantação em hectares:</p>
+        <input class="inputCalculadora" id="input_hectare" type="text" />
+
+        <p class="conteudo">
+          Digite seu consumo de água na plantação em m³/ha/mês:
+        </p>
+        <input class="inputCalculadora" id="input_consumo_agua_atual" type="text"/>
+        <br><br>
+
+        <button class="botaoCalcular" onclick="economiaAgua()">Calcular</button>
+        <br>
+
+        <div class="imgInput1"></div>
+
+          <div class="mensagem" id="div_mensagem" style="height: 200px;"></div>
+      </div>
+    </div>
+
+    <div class="containerPai">
+      <div class="containerCalculo2">
+        <p class="conteudo">
+          Digite a produção atual de castanhas em Kg/ha/ano:
+          <input class="inputCalculadora" id="input_producao_atual" type="text"  />
+        </p>
+
+        <button class="botaoCalcular" onclick="economiaCastanha()">
+          Calcular
+        </button>
+
+        <div class="imgInput2"></div>
+
+          <div class="mensagem" id="div_mensagem1" style="height: 200px;"></div>
+      </div>
+    </div>
+
+    <!-- Fim da Calculadora -->
+
+    <div class="footer">
+      <div class="container">
+        <div class="left_container">
+          <h4>Soluções inteligentes para o agronegócio</h4>
+          <div class="contacts_container">
+            <img src="./assets/icon/instagran.png" alt="Instagram" />
+            <img src="./assets/icon/whatzapp.png" alt="WhatsApp" />
+            <img src="./assets/icon/facebook.png" alt="Facebook" />
+          </div>
+        </div>
+
+        <div class="right_container">
+          <div class="left">
+            <h6>Explore</h6>
+            <p>Home</p>
+            <p>Sobre Nós</p>
+            <p>Equipe</p>
+          </div>
+
+          <div class="vertical_ruler">
+            <hr />
+          </div>
+
+          <div class="right">
+            <div class="above">
+              <h6>Endereço</h6>
+              <p>
+                Rua Haddock Lobo 595<br />
+                São Paulo, SP<br />
+                01414-905
+              </p>
+            </div>
+
+            <div class="bellow">
+              <h6>Contato</h6>
+              <p>vitaliscaju@gmail.com</p>
+              <p>+55 11 4002-8922</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="middle">
+        <hr />
+      </div>
+
+      <div class="page_end">
+        <p>© 2025 Vitalis. Todos os direitos reservados.</p>
+        <p>Política de Privacidade</p>
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+  var RECOMENDACAO_AGUA = 5000; // 5000 ha³ de água = 5L - 5dm³ = 0,005m³ ----> 1 ha³ = 1.000.000 m³
+  var VALOR_AGUA_M3 = 0.4;
+  var VALOR_KG_CASTANHA = 6;
+  var MEDIA_CASTANHA_POR_HECTARE = 600;
+
+  function economiaAgua() {
+    var hectare = Number(input_hectare.value);
+    var consumoAtual = Number(input_consumo_agua_atual.value);
+
+    var gastoAtual = hectare * consumoAtual;
+    var gastoIdeal = hectare * RECOMENDACAO_AGUA;
+    var desperdicio = gastoAtual - gastoIdeal;
+
+    var gastoTotalAtual = gastoAtual * VALOR_AGUA_M3;
+    var gastoTotalIdeal = gastoIdeal * VALOR_AGUA_M3;
+
+    if (hectare > 0 && consumoAtual > 0) {
+      if (desperdicio < 0) {
+        desperdicio = Math.abs(desperdicio);
+        gastoTotalIdeal = desperdicio * VALOR_AGUA_M3;
+
+        div_mensagem.innerHTML = `<div>
+                Hoje, sua fazenda consome <b>${gastoAtual} m³/ano de água</b>. <br><br> 
+                Gasto atual: <b>R$${gastoTotalAtual.toFixed(2)}</b><br><br> 
+                Você está utilizando <b>${desperdicio} m³/ano a menos que o ideal</b>, 
+                o que equivale a <b>R$${gastoTotalIdeal.toFixed(2)}</b>. 
+                Essa economia pode prejudicar a qualidade do fruto.<br><br>
+                Com nossos sensores, sua irrigação será ajustada para o ideal: 
+                <b>${gastoIdeal} m³/ano</b>.
+            </div>`;
+      } else if (desperdicio == 0) {
+        div_mensagem.innerHTML = `<div>
+                Sua fazenda consome exatamente <b>${gastoAtual} m³/ano</b>, 
+                com um gasto de <b>R$${gastoTotalAtual.toFixed(2)}</b>.<br><br> 
+                Você está utilizando a quantidade ideal. 
+                Nossos sensores ajudarão a manter essa assertividade por mais tempo.
+            </div>`;
+      } else {
+        div_mensagem.innerHTML = `
+              <div>
+                Hoje, sua fazenda consome <b>${gastoAtual} m³/ano</b>, 
+                com um gasto de <b>R$${gastoTotalAtual.toFixed(2)}</b>.<br><br> 
+                Desperdício identificado: <b>${desperdicio} m³/ano</b>.<br><br> 
+                Com nossos sensores, o gasto será ajustado para <b>${gastoIdeal} m³/ano</b>, 
+                gerando economia de <b>R$${(
+                  desperdicio * VALOR_AGUA_M3
+                ).toFixed(2)}</b>.
+                </div>
+            `;
+      }
+    }
+  }
+
+  function economiaCastanha() {
+    var hectare = Number(input_hectare.value);
+    var producaoAtual = Number(input_producao_atual.value);
+
+    var producaoTotalAtual = producaoAtual * hectare;
+    var producaoPotencial = hectare * MEDIA_CASTANHA_POR_HECTARE;
+
+    var perdaProducao = producaoPotencial - producaoTotalAtual;
+    var receitaAtual = producaoTotalAtual * VALOR_KG_CASTANHA;
+    var perdaReceita = perdaProducao * VALOR_KG_CASTANHA;
+    var porcentagemLucro =
+      100 - (receitaAtual / (producaoPotencial * VALOR_KG_CASTANHA)) * 100;
+
+    if (hectare > 0 && producaoAtual > 0) {
+      if (producaoTotalAtual < producaoPotencial) {
+        div_mensagem1.innerHTML = `<div>
+                Sua produção atual é de <b>${producaoTotalAtual} Kg/ano</b>, 
+                mas poderia ser <b>${producaoPotencial} Kg/ano</b>.<br><br> 
+                Você deixa de produzir <b>${perdaProducao} Kg/ano</b>, 
+                o que equivale a <b>R$${perdaReceita.toFixed(
+                  2
+                )}</b> de receita perdida.<br><br>
+                Com nossos sensores, seu ganho pode aumentar em até <b>${porcentagemLucro.toFixed(
+                  1
+                )}%</b>.
+            </div>`;
+      } else if (producaoTotalAtual == producaoPotencial) {
+        div_mensagem1.innerHTML = `<div>
+                Sua produção atual é de <b>${producaoTotalAtual} Kg/ano</b>.<br><br> 
+                Você está na média ideal. 
+                Nossos sensores podem ajudar a manter esse desempenho.
+            </div>`;
+      } else {
+        div_mensagem1.innerHTML = `<div>
+                Sua produção de <b>${producaoTotalAtual} Kg/ano</b> 
+                está acima da média esperada.<br><br> 
+                Parabéns pelo manejo! O monitoramento pode ajudar a manter esse nível.
+            </div>`;
+      }
+    }
+  }
+</script>
