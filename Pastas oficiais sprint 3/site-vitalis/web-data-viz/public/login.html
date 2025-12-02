@@ -102,6 +102,7 @@
             console.log(JSON.stringify(json));
 
             sessionStorage.EMAIL_USUARIO = json.email
+            console.log(`${json.email}`)
 
             if (json.idEmpresa == undefined) {
               sessionStorage.ID_EMPRESA = json.fkEmpresa;
@@ -123,8 +124,9 @@
               sessionStorage.plantacoes = JSON.stringify(json.plantacoes);
             }
             
-            if(json.email.includes('@suporte.com','@atendimento.com')){
+            if(json.email.includes('@suporte.com') || json.email.includes('@atendimento.com')){
               window.location = "Suporte.html";
+              console.log('teste Login');
             }else {
               window.location = "dashBoard.html";
             }
