@@ -6,10 +6,10 @@ use vitalis;
 CREATE TABLE empresa (
 	idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
     razaoSocial VARCHAR (100) NOT NULL,
+    dataEntrada DATETIME DEFAULT CURRENT_TIMESTAMP,
 	cnpj CHAR(14) NOT NULL UNIQUE,
     email VARCHAR(50),
-    senha VARCHAR(100),
-    dataEntrada DATETIME DEFAULT CURRENT_TIMESTAMP
+    senha VARCHAR(100)
 );
 
 INSERT INTO empresa (razaoSocial, cnpj, email, senha) VALUES
@@ -75,7 +75,6 @@ ALTER TABLE plantacao
 INSERT INTO plantacao (idPlantacao, fkEmpresa, areaM2, tipoSolo) values 
 (1, 1, 55.75, 'Argissolo');
 
-
 CREATE TABLE sensor (
 idSensor INT PRIMARY KEY,
 lote INT NOT NULL,
@@ -113,7 +112,7 @@ CREATE TABLE leitura (
 	idLeitura INT AUTO_INCREMENT,
 	dataLeitura DATETIME DEFAULT CURRENT_TIMESTAMP,
     fkSensor INT,
-	leituraUmidadeSolo DECIMAL(5,2) NOT NULL,
+	leituraUmidade DECIMAL(5,2) NOT NULL,
 		CONSTRAINT pkLeitura
 			PRIMARY KEY (idLeitura, fkSensor),
 		CONSTRAINT fkLeituraSensor
@@ -135,28 +134,27 @@ CREATE TABLE leitura (
 
 -- VIEWS PARA A DASHBOARD (acrescentar datas e horas diferentes para a dashboard diária e semanal)           
 CREATE VIEW vw_kpiUmidade AS  
-	SELECT leitura.leituraUmidadeSolo AS valor
+	SELECT AVG(leitura.leituraUmidade) AS "Média da Umidade do Solo na Plantação" 
 	FROM leitura
 	JOIN sensor ON leitura.fkSensor = sensor.idSensor 
     JOIN plantacao ON sensor.fkPlantacao = plantacao.idPlantacao
     JOIN empresa ON plantacao.fkEmpresa = empresa.idEmpresa
-	ORDER BY leitura.idLeitura DESC
-	LIMIT 1; -- // KPI da umidade do solo (última leitura)
+	ORDER BY leitura.idLeitura DESC; -- // KPI da umidade do solo (última leitura)
 
 CREATE VIEW vw_dashboardDiaria AS
 	SELECT HOUR(dataLeitura) AS hora,
-	ROUND(AVG(leituraUmidadeSolo), 2) AS umidade
+	ROUND(AVG(leituraUmidade), 2) AS umidade
 	FROM leitura
 	JOIN sensor ON leitura.fkSensor = sensor.idSensor
     JOIN plantacao ON sensor.fkPlantacao = plantacao.idPlantacao
     JOIN empresa ON plantacao.fkEmpresa = empresa.idEmpresa
 	GROUP BY HOUR(dataLeitura)
-	ORDER BY hora; DESC
-    LIMIT 12 -- // Dados para a dashboard de umidade diaria (de hora em hora) -- As últimas 12 horas 
+	ORDER BY hora DESC
+    LIMIT 12; -- // Dados para a dashboard de umidade diaria (de hora em hora) -- As últimas 12 horas 
         
 CREATE VIEW wv_dashboardSemanal AS 
 	SELECT DATE(dataLeitura) AS dia,
-	ROUND(AVG(leituraUmidadeSolo), 2) AS media
+	ROUND(AVG(leituraUmidade), 2) AS media
 	FROM leitura
 	JOIN sensor ON leitura.fkSensor = sensor.idSensor
     JOIN plantacao ON sensor.fkPlantacao = plantacao.idPlantacao
@@ -168,7 +166,9 @@ CREATE VIEW wv_dashboardSemanal AS
 CREATE VIEW vw_kpiQtdSensores AS
 	SELECT COUNT(idSensor) as "Quantidade de Sensores"
     FROM sensor JOIN plantacao 
-    ON sensor.fkPlantacao = plantacao.idPlantacao;
+    ON sensor.fkPlantacao = plantacao.idPlantacao 
+    JOIN empresa 
+    ON plantacao.fkEmpresa = empresa.idEmpresa; -- // KPI da quantidade de sensores por plantação 
 	
 SELECT * FROM vw_dashboardDiaria;
 SELECT * FROM vw_dashboardDiaria WHERE plantacao.fkEmpresa = 1;
@@ -178,7 +178,10 @@ SELECT * FROM wv_dashboardSemanal LIMIT 7;
 SELECT COUNT(idSensor) as "Quantidade de Sensores"
     FROM sensor JOIN plantacao 
     ON sensor.fkPlantacao = plantacao.idPlantacao;
-
-select * from leitura JOIN sensor ON leitura.fkSensor = sensor.idSensor JOIN plantacao ON sensor.fkPlantacao = plantacao.idPlantacao JOIN empresa ON plantacao.fkEmpresa = empresa.idEmpresa;
-
-
+    
+select * from leitura JOIN sensor 
+ON leitura.fkSensor = sensor.idSensor 
+JOIN plantacao 
+ON sensor.fkPlantacao = plantacao.idPlantacao 
+JOIN empresa 
+ON plantacao.fkEmpresa = empresa.idEmpresa;
