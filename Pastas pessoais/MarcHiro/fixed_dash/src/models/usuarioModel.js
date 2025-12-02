@@ -1,0 +1,38 @@
+var database = require("../database/config")
+
+function autenticar(email, senha) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
+    var instrucaoSql = `
+        SELECT idEmpresa, razaoSocial, email, cnpj FROM empresa WHERE email = '${email}' AND senha = '${senha}';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+function autenticar_user(email, senha) {
+    var instrucaoSql = `
+        SELECT u.idUsuario, u.fkEmpresa, u.apelidoUsuario, u.email FROM usuario u join empresa e on u.fkEmpresa = e.idEmpresa WHERE u.email = '${email}' AND u.senha = '${senha}';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+function cadastrar(nome, email, senha, cnpj) {
+    var instrucaoSql = `
+        INSERT INTO empresa (razaoSocial, email, senha, cnpj) VALUES ('${nome}', '${email}', '${senha}', '${cnpj}');
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+function cadastrarFuncionario(fkEmpresa, email, senha, nivelCargo, nome) {
+    var instrucaoSql = `
+        INSERT INTO usuario (fkEmpresa, email, senha, nivelCargo, apelidoUsuario) VALUES ('${fkEmpresa}', '${email}', '${senha}', ${nivelCargo}, '${nome}');
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+module.exports = {
+    autenticar,
+    autenticar_user,
+    cadastrar,
+    cadastrarFuncionario
+};
