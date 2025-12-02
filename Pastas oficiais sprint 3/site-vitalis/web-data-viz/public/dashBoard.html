@@ -144,7 +144,8 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-  const idPlantacao = sessionStorage.ID_EMPRESA; // ou pegar do sessionStorage se quiser dinamismo
+  const idEmpresa = sessionStorage.ID_EMPRESA; // ou pegar do sessionStorage se quiser dinamismo
+  const idPlantacao = plantacoes[0].idPlantacao;
   let graficoSemanal = null;
   let graficoDiario = null;
   let proximaAtualizacao;
@@ -156,16 +157,26 @@
   };
 
   function atualizarDashboard() {
-    atualizarUmidadeAtual();
+    atualizarMediaUmidade();
+    atualizarContarSensores();
     atualizarGraficoSemanal();
     atualizarGraficoDiario();
   }
 
-  function atualizarUmidadeAtual() {
-    fetch(`/umidade/atual/${idPlantacao}`)
+  function atualizarMediaUmidade() {
+    fetch(`/umidade/kpiMediaUmidade/${idPlantacao}/${idEmpresa}`)
       .then(r => r.json())
       .then(data => {
         document.querySelector("#card_umidade h2").innerHTML = data.valor + "%";
+      })
+      .catch(err => console.error("Erro card umidade:", err));
+  }
+
+  function atualizarContarSensores() {
+    fetch(`/umidade/kpiContarSensor/${idPlantacao}/${idEmpresa}`)
+      .then(r => r.json())
+      .then(data => {
+        document.querySelector("#card_lote h2").innerHTML = data.valor;
       })
       .catch(err => console.error("Erro card umidade:", err));
   }
