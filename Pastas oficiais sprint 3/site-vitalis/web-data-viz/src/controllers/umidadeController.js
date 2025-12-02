@@ -1,8 +1,10 @@
 var umidadeModel = require("../models/umidadeModel");
-function buscarUmidadeAtual(req, res) {
-    const idPlantacao = req.params.idPlantacao;
 
-    umidadeModel.buscarUmidadeAtual(idPlantacao)
+function kpiMediaUmidade(req, res) {
+    const idPlantacao = req.params.idPlantacao;
+    const idEmpresa = req.params.idEmpresa;
+
+    umidadeModel.kpiMediaUmidade(idPlantacao, idEmpresa)
         .then(resultado => res.json(resultado[0] || { valor: null }))
         .catch(erro => {
             console.log("ERRO controller umidadeAtual:", erro);
@@ -10,10 +12,23 @@ function buscarUmidadeAtual(req, res) {
         });
 }
 
+function kpiContarSensor(req, res) {
+    const idPlantacao = req.params.idPlantacao;
+    const idEmpresa = req.params.idEmpresa;
+
+    umidadeModel.kpiContarSensor(idPlantacao, idEmpresa)
+        .then(resultado => res.json(resultado[0] || { valor: null }))
+        .catch(erro => {
+            console.log("ERRO controller contarSensor:", erro);
+            res.status(500).json(erro);
+        });
+}
+
 function buscarUmidadeDiaria(req, res) {
     const idPlantacao = req.params.idPlantacao;
+    const idEmpresa = req.params.idEmpresa;
 
-    umidadeModel.buscarUmidadeDiaria(idPlantacao)
+    umidadeModel.buscarUmidadeDiaria(idPlantacao, idEmpresa)
         .then(resultado => res.json(resultado.reverse())) // Mais antigo → mais recente
         .catch(erro => {
             console.log("ERRO controller umidadeDiaria:", erro);
@@ -23,8 +38,9 @@ function buscarUmidadeDiaria(req, res) {
 
 function buscarUmidadeSemanal(req, res) {
     const idPlantacao = req.params.idPlantacao;
+    const idEmpresa = req.params.idEmpresa;
 
-    umidadeModel.buscarUmidadeSemanal(idPlantacao)
+    umidadeModel.buscarUmidadeSemanal(idPlantacao, idEmpresa)
         .then(resultado => {
             const dadosFormatados = [];
 
@@ -45,7 +61,8 @@ function buscarUmidadeSemanal(req, res) {
 }
 
 module.exports = {
-    buscarUmidadeAtual,
+    kpiMediaUmidade,
+    kpiContarSensor,
     buscarUmidadeDiaria,
     buscarUmidadeSemanal
 };
