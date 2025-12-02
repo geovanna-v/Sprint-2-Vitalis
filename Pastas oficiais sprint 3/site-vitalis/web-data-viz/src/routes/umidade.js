@@ -3,8 +3,8 @@ var router = express.Router();
 var umidadeController = require("../controllers/umidadeController");
 
 // Para as KPI's
-router.get("/atual/:idPlantacao", umidadeController.kpiMediaUmidade);
-router.get("/atual/:idPlantacao", umidadeController.kpiContarSensor);
+router.get("/kpiMediaUmidade/:idEmpresa", umidadeController.kpiMediaUmidade);
+router.get("/kpiContarSensor/:idPlantacao", umidadeController.kpiContarSensor);
 
 // Atualizar com um dado novo
 router.get("/diaria/:idPlantacao", umidadeController.buscarUmidadeDiaria);

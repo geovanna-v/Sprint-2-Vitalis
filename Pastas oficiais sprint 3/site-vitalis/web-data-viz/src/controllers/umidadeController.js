@@ -1,10 +1,10 @@
 var umidadeModel = require("../models/umidadeModel");
 
 function kpiMediaUmidade(req, res) {
-    const idPlantacao = req.params.idPlantacao;
+    // const idPlantacao = req.params.idPlantacao;
     const idEmpresa = req.params.idEmpresa;
 
-    umidadeModel.kpiMediaUmidade(idPlantacao, idEmpresa)
+    umidadeModel.kpiMediaUmidade(idEmpresa)
         .then(resultado => res.json(resultado[0] || { valor: null }))
         .catch(erro => {
             console.log("ERRO controller umidadeAtual:", erro);
@@ -14,9 +14,9 @@ function kpiMediaUmidade(req, res) {
 
 function kpiContarSensor(req, res) {
     const idPlantacao = req.params.idPlantacao;
-    const idEmpresa = req.params.idEmpresa;
+    // const idEmpresa = req.params.idEmpresa;
 
-    umidadeModel.kpiContarSensor(idPlantacao, idEmpresa)
+    umidadeModel.kpiContarSensor(idPlantacao)
         .then(resultado => res.json(resultado[0] || { valor: null }))
         .catch(erro => {
             console.log("ERRO controller contarSensor:", erro);

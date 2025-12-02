@@ -49,30 +49,15 @@ app.listen(PORTA_APP, function () {
     \t\tPara alterar o ambiente, comente ou descomente as linhas 1 ou 2 no arquivo 'app.js'\n\n`);
 });
 
-/*Integração com BobIA*/
 
-// importando os bibliotecas necessárias
 const { GoogleGenAI } = require("@google/genai");
-// const express = require("express");
-// const path = require("path");
 
-// carregando as variáveis de ambiente do projeto do arquivo .env
-require("dotenv").config();
 
-// configurando o servidor express
-// const app = express();
 const PORTA_SERVIDOR = process.env.PORTA;
 
-// configurando o gemini (IA)
 const chatIA = new GoogleGenAI({ apiKey: process.env.MINHA_CHAVE });
 
-// configurando o servidor para receber requisições JSON
 app.use(express.json());
-
-// configurando o servidor para servir arquivos estáticos
-//app.use(express.static(path.join(__dirname, "public")));
-
-// configurando CORS
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Origin, Content-Type, Accept');
@@ -81,17 +66,6 @@ app.use((req, res, next) => {
 
 // inicializando o servidor
 app.listen(PORTA_SERVIDOR, () => {
-    console.info(
-        `
-        ######                ###    #    
-        #     #  ####  #####   #    # #   
-        #     # #    # #    #  #   #   #  
-        ######  #    # #####   #  #     # 
-        #     # #    # #    #  #  ####### 
-        #     # #    # #    #  #  #     # 
-        ######   ####  #####  ### #     # 
-        `
-    );
     console.info(`A API BobIA iniciada, acesse http://localhost:${PORTA_SERVIDOR}`);
 });
 

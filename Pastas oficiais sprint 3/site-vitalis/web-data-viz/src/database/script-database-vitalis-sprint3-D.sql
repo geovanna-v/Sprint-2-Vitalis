@@ -176,20 +176,27 @@ CREATE VIEW vw_dashboardSemanalFill AS
     ORDER BY leitura.dataLeitura
     DESC LIMIT 7;
 
+
+
 CREATE VIEW vw_kpiUmidade AS  
-	SELECT AVG(leitura.leituraUmidade) AS "Média da Umidade do Solo na Plantação" 
+	SELECT AVG(leitura.leituraUmidade) AS "Média da Umidade do Solo na Plantação",
+	empresa.idEmpresa
 	FROM leitura
 	JOIN sensor ON leitura.fkSensor = sensor.idSensor 
     JOIN plantacao ON sensor.fkPlantacao = plantacao.idPlantacao
     JOIN empresa ON plantacao.fkEmpresa = empresa.idEmpresa
-	ORDER BY leitura.idLeitura DESC; -- // KPI da umidade do solo (última leitura)
-
+	ORDER BY leitura.idLeitura DESC; 
+	
+	
 CREATE VIEW vw_kpiQtdSensores AS
-	SELECT COUNT(idSensor) as "Quantidade de Sensores"
-    FROM sensor JOIN plantacao 
-    ON sensor.fkPlantacao = plantacao.idPlantacao 
-    JOIN empresa 
-    ON plantacao.fkEmpresa = empresa.idEmpresa; -- // KPI da quantidade de sensores por plantação
+	SELECT COUNT(sensor.idSensor) as "Quantidade de Sensores",
+		empresa.idEmpresa
+    	FROM sensor JOIN plantacao 
+    	ON sensor.fkPlantacao = plantacao.idPlantacao 
+    	JOIN empresa 
+    	ON plantacao.fkEmpresa = empresa.idEmpresa; 
+	
+	
 	       	
 	
 SELECT * FROM vw_dashboardDiaria;

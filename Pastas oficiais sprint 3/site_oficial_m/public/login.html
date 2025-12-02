@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vitalis | LOGIN</title>
+  <script src="./js/sessao.js"></script>
+  <link rel="stylesheet" href="assets/style/style.css" />
+  <link rel="icon" href="assets/icon/icon_leaf.png" />
+  <link rel="preconnect" href="" />
+</head>
+
+<body>
+  <div class="header">
+    <div class="container">
+      <div class="logo">
+        <img class="icon" src="assets/icon/icon_leaf.png" />
+        <h1 class="titulo">Vitalis</h1>
+      </div>
+
+      <ul class="navbar">
+        <li>
+          <a href="index.html">HOME</a>
+        </li>
+
+        <li>
+          <a href="pagCalculadora.html">SIMULADOR</a>
+        </li>
+
+        <li class="campo">
+          <a href="login.html">LOGIN</a>
+        </li>
+
+        <li class="campo">
+          <a href="cadastro.html">CADASTRO</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="login">
+    <div class="container-login">
+      <div class="card-login">
+        <h2>LOGIN</h2>
+      </div>
+
+      <div class="formulario-login">
+        <div class="campo-login">
+          <span>E-MAIL</span>
+          <input type="text" id="ipt_email" placeholder="Digite seu email" value="agrovale@gmail.com"/>
+        </div>
+
+        <div class="campo-login">
+          <span>SENHA</span>
+          <input type="password" id="ipt_senha" placeholder="Digite sua senha" value="agrovale123"/>
+        </div>
+
+        <button onclick="entrar()" class="botao-login">LOGAR</button>
+
+        <div class="mensagem">
+          <span>
+            Você ainda não possui uma conta? Cadastre-se
+            <a href="cadastro.html"><b>Aqui</b></a>
+          </span>
+        </div>
+      </div>
+    </div>
+    <img src="assets/img/caju.jpg" />
+  </div>
+</body>
+
+</html>
+
+<script>
+  function entrar() {
+    aguardar();
+
+    var emailVar = ipt_email.value;
+    var senhaVar = ipt_senha.value;
+
+    console.log("FORM LOGIN: ", emailVar);
+    console.log("FORM SENHA: ", senhaVar);
+
+    fetch("/usuarios/autenticar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        emailServer: emailVar,
+        senhaServer: senhaVar,
+      }),
+    }) 
+      .then(function (resposta) {
+        console.log("ESTOU NO THEN DO entrar()!");
+        console.log(resposta);
+        if (resposta.ok) {
+          console.log(resposta);
+
+          resposta.json().then((json) => {
+            console.log(json);
+            console.log(JSON.stringify(json));
+
+            sessionStorage.EMAIL_USUARIO = json.email;
+
+            if (json.idEmpresa == undefined) {
+              sessionStorage.ID_EMPRESA = json.fkEmpresa;
+              if (json.idUsuario != undefined) {
+                sessionStorage.ID_USUARIO = json.idUsuario;
+              }
+            } 
+            else {
+            sessionStorage.ID_EMPRESA = json.idEmpresa;
+            }
+            if (json.razaoSocial == undefined) {
+            sessionStorage.NOME_USUARIO = json.apelidoUsuario;
+            } else {
+            sessionStorage.NOME_USUARIO = json.razaoSocial;
+            }
+            if(json.plantacoes != undefined){
+              sessionStorage.plantacoes = JSON.stringify(json.plantacoes);
+            }
+
+            if(json.email.includes('@suporte.com') || json.email.includes('@atendimento.com')){
+              window.location = "Suporte.html";
+              console.log('teste Login');
+            }else if(json.razaoSocial == undefined){
+              window.location = "dashBoard_funcionario.html";
+            } else {
+              window.location = "dashBoard.html";
+            }
+          });
+          
+        } else {
+          console.log("Houve um erro ao tentar realizar o login!");
+          alert("Houve um erro ao tentar realizar o login!");
+
+
+          resposta.text().then((texto) => {
+            console.error(texto);
+            // finalizarAguardar(texto);
+          });
+        }
+      })
+      .catch(function (erro) {
+        console.log(erro);
+      });
+
+    return false;
+  }
+</script>

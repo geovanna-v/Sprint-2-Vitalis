@@ -1,8 +1,8 @@
 var database = require("../database/config");
 
-function kpiMediaUmidade(idPlantacao) {
+function kpiMediaUmidade(idEmpresa) {
   const sql = `
-    SELECT * FROM vw_kpiUmidade WHERE idPlantacao = ${idPlantacao};
+    SELECT * FROM vw_kpiUmidade WHERE idEmpresa = ${idEmpresa};
     `;
   return database.executar(sql);
 }
