@@ -75,6 +75,36 @@ function autenticar(req, res) {
   }
 }
 
+function cadastrarFuncionario(req, res) {
+
+// | fkEmpresa      | int          | NO   | PRI | NULL    |                |
+// | email          | varchar(100) | NO   | UNI | NULL    |                |
+// | senha          | varchar(50)  | NO   |     | NULL    |                |
+// | nivelCargo     | tinyint      | NO   |     | NULL    |                |
+
+
+  var empresa = req.body.empresaServer;
+  var nivelCargo = req.body.nivelCargoServer;
+  var nome = req.body.nomeServer;
+  var email = req.body.emailServer;
+  var senha = req.body.senhaServer;
+  
+    usuarioModel
+      .cadastrarFuncionario(empresa, email, senha, nivelCargo, nome)
+      .then(function (resultado) {
+        res.json(resultado);
+      })
+      .catch(function (erro) {
+        console.log(erro);
+        console.log(
+          "\nHouve um erro ao realizar o cadastro! Erro: ",
+          erro.sqlMessage
+        );
+        res.status(500).json(erro.sqlMessage);
+      });
+  
+}
+
 function cadastrar(req, res) {
   // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
 
@@ -117,4 +147,5 @@ function cadastrar(req, res) {
 module.exports = {
   autenticar,
   cadastrar,
+  cadastrarFuncionario
 };
