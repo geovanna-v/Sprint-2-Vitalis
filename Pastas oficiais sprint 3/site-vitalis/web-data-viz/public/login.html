@@ -47,12 +47,12 @@
       <div class="formulario-login">
         <div class="campo-login">
           <span>E-MAIL</span>
-          <input type="text" id="ipt_email" placeholder="Digite seu email" value="agrovale@gmail.com"/>
+          <input type="text" id="ipt_email" placeholder="Digite seu email" value="supTeste@suporte.com"/>
         </div>
 
         <div class="campo-login">
           <span>SENHA</span>
-          <input type="password" id="ipt_senha" placeholder="Digite sua senha" value="agrovale123"/>
+          <input type="password" id="ipt_senha" placeholder="Digite sua senha" value="senha123"/>
         </div>
 
         <button onclick="entrar()" class="botao-login">LOGAR</button>
@@ -101,7 +101,7 @@
             console.log(json);
             console.log(JSON.stringify(json));
 
-            sessionStorage.EMAIL_USUARIO = json.email;
+            sessionStorage.EMAIL_USUARIO = json.email
 
             if (json.idEmpresa == undefined) {
               sessionStorage.ID_EMPRESA = json.fkEmpresa;
@@ -112,15 +112,23 @@
             else {
             sessionStorage.ID_EMPRESA = json.idEmpresa;
             }
+
             if (json.razaoSocial == undefined) {
             sessionStorage.NOME_USUARIO = json.apelidoUsuario;
             } else {
             sessionStorage.NOME_USUARIO = json.razaoSocial;
             }
+
             if(json.plantacoes != undefined){
               sessionStorage.plantacoes = JSON.stringify(json.plantacoes);
             }
-            window.location = "dashBoard.html";
+            
+            if(json.email.includes('@suporte.com','@atendimento.com')){
+              window.location = "Suporte.html";
+            }else {
+              window.location = "dashBoard.html";
+            }
+            
           });
           
         } else {

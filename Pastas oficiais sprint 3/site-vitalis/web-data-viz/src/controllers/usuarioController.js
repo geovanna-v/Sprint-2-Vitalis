@@ -20,9 +20,10 @@ function autenticar(req, res) {
             .buscarplantacoesPorEmpresa(resultadoAutenticar[0].idEmpresa)
             .then((resultadoplantacoes) => {
               if (resultadoplantacoes.length > 0) {
+                
                 res.json({
                   idEmpresa: resultadoAutenticar[0].idEmpresa,
-                  email: resultadoAutenticar[0].email,
+                  email: resultadoAutenticar[0].emailUsuario,
                   razaoSocial: resultadoAutenticar[0].razaoSocial,
                   senha: resultadoAutenticar[0].senha,
                   plantacoes: resultadoplantacoes,
@@ -31,7 +32,7 @@ function autenticar(req, res) {
               else if (resultadoplantacoes.length == 0) {
                 res.json({
                   idEmpresa: resultadoAutenticar[0].idEmpresa,
-                  email: resultadoAutenticar[0].email,
+                  email: resultadoAutenticar[0].emailUsuario,
                   razaoSocial: resultadoAutenticar[0].razaoSocial,
                   senha: resultadoAutenticar[0].senha,
                   
@@ -55,7 +56,7 @@ function autenticar(req, res) {
                       idUsuario: resultadoAutenticar[0].idUsuario,
                       fkEmpresa: resultadoAutenticar[0].fkEmpresa,
                       apelidoUsuario: resultadoAutenticar[0].apelidoUsuario,
-                      email: resultadoAutenticar[0].email,
+                      email: resultadoAutenticar[0].emailUsuario,
                       plantacoes: resultadoplantacoes,
                     });
                   }
