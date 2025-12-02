@@ -355,4 +355,54 @@
 
     return false;
   }
+
+  function adicionar_funcionario() {
+        var nome = ipt_nome_funcionario.value;
+        var email = ipt_email_funcionario.value;
+        var senha = ipt_senha_funcionario.value;
+
+        var nivelCargo = Number(sel_novo_tipo.value);
+      
+
+    fetch("/usuarios/cadastrarFuncionario", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+
+        empresaServer: sessionStorage.ID_EMPRESA,
+        nomeServer: nome,
+        emailServer: email,
+        senhaServer: senha,
+        nivelCargoServer: nivelCargo
+      }),
+    }) 
+      .then(function (resposta) {
+        console.log(resposta);
+        if (resposta.ok) {
+          resposta.json().then((json) => {
+            console.log(json);
+            console.log(JSON.stringify(json));
+
+            // window.location = "./dashboard/cards.html";
+          });
+          
+        } else {
+          console.log("Houve um erro ao tentar adicionar plantacao!");
+          alert("Houve um erro ao tentar realizar o login!");
+
+
+          resposta.text().then((texto) => {
+            console.error(texto);
+            // finalizarAguardar(texto);
+          });
+        }
+      })
+      .catch(function (erro) {
+        console.log(erro);
+      });
+
+    return false;
+  }
 </script>
