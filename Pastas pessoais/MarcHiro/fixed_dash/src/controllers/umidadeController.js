@@ -17,9 +17,6 @@ function buscarUmidadeSemanal(req, res) {
     umidadeModel.buscarUmidadeSemanal(idPlantacao)
         .then(resultado => {
         
-
-            
-
             res.json(resultado);
         })
         .catch(erro => {
