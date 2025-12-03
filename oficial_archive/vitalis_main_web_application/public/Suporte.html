@@ -41,14 +41,26 @@
   <div id="div_containerPrincipal_index" class="container-index">
     <img src="assets/img/homem-montando-cavalo-interface.jpg" alt="" />
     <div class="filtro_laranja"></div>
+
     <div id="div_textoPrincipal-index" class="titulos-index">
       <h1>Suporte aos clientes</h1>
+
       <br />
       <div class="botoes-index">
-        <a
-          href="https://vitalisempresa.atlassian.net/jira/software/projects/KAN/form/1?atlOrigin=eyJpIjoiNDVkMDUzZmZmYmYxNDlhNDlhNGVmYzVjZDY4NTA5ZjQiLCJwIjoiaiJ9">Incidente</a>
-        <a
-          href="https://vitalisempresa.atlassian.net/jira/software/projects/KAN/form/2?atlOrigin=eyJpIjoiZjkyMzQ4MzFlMGUzNGUxZmI2N2U5OWVmYzlkYjk2Y2EiLCJwIjoiaiJ9">Suporte</a>
+        <h3>Abra um chamado:</h3>
+        <button onclick="incidente()">
+          <a class="buttonSuporte"
+            href="https://vitalisempresa.atlassian.net/jira/software/projects/KAN/form/1?atlOrigin=eyJpIjoiNDVkMDUzZmZmYmYxNDlhNDlhNGVmYzVjZDY4NTA5ZjQiLCJwIjoiaiJ9">Incidente</a>
+          
+        </button>
+
+
+        <button onclick="suporte()">
+          <a class="buttonSuporte"
+            href="https://vitalisempresa.atlassian.net/jira/software/projects/KAN/form/2?atlOrigin=eyJpIjoiZjkyMzQ4MzFlMGUzNGUxZmI2N2U5OWVmYzlkYjk2Y2EiLCJwIjoiaiJ9">Suporte</a>
+          
+        </button>
+
       </div>
     </div>
   </div>
@@ -60,10 +72,6 @@
     <h3 id="texteResposta">Resposta da IA:</h3>
     <div id="resposta"></div>
   </div>
-
-  <hr id="hr-suporte">
-  <h2 id="subtitulo">Fluxo de atendimento</h2>
-
 
 
   <div class="footer">
@@ -122,6 +130,7 @@
 </html>
 
 <script>
+
 
   async function gerarResposta() {
     const pergunta = document.getElementById('pergunta').value;
