@@ -33,24 +33,21 @@ Repositório do Projeto de Pesquisa e Inovação - VITALIS: Monitoramento de Umi
 
 
 ## Integrantes: 
-<br>
-<img valign="middle" width="32" height="32" alt="dev" src="https://github.com/user-attachments/assets/34f7ac0a-5445-412b-aec7-c0a56340d20b" />Geovanna Vitoriana de Oliveira;
-<br>
-<br>
-<img valign="middle" width="32" height="32" alt="dev" src="https://github.com/user-attachments/assets/34f7ac0a-5445-412b-aec7-c0a56340d20b" />Kaio Rodrigues Rocha;
-<br>
-<br>
-<img valign="middle" width="32" height="32" alt="dev" src="https://github.com/user-attachments/assets/34f7ac0a-5445-412b-aec7-c0a56340d20b" />Letícia Costa Nascimento;
-<br>
-<br>
-<img valign="middle" width="32" height="32" alt="dev" src="https://github.com/user-attachments/assets/34f7ac0a-5445-412b-aec7-c0a56340d20b" />Marcos Hiroshi Yogi Carvalho;
-<br>
-<br>
-<img valign="middle" width="32" height="32" alt="dev" src="https://github.com/user-attachments/assets/34f7ac0a-5445-412b-aec7-c0a56340d20b" />Maria Rosa Lima Maia;
-<br>
-<br>
-<br>
-<br>
+<div align="center">
+  
+
+
+#### **Geovanna Vitoriana de Oliveira**;
+
+#### **Kaio Rodrigues Rocha**;
+
+#### **Letícia Costa Nascimento**;
+
+#### **Marcos Hiroshi Yogi Carvalho**;
+
+#### **Maria Rosa Lima Maia**;
+
+</div>
 
 
 ## FERRAMENTAS UTILIZADAS
