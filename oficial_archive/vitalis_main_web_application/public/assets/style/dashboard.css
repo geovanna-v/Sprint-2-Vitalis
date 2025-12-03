@@ -44,7 +44,7 @@ body {
 
 .dash-right .avisos .div-form textarea {
   width: 95%;
-  border: 3px solid #e6005a;
+  border: 3px solid #fb6717;
   background-color: white;
   border-radius: 5px;
 }
@@ -58,7 +58,7 @@ body {
   font-size: 18px;
   padding: 10px 15px;
   color: white;
-  background-color: #e6005a;
+  background-color: #fb6717;
   width: 120px;
 }
 
@@ -71,7 +71,7 @@ body {
   font-size: 14px;
   padding: 5px 8px;
   color: white;
-  background-color: #e6005a;
+  background-color: #fb6717;
   width: 80px;
 }
 
@@ -82,7 +82,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
-  border-bottom: 3px solid #e6005a;
+  border-bottom: 3px solid #fb6717;
   padding: 20px;
 }
 
@@ -286,7 +286,7 @@ body {
   font-weight: 600;
   font-size: 18px;
   padding: 10px 15px;
-  color: #e6005a;
+  color: #fb6717;
   background-color: white;
   margin: 5px;
   border-radius: 3px;
@@ -299,7 +299,7 @@ body {
 }
 
 .btn-white {
-  color: #e6005a;
+  color: #fb6717;
   background-color: white;
 
 }
@@ -387,7 +387,7 @@ canvas {
 .btn-nav {
   width: 40%;
   color: white;
-  background-color: #e6005a;
+  background-color: #fb6717;
   border-radius: 5px;
   text-align: center;
   padding: 2% 5%;
