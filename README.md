@@ -5,6 +5,25 @@
 Repositório do Projeto de Pesquisa e Inovação - VITALIS: Monitoramento de Umidade do Solo em Plantações de Caju Anão Precoce no Nordeste.
 </p>
 <br>
+
+## Integrantes: 
+<div align="center">
+  
+
+
+#### **Geovanna Vitoriana de Oliveira**;
+
+#### **Kaio Rodrigues Rocha**;
+
+#### **Letícia Costa Nascimento**;
+
+#### **Marcos Hiroshi Yogi Carvalho**;
+
+#### **Maria Rosa Lima Maia**;
+
+</div>
+
+<br>
 <br>
 <div>
 <img alt="land_page" src="https://github.com/user-attachments/assets/23fefaf6-a441-46aa-9a7f-f3da5bb5b088" />
@@ -32,22 +51,7 @@ Repositório do Projeto de Pesquisa e Inovação - VITALIS: Monitoramento de Umi
 </p>
 
 
-## Integrantes: 
-<div align="center">
-  
 
-
-#### **Geovanna Vitoriana de Oliveira**;
-
-#### **Kaio Rodrigues Rocha**;
-
-#### **Letícia Costa Nascimento**;
-
-#### **Marcos Hiroshi Yogi Carvalho**;
-
-#### **Maria Rosa Lima Maia**;
-
-</div>
 
 
 ## FERRAMENTAS UTILIZADAS
