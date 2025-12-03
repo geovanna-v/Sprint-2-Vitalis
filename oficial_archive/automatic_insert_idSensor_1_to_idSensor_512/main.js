@@ -17,10 +17,10 @@ let idSensor;
 let poolBancoDados = mysql
   .createPool({
     host: "127.0.0.1",
-    user: "Vitalis",
-    password: "Caju#2024",
+    user: "root",
+    password: "9090",
     database: "vitalis",
-    port: 3307,
+    port: 3306,
   })
   .promise();
 
