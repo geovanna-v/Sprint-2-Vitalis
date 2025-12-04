@@ -18,7 +18,7 @@
   <body>
     <div class="header">
       <div class="container">
-        <div class="logo">
+        <div class="logo" onclick="logout()">
           <img class="icon" src="assets/icon/icon_leaf.png" />
           <h1 class="titulo">Vitalis</h1>
         </div>
@@ -159,6 +159,11 @@
   </body>
 </html>
 <script>
+    function logout(){
+    sessionStorage.clear();
+    window.location = "index.html";
+}
+
   var RECOMENDACAO_AGUA = 5000; // 5000 ha³ de água = 5L - 5dm³ = 0,005m³ ----> 1 ha³ = 1.000.000 m³
   var VALOR_AGUA_M3 = 0.4;
   var VALOR_KG_CASTANHA = 6;

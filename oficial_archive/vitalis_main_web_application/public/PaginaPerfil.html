@@ -19,7 +19,7 @@
 <body>
   <div class="header">
     <div class="container">
-      <div class="logo">
+      <div class="logo" onclick="logout()">
         <img class="icon" src="assets/icon/icon_leaf.png" />
         <h1 class="titulo">Vitalis</h1>
       </div>
@@ -207,6 +207,11 @@
 
 
 <script>
+
+    function logout(){
+    sessionStorage.clear();
+    window.location = "index.html";
+}
 
   function adicionar_plantacao() {
 

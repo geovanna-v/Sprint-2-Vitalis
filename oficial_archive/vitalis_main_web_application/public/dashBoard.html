@@ -12,7 +12,7 @@
 <body>
   <div class="header">
     <div class="container">
-      <div class="logo">
+      <div class="logo" onclick="logout()">
         <img class="icon" src="assets/icon/icon_leaf.png" />
         <h1 class="titulo">Vitalis</h1>
       </div>
@@ -125,6 +125,11 @@
 <script>
   let proximaAtualizacao;
 
+    function logout(){
+    sessionStorage.clear();
+    window.location = "index.html";
+}
+
   window.onload = function () {
     if (sessionStorage.plantacoes) {
       exibirPlantacoesDoUsuario();
@@ -137,16 +142,18 @@
     fetch(`/umidade/kpiMediaUmidade/${sessionStorage.ID_EMPRESA}`)
       .then(function (response) {
         if (response.ok) {
-
           response.json().then(function (resposta) {
             if (resposta.valor >= 20 && resposta.valor <= 30) {
-
-              document.getElementById("card_Umidade1").innerHTML = `<div class="cardUmidadeMedia"><h2>${resposta.valor} %<h2> <br> 
+              let valorUmidade = Number(resposta.valor);
+              let valorFormatado = valorUmidade.toFixed(2);
+              document.getElementById("card_Umidade1").innerHTML = `<div class="cardUmidadeMedia"><h2>${valorFormatado} %<h2>  
               <p>Umidade do Solo</p></div>`;
               setTimeout(atualizarMediaUmidade, 3333);
 
             } else {
-              document.getElementById("card_Umidade1").innerHTML = `<div class="card_umidadeAcimaOuAbaixo"><h2>${resposta.valor} %<h2> <br> 
+              let valorUmidade = Number(resposta.valor);
+              let valorFormatado = valorUmidade.toFixed(2);              
+              document.getElementById("card_Umidade1").innerHTML = `<div class="card_umidadeAcimaOuAbaixo"><h2>${valorFormatado} %<h2> 
               <p>Umidade do Solo</p></div>`;
               setTimeout(atualizarMediaUmidade, 3333);
 
@@ -374,6 +381,7 @@
           data: [],
           fill: true,
           borderColor: "rgb(251, 103, 23)",
+          backgroundColor: '#ff6f4371',
           tension: 0.1,
         },
       ],

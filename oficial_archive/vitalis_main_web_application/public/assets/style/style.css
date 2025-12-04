@@ -22,12 +22,14 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 0px 120px;
+
 }
 
 .logo {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-left: -5%;
 }
 
 .icon {
@@ -120,11 +122,11 @@ body {
 
 .btn-pink {
   color: white;
-  background-color: #e6005a;
+  background-color: #b13f03;
 }
 
 .btn-white {
-  color: #e6005a;
+  color: #b13f03;
   background-color: white;
 }
 
@@ -1034,6 +1036,8 @@ canvas {
 
 .card_umidadeAcimaOuAbaixo h2 {
   color: #d60a0a;
+  font-size: 29px;
+  margin-bottom: 0px;
 }
 
 .card_umidadeFaixaIdeal {

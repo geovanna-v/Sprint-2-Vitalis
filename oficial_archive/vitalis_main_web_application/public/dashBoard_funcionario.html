@@ -11,7 +11,7 @@
   <body>
     <div class="header">
       <div class="container">
-        <div class="logo">
+        <div class="logo" onclick="logout()">
           <img class="icon" src="assets/icon/icon_leaf.png" />
           <h1 class="titulo">Vitalis</h1>
         </div>
@@ -96,6 +96,12 @@
 
 <script>
   let proximaAtualizacao;
+
+    function logout(){
+    sessionStorage.clear();
+    window.location = "index.html";
+}
+
 
   window.onload = function () {
     if (sessionStorage.plantacoes) {
@@ -230,7 +236,7 @@
           label: "Umidade",
           data: [],
           fill: true,
-          borderColor: "rgb(75, 192, 192)",
+          borderColor: "rgb(251, 103, 23)",
           backgroundColor: "#ff6f4371",          
           tension: 0.1,
         },
@@ -313,7 +319,8 @@
           label: "Umidade",
           data: [],
           fill: true,
-          borderColor: "rgb(75, 192, 192)",
+          borderColor: "rgb(251, 103, 23)",
+          backgroundColor: "#ff6f4371",
           tension: 0.1,
         },
       ],
