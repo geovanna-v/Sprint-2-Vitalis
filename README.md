@@ -6,8 +6,9 @@ Repositório do Projeto de Pesquisa e Inovação - VITALIS: Monitoramento de Umi
 </p>
 <br>
 
-## Integrantes: 
 <div align="center">
+
+## Integrantes: 
   
 
 
