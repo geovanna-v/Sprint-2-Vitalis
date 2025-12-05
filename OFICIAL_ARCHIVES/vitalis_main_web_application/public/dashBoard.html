@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vitalis | DASHBOARD</title>
+  <link rel="stylesheet" href="./assets/style/style.css" />
+  <!-- <link rel="stylesheet" href="./assets/style/style.css"> -->
+</head>
+
+<body>
+  <div class="header">
+    <div class="container">
+      <div class="logo" onclick="logout()">
+        <img class="icon" src="assets/icon/icon_leaf.png" />
+        <h1 class="titulo">Vitalis</h1>
+      </div>
+
+      <ul class="navbar">
+        <li>
+          <a href="index.html">HOME</a>
+        </li>
+
+        <li>
+          <a href="pagCalculadora.html">SIMULADOR</a>
+        </li>
+
+        <li class="campo" style="width: 150px">
+          <a style="width: 150px" href="PaginaPerfil.html">
+            <div style="
+                  width: 100%;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                ">
+              <span>MEU PERFIL</span><img alt="perfil" src="./assets/icon/icon_person.png" />
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="dash">
+    <div id="alerta">
+      <div class="container">
+        <div class="card-metricas">
+          <div class="card" id="card_lote">
+            <!-- <h2>100</h2> -->
+            <!-- <p>Quantidade de Sensores em Funcionamento</p> -->
+          </div>
+          <span id="card_Umidade1">
+            <!-- <h2>15%</h2> -->
+            <!-- <p>Umidade do Solo</p> -->
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="btns-dash" id="btnPlantacao"></div>
+
+    <div id="graficos">
+      <div id="graficos_diario"></div>
+      <div id="graficos_semanais"></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="container">
+      <div class="left_container">
+        <h4>Soluções inteligentes para o agronegócio</h4>
+        <div class="contacts_container">
+          <img src="./assets/icon/instagran.png" alt="Instagram" />
+          <img src="./assets/icon/whatzapp.png" alt="WhatsApp" />
+          <img src="./assets/icon/facebook.png" alt="Facebook" />
+        </div>
+      </div>
+
+      <div class="right_container">
+        <div class="left">
+          <h6>Explore</h6>
+          <p>Home</p>
+          <p>Sobre Nós</p>
+          <p>Equipe</p>
+        </div>
+
+        <div class="vertical_ruler">
+          <hr />
+        </div>
+
+        <div class="right">
+          <div class="above">
+            <h6>Endereço</h6>
+            <p>
+              Rua Haddock Lobo 595<br />
+              São Paulo, SP<br />
+              01414-905
+            </p>
+          </div>
+
+          <div class="bellow">
+            <h6>Contato</h6>
+            <p>vitaliscaju@gmail.com</p>
+            <p>+55 11 4002-8922</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="middle">
+      <hr />
+    </div>
+
+    <div class="page_end">
+      <p>© 2025 Vitalis. Todos os direitos reservados.</p>
+      <p>Política de Privacidade</p>
+    </div>
+  </div>
+</body>
+
+</html>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  let proximaAtualizacao;
+
+    function logout(){
+    sessionStorage.clear();
+    window.location = "index.html";
+}
+
+  window.onload = function () {
+    if (sessionStorage.plantacoes) {
+      exibirPlantacoesDoUsuario();
+      atualizarMediaUmidade()
+    } else {
+    }
+  };
+
+  function atualizarMediaUmidade() {
+    fetch(`/umidade/kpiMediaUmidade/${sessionStorage.ID_EMPRESA}`)
+      .then(function (response) {
+        if (response.ok) {
+          response.json().then(function (resposta) {
+
+            let valorUmidade = Number(resposta.valor);
+            let valorFormatado = valorUmidade.toFixed(2);
+            valorUmidade = Number(valorFormatado);
+            console.log(typeof(valorUmidade));
+            console.log((valorUmidade >= 20 && valorUmidade <= 30));
+
+            if (valorUmidade >= 20 && valorUmidade <= 30) {
+
+              console.log(valorFormatado);
+
+              document.getElementById("card_Umidade1").innerHTML = `<div class="card_umidadeFaixaIdeal"><h2>${valorFormatado} %<h2>  
+              <p>Umidade do Solo</p></div>`;
+
+              setTimeout(atualizarMediaUmidade, 3333);
+
+            } else {
+
+              document.getElementById("card_Umidade1").innerHTML = `<div class="card_umidadeAcimaOuAbaixo"><h2>${valorFormatado} %<h2> 
+              <p>Umidade do Solo</p></div>`;
+
+              setTimeout(atualizarMediaUmidade, 3333);
+
+            }
+          });
+        }
+      })
+      .catch();
+  }
+
+  function atualizarContarSensores(idPlantacao) {
+    fetch(`/umidade/kpiContarSensor/${idPlantacao}`)
+      .then(function (response) {
+        if (response.ok) {
+          response.json().then(function (resposta) {
+            if(resposta.quantidade == undefined){
+              document.getElementById("card_lote").innerHTML = ` <h2> 0 </h2> <p>Quantidade de Sensores em funcionamento</p>`;
+
+            } else {
+              document.getElementById("card_lote").innerHTML = ` <h2>${resposta.quantidade}</h2> <p>Quantidade de Sensores em funcionamento</p>`;
+
+            }
+
+            // setTimeout(atualizarMediaUmidade, 3333);
+          });
+        }
+      })
+
+      .catch();
+  }
+
+
+
+
+  function exibirPlantacoesDoUsuario() {
+    var plantacoes = JSON.parse(sessionStorage.plantacoes);
+
+    plantacoes.forEach((item) => {
+      const id = item.idPlantacao;
+      document.getElementById("btnPlantacao").innerHTML += `
+            <button class="btn-chart" onclick="exibirPlantacao(${id})" id="btnPlantacao${id}">Plantação:${id}</button>
+        `;
+    });
+
+    plantacoes.forEach((item) => {
+      const id = item.idPlantacao;
+      document.getElementById("graficos_semanais").innerHTML += `
+            <div id="grafico${id}Semanal" class="display-none">
+              <h3 class="tituloGraficos">
+                <span id="tituloPlantacao${id}Semanal">Plantacao:${id}</span>
+              </h3>
+              <div class="graph">
+                <canvas id="myChartCanvas${id}Semanal"></canvas>
+              </div>
+            </div>
+        `;
+      obterDadosGraficoSemanal(id);
+    });
+
+    plantacoes.forEach((item) => {
+      const id = item.idPlantacao;
+      document.getElementById("graficos_diario").innerHTML += `
+            <div id="grafico${id}Diaria" class="display-none">
+              <h3 class="tituloGraficos">
+                <span id="tituloPlantacao${id}Diaria">Plantacao:${id}</span>
+              </h3>
+              <div class="graph">
+                <canvas id="myChartCanvas${id}Diaria"></canvas>
+              </div>
+            </div>
+        `;
+      obterDadosGraficoDiario(id);
+    });
+
+    if (plantacoes.length > 0) {
+      exibirPlantacao(plantacoes[0].idPlantacao);
+    }
+  }
+
+  function alterarTitulo(idPlantacao) {
+    var tituloPlantacaoSemanal = document.getElementById(
+      `tituloPlantacao: ${idPlantacao}Semanal`
+    );
+    var tituloPlantacaoDiaria = document.getElementById(
+      `tituloPlantacao: ${idPlantacao}Diaria`
+    );
+  }
+
+  function exibirPlantacao(idPlantacao) {
+    let plantacao = JSON.parse(sessionStorage.plantacoes);
+
+    for (i = 0; i < plantacao.length; i++) {
+      if (
+        plantacao[i].idPlantacao != idPlantacao &&
+        plantacao[i].idPlantacao != null
+      ) {
+        let elementoAtualSemanal = document.getElementById(
+          `grafico${plantacao[i].idPlantacao}Semanal`
+        );
+        if (elementoAtualSemanal.classList.contains("display-block")) {
+          elementoAtualSemanal.classList.remove("display-block");
+        }
+        elementoAtualSemanal.classList.add("display-none");
+
+        let elementoAtualDiario = document.getElementById(
+          `grafico${plantacao[i].idPlantacao}Diaria`
+        );
+        if (elementoAtualDiario.classList.contains("display-block")) {
+          elementoAtualDiario.classList.remove("display-block");
+        }
+        elementoAtualDiario.classList.add("display-none");
+
+        let btnAtual = document.getElementById(
+          `btnPlantacao${plantacao[i].idPlantacao}`
+        );
+
+        if (btnAtual.classList.contains("btn-pink")) {
+          btnAtual.classList.remove("btn-pink");
+        }
+        btnAtual.classList.add("btn-white");
+      }
+    }
+
+    let graficoExibirSemanal = document.getElementById(
+      `grafico${idPlantacao}Semanal`
+    );
+    graficoExibirSemanal.classList.remove("display-none");
+    graficoExibirSemanal.classList.add("display-block");
+
+    let graficoExibirDiaria = document.getElementById(
+      `grafico${idPlantacao}Diaria`
+    );
+
+    graficoExibirDiaria.classList.remove("display-none");
+    graficoExibirDiaria.classList.add("display-block");
+
+    let btnExibir = document.getElementById(`btnPlantacao${idPlantacao}`);
+    btnExibir.classList.remove("btn-white");
+    btnExibir.classList.add("btn-pink");
+    atualizarContarSensores(idPlantacao);
+
+  }
+
+  function plotarGraficoDiario(resposta, idPlantacao) {
+    // Criando estrutura para plotar gráfico - labels
+    let labels = [];
+
+    // Criando estrutura para plotar gráfico - dados
+    let dados = {
+      labels: labels,
+      datasets: [
+        {
+          label: "Umidade",
+          data: [],
+          fill: true,
+          borderColor: "rgb(251, 103, 23)",
+          backgroundColor: "#ff6f4371",
+          tension: 0.1,
+        },
+      ],
+    };
+
+    // Inserindo valores recebidos em estrutura para plotar o gráfico
+    for (i = 0; i < resposta.length; i++) {
+      var registro = resposta[i];
+
+      let hora = new Date(registro.minute).getHours();
+      let minuto = new Date(registro.minute).getMinutes();
+      let segundo = new Date(registro.minute).getSeconds();
+      let horario = `${hora}:${minuto}:${segundo}`;
+
+      labels.push(horario);
+
+      dados.datasets[0].data.push(registro.umidade);
+    }
+
+    // Criando estrutura para plotar gráfico - config
+    const config = {
+      type: "line",
+      data: dados,
+      options: {
+        scales: {
+          y: { // This refers to the Y-axis
+            min: 0,
+            max: 100,
+            ticks: {
+              // Optional: You can also configure tick steps or counts here
+              // stepSize: 10 
+            }
+          }
+        }
+      }
+    };
+
+    const canvas_diario = document.getElementById(
+      `myChartCanvas${idPlantacao}Diaria`
+    );
+    const canvas_diario_ctx = canvas_diario.getContext("2d");
+
+    // Adicionando gráfico criado em div na tela
+    let myChartDiario = new Chart(canvas_diario_ctx, config);
+
+    setTimeout(
+      () => atualizarGraficoDiario(idPlantacao, dados, myChartDiario),
+      5000
+    );
+  }
+
+  function obterDadosGraficoDiario(idPlantacao) {
+    alterarTitulo(idPlantacao);
+
+    if (proximaAtualizacao != undefined) {
+      clearTimeout(proximaAtualizacao);
+    }
+
+    fetch(`/umidade/diariaFill/${idPlantacao}`, { cache: "no-store" })
+      .then(function (response) {
+        if (response.ok) {
+          response.json().then(function (resposta) {
+
+
+            plotarGraficoDiario(resposta, idPlantacao);
+          });
+        } else {
+        }
+      })
+      .catch(function (error) {
+      });
+  }
+
+  function plotarGraficoSemanal(resposta, idPlantacao) {
+
+    // Criando estrutura para plotar gráfico - labels
+    let labels = [];
+
+    // Criando estrutura para plotar gráfico - dados
+    let dados = {
+      labels: labels,
+      datasets: [
+        {
+          label: "Umidade",
+          data: [],
+          fill: true,
+          borderColor: "rgb(251, 103, 23)",
+          backgroundColor: '#ff6f4371',
+          tension: 0.1,
+        },
+      ],
+    };
+
+    // Inserindo valores recebidos em estrutura para plotar o gráfico
+    for (i = 0; i < resposta.length; i++) {
+      var registro = resposta[i];
+
+      let dia = new Date(registro.day).getDate();
+      let mes = new Date(registro.day).getMonth();
+      let horario = `${dia}/${mes + 1}`;
+
+      labels.push(horario);
+      dados.datasets[0].data.push(registro.umidade);
+    }
+
+    // Criando estrutura para plotar gráfico - config
+    const config = {
+      type: "line",
+      data: dados,
+      options: {
+        scales: {
+          y: { // This refers to the Y-axis
+            min: 0,
+            max: 100,
+            ticks: {
+              // Optional: You can also configure tick steps or counts here
+              // stepSize: 10 
+            }
+          }
+        }
+      }
+    };
+
+    const canvas_semanal = document.getElementById(
+      `myChartCanvas${idPlantacao}Semanal`
+    );
+    const canvas_semanal_ctx = canvas_semanal.getContext("2d");
+
+    // Adicionando gráfico criado em div na tela
+    let myChartSemanal = new Chart(canvas_semanal_ctx, config);
+
+    setTimeout(
+      () => atualizarGraficoSemanal(idPlantacao, dados, myChartSemanal),
+      20000
+    );
+  }
+  function obterDadosGraficoSemanal(idPlantacao) {
+    alterarTitulo(idPlantacao);
+
+    if (proximaAtualizacao != undefined) {
+      clearTimeout(proximaAtualizacao);
+    }
+
+    fetch(`/umidade/semanalFill/${idPlantacao}`, { cache: "no-store" })
+      .then(function (response) {
+        if (response.ok) {
+          response.json().then(function (resposta) {
+            resposta = resposta.reverse();
+            plotarGraficoSemanal(resposta, idPlantacao);
+          });
+        } else {
+        }
+      })
+      .catch(function (error) {
+      });
+  }
+
+  function atualizarGraficoSemanal(idPlantacao, dados, myChart) {
+    fetch(`/umidade/semanal/${idPlantacao}`, { cache: "no-store" })
+      .then(function (response) {
+        if (response.ok) {
+          response.json().then(function (novoRegistro) {
+            let dia = new Date(novoRegistro[0].day).getDate();
+            let mes = new Date(novoRegistro[0].day).getMonth();
+            let horario = `${dia}/${mes + 1}`;
+            if (horario == dados.labels[dados.labels.length - 1]) {
+            } else {
+              // tirando e colocando valores no gráfico
+              dados.labels.shift(); // apagar o primeiro
+              dados.labels.push(horario); // incluir um novo momento
+
+              dados.datasets[0].data.shift();
+              dados.datasets[0].data.push(novoRegistro[0].umidade);
+
+              myChart.update();
+            }
+
+            proximaAtualizacao = setTimeout(
+              () => atualizarGraficoSemanal(idPlantacao, dados, myChart),
+              20000
+            );
+          });
+        } else {
+          proximaAtualizacao = setTimeout(
+            () => atualizarGraficoSemanal(idPlantacao, dados, myChart),
+            20000
+          );
+        }
+      })
+      .catch(function (error) {
+      });
+  }
+  function atualizarGraficoDiario(idPlantacao, dados, myChart) {
+    fetch(`/umidade/diaria/${idPlantacao}`, { cache: "no-store" })
+      .then(function (response) {
+        if (response.ok) {
+          response.json().then(function (novoRegistro) {
+
+
+            let hora = new Date(novoRegistro[0].minute).getHours();
+
+            let minuto = new Date(novoRegistro[0].minute).getMinutes();
+
+            let segundo = new Date(novoRegistro[0].minute).getSeconds();
+
+            let horario = `${hora}:${minuto}:${segundo}`;
+
+            if (horario == dados.labels[dados.labels.length - 1]) {
+            } else {
+              dados.labels.shift(); // apagar o primeiro
+              dados.labels.push(horario); // incluir um novo momento
+
+              dados.datasets[0].data.shift(); // apagar o primeiro de umidade
+              dados.datasets[0].data.push(novoRegistro[0].umidade);
+
+              myChart.update();
+            }
+
+            proximaAtualizacao = setTimeout(
+              () => atualizarGraficoDiario(idPlantacao, dados, myChart),
+              5000
+            );
+          });
+        } else {
+          proximaAtualizacao = setTimeout(
+            () => atualizarGraficoDiario(idPlantacao, dados, myChart),
+            5000
+          );
+        }
+      })
+      .catch(function (error) {
+      });
+  }
+</script>
